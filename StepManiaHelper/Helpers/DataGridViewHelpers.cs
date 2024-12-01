@@ -258,14 +258,14 @@ namespace StepManiaHelper.Helpers
             // For filter folders, we care if it's in the filter folder
             if (folder.Type == EFolderTypes.Filter)
             {
-                Value = song.strFolderPath.Contains("\\" + folder.Name + "\\");
+                Value = song.FolderPath.Contains("\\" + folder.Name + "\\");
             }
             // For custom song pack folders, we care if there's a copy in the custom song pack
             else if (folder.Type == EFolderTypes.CustomSongPack)
             {
                 try
                 {
-                    string NewPath = song.strFolderPath + "\\..\\..\\..\\Songs\\" + folder.Name + "\\" + song.FolderName;
+                    string NewPath = song.FolderPath + "\\..\\..\\..\\Songs\\" + folder.Name + "\\" + song.FolderName;
                     NewPath = Path.GetFullPath((new Uri(NewPath)).LocalPath);
                     Value = Directory.Exists(NewPath);
                 }
@@ -392,7 +392,7 @@ namespace StepManiaHelper.Helpers
             && (e.RowIndex < (Form.StepManiaParser?.Songs?.Count ?? 0)))
             {
                 // We only need to replace the song if it's not the same one
-                if (Form.SelectedSong.strFolderPath != Form.StepManiaParser?.Songs?.ElementAt(e.RowIndex)?.strFolderPath)
+                if (Form.SelectedSong.FolderPath != Form.StepManiaParser?.Songs?.ElementAt(e.RowIndex)?.FolderPath)
                 {
                     Form.SelectedSong.ReplaceWith(Form.StepManiaParser?.Songs?.ElementAt(e.RowIndex));
                     Form.txtPack.DataBindings.OfType<Binding>().FirstOrDefault().ReadValue();

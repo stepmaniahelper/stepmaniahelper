@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/bin
+/obj
+/Properties/PublishProfiles
+/StepManiaHelper_TemporaryKey.pfx
+/StepManiaHelper.csproj.user

@@ -42,7 +42,7 @@ namespace StepManiaHelper
                 List<byte[]> lstHashes = new List<byte[]>();
 
                 // Loop through all step files assocaited with the song
-                foreach (string path in ParsedSong.astrStepFilePaths)
+                foreach (string path in ParsedSong.StepFilePaths)
                 {
                     lstHashes.Add(CSong.GetHash(path));
                 }

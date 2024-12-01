@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Collections;
 using StepManiaHelper.Helpers;
 using System.Runtime.InteropServices;
+using System.Text.Json.Serialization;
 
 namespace StepManiaHelper
 {
@@ -36,7 +37,7 @@ namespace StepManiaHelper
         public string Title { get; set; }
         public string Artists => (astrArtists != null) ? string.Join(",", astrArtists) : null;
         public string Genres => (astrGenres != null) ? string.Join(",", astrGenres) : null;
-        public string Extensions => (astrStepFilePaths != null) ? string.Join(",", astrStepFilePaths.Select(x => Path.GetExtension(x).ToUpper().Trim('.'))) : null;
+        public string Extensions => (StepFilePaths != null) ? string.Join(",", StepFilePaths.Select(x => Path.GetExtension(x).ToUpper().Trim('.'))) : null;
         public int? LowDifficulty => aDifficulties?.OrderBy(x => x.Difficulty)?.FirstOrDefault()?.Difficulty;
         public int? HighDifficulty => aDifficulties?.OrderBy(x => x.Difficulty)?.LastOrDefault()?.Difficulty;
         public string Difficulties => (aDifficulties != null) ? string.Join(",", aDifficulties.OrderBy(x => x.Difficulty).Select(x => x.Difficulty.ToString())) : "";
@@ -57,15 +58,22 @@ namespace StepManiaHelper
 
         // NOTE: All images must have a matching property with the same name plus "Path" (e.g. "Banner" and "BannerPath")
         public string BannerPath { get; set; }
+        [JsonIgnore]
         public Image Banner { get; set; }
         public string BackgroundPath { get; set; }
+        [JsonIgnore]
         public Image Background { get; set; }
         public string CdTitlePath { get; set; }
+        [JsonIgnore]
         public Image CdTitle { get; set; }
         public string JacketPath { get; set; }
+        [JsonIgnore]
         public Image Jacket { get; set; }
         public string DiskImagePath { get; set; }
+        [JsonIgnore]
         public Image DiskImage { get; set; }
+        public string FolderPath { get; set; }
+        public List<string> StepFilePaths { get; set; }
 
         public int? nExpectedDifficultyCount;
         public List<CDifficulty> aDifficulties;
@@ -74,11 +82,9 @@ namespace StepManiaHelper
         public List<string> astrArtists;
         public List<string> astrSimplifiedNames;
         public List<string> astrSimplifiedArtists;
-        public List<string> astrGenres;
-        public string strFolderPath;
+        public List<string> astrGenres;        
         public List<CBpmSegment> aBpms;
-        public List<CStop> aStops;
-        public List<string> astrStepFilePaths;
+        public List<CStop> aStops;        
         public bool bFlagged;
         public bool bAlreadyScanned; // Used in the duplicate and similar song filter logic       
         public double? fModeBpm;
@@ -205,9 +211,9 @@ namespace StepManiaHelper
                 // Members and properties set during a song search should not be reset
                 if ((member.Name != nameof(CSong.Pack))
                 &&  (member.Name != nameof(CSong.FolderName))
-                &&  (member.Name != nameof(CSong.strFolderPath))
+                &&  (member.Name != nameof(CSong.FolderPath))
                 &&  (member.Name != nameof(CSong.MusicPath))
-                &&  (member.Name != nameof(CSong.astrStepFilePaths)))
+                &&  (member.Name != nameof(CSong.StepFilePaths)))
                 {
                     // Overwrite the old value
                     property?.SetValue(this, null);
@@ -278,7 +284,7 @@ namespace StepManiaHelper
             // Once a property is set, another step file can't overwrite it, 
             // so higher priority step files should be parsed first
             // Priority order is: ssc > sm > dwi
-            NewSong.astrStepFilePaths.Sort((x, y) =>
+            NewSong.StepFilePaths.Sort((x, y) =>
             {
                 if (CSongListPopulator.HasExtension(x, "dwi"))
                 {
@@ -299,20 +305,21 @@ namespace StepManiaHelper
                 return 0;
             });
 
-            if (NewSong.astrStepFilePaths.Count > 1)
+            if (NewSong.StepFilePaths.Count > 1)
             {
-                Console.Write(NewSong.strFolderPath + " has multiple step files");
+                Console.Write(NewSong.FolderPath + " has multiple step files");
             }
 
             // Parse each of the step files
-            foreach (string path in NewSong.astrStepFilePaths)
+            foreach (string path in NewSong.StepFilePaths)
             {
                 string strFileContents = "";
 
                 // Attempt to open the step file and read its contents
                 try
                 {
-                    using (StreamReader sr = new StreamReader(path))
+                    string fullpath = NewSong.FolderPath + "\\" + path;
+                    using (StreamReader sr = new StreamReader(fullpath))
                     {
                         strFileContents = sr.ReadToEnd();
                     }
@@ -938,7 +945,7 @@ namespace StepManiaHelper
             // Attempt to open the song folder     
             try
             {
-                SongFolder = new DirectoryInfo(Song.strFolderPath);
+                SongFolder = new DirectoryInfo(Song.FolderPath);
             }
             catch (Exception ex)
             {
@@ -983,7 +990,7 @@ namespace StepManiaHelper
         {
             try
             {
-                string NewPath = strFolderPath + "\\..\\..\\..\\" + (strFolderName ?? "Songs") + "\\" + Pack + "\\" + FolderName;
+                string NewPath = FolderPath + "\\..\\..\\..\\" + (strFolderName ?? "Songs") + "\\" + Pack + "\\" + FolderName;
                 NewPath = Path.GetFullPath((new Uri(NewPath)).LocalPath);
 
                 // This will create all the parent directories (if necessary), which is all we really care about
@@ -998,10 +1005,10 @@ namespace StepManiaHelper
                 }
 
                 // Move the song folder to the new directory
-                Directory.Move(strFolderPath, NewPath);
+                Directory.Move(FolderPath, NewPath);
 
                 // If the song pack folder is now empty, delete it
-                DirectoryInfo packFolder = Directory.GetParent(strFolderPath);
+                DirectoryInfo packFolder = Directory.GetParent(FolderPath);
                 if (packFolder.EnumerateDirectories().Count() == 0)
                 {
                     Directory.Delete(packFolder.FullName);
@@ -1018,7 +1025,7 @@ namespace StepManiaHelper
                     Directory.Delete(filterFolder.FullName);
                 }
 
-                strFolderPath = NewPath;
+                FolderPath = NewPath;
             }
             catch (IOException exp)
             {
@@ -1032,7 +1039,7 @@ namespace StepManiaHelper
             try
             {
                 // Safeguard against copying from a filtered song
-                string NewPath = strFolderPath + "\\..\\..\\..\\Songs\\" + strFolderName + "\\" + FolderName;
+                string NewPath = FolderPath + "\\..\\..\\..\\Songs\\" + strFolderName + "\\" + FolderName;
                 NewPath = Path.GetFullPath((new Uri(NewPath)).LocalPath);
 
                 // If we're moving to the custom song pack folder
@@ -1050,7 +1057,7 @@ namespace StepManiaHelper
                     }
 
                     // Move the song folder to the new directory
-                    JunctionPoint.Create(NewPath, strFolderPath, false);
+                    JunctionPoint.Create(NewPath, FolderPath, false);
                 }
                 // If we're deleting a song from a custom song pack folder
                 else
@@ -1085,7 +1092,7 @@ namespace StepManiaHelper
                     try
                     {
                         // Generate the original image
-                        image = Image.FromFile(strFolderPath + "\\" + path);
+                        image = Image.FromFile(FolderPath + "\\" + path);
                         // Resize the image to consume less memory
                         image = new Bitmap(image, new Size(image.Width / (image.Height / 20), 20));
                     }

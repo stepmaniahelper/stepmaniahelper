@@ -989,7 +989,7 @@
             this.Controls.Add(this.txtSongsDirectory);
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "Options";
-            this.Text = "StepMania Helper V1.02.01";
+            this.Text = "StepMania Helper V1.03.00";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Options_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Options_FormClosed);
             this.Load += new System.EventHandler(this.Options_Load);

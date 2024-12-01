@@ -17,6 +17,8 @@ using LibVLCSharp.Shared;
 using StepManiaHelper.Search;
 using System.Text.RegularExpressions;
 using StepManiaHelper.Logic;
+using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 
 namespace StepManiaHelper
 {
@@ -26,7 +28,7 @@ namespace StepManiaHelper
 
     internal partial class Options : Form
     {
-        static private string strTempFileName = "SavedOptions.bin";
+        static private string strTempFileName = "SavedOptions.json";
 
         public CSong SelectedSong = new CSong();
         public SortableBindingList<CDifficulty> Difficulties { get; }
@@ -121,7 +123,8 @@ namespace StepManiaHelper
             dataGridViewHelpers.SetupLogic();
 
             // Set up the data bindings
-            txtSongsDirectory.DataBindings.Add(nameof(TextBox.Text), SavedOptions, nameof(CSavedOptions.SongDirectory));
+            var binding = txtSongsDirectory.DataBindings.Add(nameof(TextBox.Text), SavedOptions, nameof(CSavedOptions.SongDirectory));
+            binding.DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
             chkSearchForNewSongs.DataBindings.Add(nameof(CheckBox.Checked), SavedOptions, nameof(CSavedOptions.SearchForNewSongs));
             chkDetectOnlyDisplayedData.DataBindings.Add(nameof(CheckBox.Checked), SavedOptions, nameof(CSavedOptions.DetectOnlyDisplayedData));
             chkLoadBinaryFile.DataBindings.Add(nameof(CheckBox.Checked), SavedOptions, nameof(CSavedOptions.LoadSaveFile));
@@ -393,7 +396,7 @@ namespace StepManiaHelper
         {
             if (this.InvokeRequired)
             {
-                return this.Invoke(new Action(() => { AddNewFolder(name, type); }));
+                return this.Invoke(new Func<object>(() => { return AddNewFolder(name, type); }));
             }
             else
             {
@@ -679,7 +682,7 @@ namespace StepManiaHelper
         {
             try
             {
-                this.Invoke((MethodInvoker)delegate
+                this.Invoke(delegate
                 {
                     this.cSongBindingSource.Add(song);
                 });
@@ -694,7 +697,7 @@ namespace StepManiaHelper
         {
             try
             {
-                this.Invoke((MethodInvoker)delegate
+                this.Invoke(delegate
                 {
                     // Clear the list
                     cSongBindingSource.Clear();
@@ -853,7 +856,7 @@ namespace StepManiaHelper
         {
             try
             {
-                this.Invoke((MethodInvoker)delegate
+                this.Invoke(delegate
                 {
                     this.rtbOutput.AppendText(strText);
                 });
@@ -869,7 +872,7 @@ namespace StepManiaHelper
             int nIndex = 0;
             try
             {
-                this.Invoke((MethodInvoker)delegate
+                this.Invoke(delegate
                 {
                     while ((lstStrStatus.Count - 1) < nLevel)
                     {
@@ -894,7 +897,7 @@ namespace StepManiaHelper
         {
             try
             {
-                this.Invoke((MethodInvoker)delegate
+                this.Invoke(delegate
                 {
                     for (int nIndex = 0; nIndex < lstStrStatus.Count; nIndex++)
                     {
@@ -920,11 +923,11 @@ namespace StepManiaHelper
             AllowFilterEdits(true);
 
             // Update the proeprties on the selected song
-            SelectedSong.ReplaceWith(StepManiaParser.Songs.FirstOrDefault(x => x.strFolderPath == SelectedSong.strFolderPath) ?? StepManiaParser.Songs.FirstOrDefault());
+            SelectedSong.ReplaceWith(StepManiaParser.Songs.FirstOrDefault(x => x.FolderPath == SelectedSong.FolderPath) ?? StepManiaParser.Songs.FirstOrDefault());
 
             try
             {
-                this.Invoke((MethodInvoker)delegate
+                this.Invoke(delegate
                 {
                     btnParse.Text = strParseBtnText;
                     this.dgvSongList.Columns.OfType<DataGridViewColumn>().ToList().ForEach(x => x.AutoSizeMode = DataGridViewAutoSizeColumnMode.None);
@@ -953,7 +956,7 @@ namespace StepManiaHelper
         {
             try
             {
-                this.Invoke((MethodInvoker)delegate
+                this.Invoke(delegate
                 {
                     foreach (CheckBox cb in AssociatedControls.Keys)
                     {
@@ -989,7 +992,7 @@ namespace StepManiaHelper
             // We cannot allow sorting while we are still modifying the collection, but after modifications are complete we should be able to
             try
             {
-                this.Invoke((MethodInvoker)delegate
+                this.Invoke(delegate
                 {
                     foreach (DataGridViewColumn column in this.dgvSongList.Columns)
                     {
@@ -1031,8 +1034,7 @@ namespace StepManiaHelper
             {
                 using (Stream stream = File.Open(strListFilePath, FileMode.Open))
                 {
-                    var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    SavedOptionsFromFile = (CSavedOptions)bformatter.Deserialize(stream);
+                    SavedOptionsFromFile = JsonSerializer.Deserialize<CSavedOptions>(stream);
                 }
             }
             catch (Exception ex)
@@ -1055,10 +1057,9 @@ namespace StepManiaHelper
 
             try
             {
-                using (Stream stream = File.Open(strListFilePath, FileMode.OpenOrCreate))
+                using (Stream stream = File.Open(strListFilePath, FileMode.Create))
                 {
-                    var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    bformatter.Serialize(stream, SavedOptions);
+                    JsonSerializer.Serialize(stream, SavedOptions);
                 }
             }
             catch (Exception ex)
@@ -1245,7 +1246,7 @@ namespace StepManiaHelper
         public void SearchCancelComplete(bool Canceled)
         {
             // Run the following on the GUI thread
-            this.Invoke((MethodInvoker)delegate
+            this.Invoke(delegate
             {
                 btnApplySearch.Text = strSearchBtnText;
 

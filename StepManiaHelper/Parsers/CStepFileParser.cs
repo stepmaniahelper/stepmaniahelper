@@ -62,7 +62,7 @@ namespace StepManiaHelper
             }
             else
             {
-                Console.Write("Unable to parse any difficulties for: " + Song.strFolderPath);
+                Console.Write("Unable to parse any difficulties for: " + Song.FolderPath);
             }
 
             // We can only calculate the average BPM if the step file was parsed correctly

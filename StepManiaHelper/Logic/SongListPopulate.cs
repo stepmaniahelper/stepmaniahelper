@@ -11,12 +11,14 @@ using System.Data.Entity.Internal;
 using System.Drawing;
 using System.Reflection;
 using StepManiaHelper.Helpers;
+using System.Text.Json.Serialization.Metadata;
+using System.Text.Json;
 
 namespace StepManiaHelper
 {
     internal class CSongListPopulator
     {
-        static private string strTempFileName = "StepManiaHelper.bin";
+        static private string strTempFileName = "StepManiaHelper.json";
 
         private Options OutputForm;
 
@@ -136,8 +138,7 @@ namespace StepManiaHelper
             {
                 using (Stream stream = File.Open(strListFilePath, FileMode.Open))
                 {
-                    var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    ListFileSongs = (List<CSong>)bformatter.Deserialize(stream);
+                    ListFileSongs = JsonSerializer.Deserialize<List<CSong>>(stream);
                 }
             }
             catch (Exception ex)
@@ -154,7 +155,7 @@ namespace StepManiaHelper
                 foreach (CSong FileSong in ListFileSongs)
                 {
                     // See if the song already exists in the list                    
-                    IEnumerable<CSong> MatchingSongs = ListToUpdate.Where(x => x.strFolderPath == FileSong.strFolderPath);
+                    IEnumerable<CSong> MatchingSongs = ListToUpdate.Where(x => x.FolderPath == FileSong.FolderPath);
 
                     // If it's already in the list, we can only overwrite data which isn't already populated
                     if (MatchingSongs.Any())
@@ -191,8 +192,7 @@ namespace StepManiaHelper
             {
                 using (Stream stream = File.Open(strListFilePath, FileMode.Create))
                 {
-                    var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    bformatter.Serialize(stream, ListToSave);
+                    JsonSerializer.Serialize(stream, ListToSave);
                 }
             }
             catch (Exception ex)
@@ -336,8 +336,8 @@ namespace StepManiaHelper
                 // Attempt to get the duration of the MP3, WAV, or OGG file
                 try
                 {
-                    Folder folder = GetShell32Folder(ParsedSong.strFolderPath);
-                    FolderItem folderItem = folder.ParseName(ParsedSong.MusicPath.Substring(ParsedSong.strFolderPath.Length).Trim('\\'));
+                    Folder folder = GetShell32Folder(ParsedSong.FolderPath);
+                    FolderItem folderItem = folder.ParseName(ParsedSong.MusicPath.Substring(ParsedSong.FolderPath.Length).Trim('\\'));
                     string strLength = folder.GetDetailsOf(folderItem, 27).Trim();
                     string[] strHms = strLength.Split(':');
                     ParsedSong.SongLength = (int.Parse(strHms[0]) * 60 * 60) + (int.Parse(strHms[1]) * 60) +(int.Parse(strHms[2]));
@@ -438,6 +438,7 @@ namespace StepManiaHelper
                 {
                     this.strStepmaniaSongFolderPath = SelectedFolder.FullName;
                     CFilterLogic.SetStepmaniaSongFolderPath(SelectedFolder.FullName);
+                    OutputForm.SavedOptions.SongDirectory = SelectedFolder.FullName;
                 }
             }
             return bFoundSongs;
@@ -489,6 +490,7 @@ namespace StepManiaHelper
                 {
                     this.strStepmaniaSongFolderPath = StepManiaSongsFolder.FullName;
                     CFilterLogic.SetStepmaniaSongFolderPath(StepManiaSongsFolder.FullName);
+                    OutputForm.SavedOptions.SongDirectory = StepManiaSongsFolder.FullName;
                 }
             }
             return bFoundSongs;
@@ -610,7 +612,7 @@ namespace StepManiaHelper
             IEnumerable<FileInfo> SongFiles = null;
 
             // If there's a song already in the list with the same path
-            if (this.lstAllSongs.FirstOrDefault(x => x.strFolderPath == SongFolder.FullName) != null)
+            if (this.lstAllSongs.FirstOrDefault(x => x.FolderPath == SongFolder.FullName) != null)
             {
                 bIsValidSongFolder = true;
             }
@@ -635,14 +637,14 @@ namespace StepManiaHelper
                     CSong NewSong = new CSong();
 
                     // Sets the path to the song folder
-                    NewSong.strFolderPath = SongFolder.FullName;
+                    NewSong.FolderPath = SongFolder.FullName;
                     NewSong.FolderName = SongFolder.Name;
 
                     // Save the song pack's name
                     NewSong.Pack = SongPackFolder.Name;
 
                     // Create the list of step files
-                    NewSong.astrStepFilePaths = new List<string>();
+                    NewSong.StepFilePaths = new List<string>();
 
                     // Find the "dwi", "sm", "ssc" files
                     foreach (FileInfo SongFile in SongFiles)
@@ -652,16 +654,19 @@ namespace StepManiaHelper
                         ||  CSongListPopulator.HasExtension(SongFile.Name, "ssc") 
                         ||  CSongListPopulator.HasExtension(SongFile.Name, "dwi"))
                         {
-                            NewSong.astrStepFilePaths.Add(SongFile.FullName);
+                            NewSong.StepFilePaths.Add(SongFile.Name);
                         }
-                        else if (CSongListPopulator.HasExtension(SongFile.Name, "mp3") || CSongListPopulator.HasExtension(SongFile.Name, "ogg") || CSongListPopulator.HasExtension(SongFile.Name, "wav"))
+                        else if (CSongListPopulator.HasExtension(SongFile.Name, "mp3") 
+                        || CSongListPopulator.HasExtension(SongFile.Name, "ogg") 
+                        || CSongListPopulator.HasExtension(SongFile.Name, "wav") 
+                        || CSongListPopulator.HasExtension(SongFile.Name, "opus"))
                         {
-                            NewSong.MusicPath = SongFile.FullName;
+                            NewSong.MusicPath = SongFile.Name;
                         }
                     }
 
                     // If both a music file and step file have been found, this is a legitimate song
-                    if (((NewSong.astrStepFilePaths?.Count ?? 0) > 0) && ((NewSong.MusicPath?.Length ?? 0) > 0))
+                    if (((NewSong.StepFilePaths?.Count ?? 0) > 0) && ((NewSong.MusicPath?.Length ?? 0) > 0))
                     {
                         // See if this song is already in the list
                         OutputForm.AddSong(NewSong);
@@ -670,7 +675,7 @@ namespace StepManiaHelper
                     }
                     else
                     {
-                        Console.Write("No song or stepfiles found in \"" + NewSong.strFolderPath + "\"");
+                        Console.Write("No song or stepfiles found in \"" + NewSong.FolderPath + "\"");
                     }
                 }
                 else

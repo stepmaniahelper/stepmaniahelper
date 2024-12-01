@@ -833,7 +833,7 @@ namespace StepManiaHelper
             IEnumerable<FileInfo> files = new List<FileInfo>();
             try
             {
-                dir = new DirectoryInfo(Song.strFolderPath);
+                dir = new DirectoryInfo(Song.FolderPath);
                 files = dir.EnumerateFiles();
             }
             catch
