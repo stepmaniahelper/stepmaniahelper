@@ -12,6 +12,7 @@ using System.Collections;
 using StepManiaHelper.Helpers;
 using System.Runtime.InteropServices;
 using System.Text.Json.Serialization;
+using System.Windows.Forms;
 
 namespace StepManiaHelper
 {
@@ -1029,7 +1030,8 @@ namespace StepManiaHelper
             }
             catch (IOException exp)
             {
-                Console.WriteLine(exp.Message);
+                MessageBox.Show($"{exp.Message}", "Error Filtering Song(s)",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1091,10 +1093,18 @@ namespace StepManiaHelper
 
                     try
                     {
-                        // Generate the original image
-                        image = Image.FromFile(FolderPath + "\\" + path);
-                        // Resize the image to consume less memory
-                        image = new Bitmap(image, new Size(image.Width / (image.Height / 20), 20));
+                        // Generate the original image. We have to be careful about how we
+                        // do this so that we don't accidentally leave the file locked
+                        using (var fs = new FileStream(FolderPath + "\\" + path, FileMode.Open))
+                        {
+                            var ms = new MemoryStream();
+                            fs.CopyTo(ms);
+                            ms.Position = 0;
+                            Image tmpImage = Image.FromStream(ms);
+                            // Resize the image to consume less memory
+                            image = new Bitmap(tmpImage, new Size(tmpImage.Width / (tmpImage.Height / 20), 20));
+                            tmpImage.Dispose();
+                        }
                     }
                     catch
                     {

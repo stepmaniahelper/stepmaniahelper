@@ -1304,6 +1304,9 @@ namespace StepManiaHelper
 
         private void btnApplyAllVisible_Click(object sender, EventArgs e)
         {
+            // Force any pending edits to be applied
+            dgvSongList.EndEdit();
+
             // Get the column associated with the selected folder
             DataGridViewColumn column = dgvSongList.Columns.Cast<DataGridViewColumn>().FirstOrDefault(x => x.HeaderText == SelectedFolder?.Name);
 
@@ -1317,7 +1320,8 @@ namespace StepManiaHelper
                     DataGridViewCheckBoxCell cell = row.Cells[column.Index] as DataGridViewCheckBoxCell;
 
                     // If the cell is currently unchecked
-                    if ((bool)cell.Value == false)
+                    if ((cell.Value == null)
+                    ||  ((bool)cell.Value == false))
                     {
                         // Check it
                         cell.Value = true;
