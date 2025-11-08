@@ -25,8 +25,8 @@ namespace StepManiaHelper
                 nEndIndex = strFileContents.IndexOf(";", nStartIndex);
                 if (nEndIndex != -1)
                 {
-                    Song.astrNames.AddIfUnique(strFileContents.Substring(nStartIndex, nEndIndex - nStartIndex));
-                    Song.astrSimplifiedNames.AddIfUnique(CSong.RemovePunctuation(CSong.RemoveParenthensis(Song.astrNames.LastOrDefault().ToLower())));
+                    Song.astrNames.Add(strFileContents.Substring(nStartIndex, nEndIndex - nStartIndex));
+                    Song.astrSimplifiedNames.Add(CSong.RemovePunctuation(CSong.RemoveParenthensis(Song.astrNames.LastOrDefault().ToLower())));
                 }
             }
 
@@ -37,8 +37,8 @@ namespace StepManiaHelper
                 nEndIndex = strFileContents.IndexOf(";", nStartIndex);
                 if (nEndIndex != -1)
                 {
-                    Song.astrArtists.AddIfUnique(strFileContents.Substring(nStartIndex, nEndIndex - nStartIndex));
-                    Song.astrSimplifiedArtists.AddIfUnique(CSong.RemovePunctuation(CSong.RemoveParenthensis(Song.astrArtists.LastOrDefault().ToLower())));
+                    Song.astrArtists.Add(strFileContents.Substring(nStartIndex, nEndIndex - nStartIndex));
+                    Song.astrSimplifiedArtists.Add(CSong.RemovePunctuation(CSong.RemoveParenthensis(Song.astrArtists.LastOrDefault().ToLower())));
                 }
             }
         }

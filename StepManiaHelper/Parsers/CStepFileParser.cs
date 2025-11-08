@@ -36,8 +36,8 @@ namespace StepManiaHelper
             ParseImages(strFileContents, Song, StepFile, SavedOptions);
 
             // Copy the song folder into the list of titles, since it can help catch duplicates
-            Song.astrNames?.AddIfUnique(Song.FolderName);
-            Song.astrSimplifiedNames.AddIfUnique(CSong.RemovePunctuation(CSong.RemoveParenthensis(Song.FolderName.ToLower())));
+            Song.astrNames?.Add(Song.FolderName);
+            Song.astrSimplifiedNames.Add(CSong.RemovePunctuation(CSong.RemoveParenthensis(Song.FolderName.ToLower())));
 
             // Sort the difficulties
             Song.aDifficulties?.Sort((x, y) => x.Difficulty - y.Difficulty);
@@ -174,8 +174,8 @@ namespace StepManiaHelper
                 if (nEndIndex != -1)
                 {
                     Song.Title = Song.Title ?? strFileContents.Substring(nStartIndex, nEndIndex - nStartIndex);
-                    Song.astrNames.AddIfUnique(Song.Title);
-                    Song.astrSimplifiedNames.AddIfUnique(CSong.RemovePunctuation(CSong.RemoveParenthensis(Song.astrNames.LastOrDefault().ToLower())));
+                    Song.astrNames.Add(Song.Title);
+                    Song.astrSimplifiedNames.Add(CSong.RemovePunctuation(CSong.RemoveParenthensis(Song.astrNames.LastOrDefault().ToLower())));
                 }
             }
 
@@ -186,8 +186,8 @@ namespace StepManiaHelper
                 nEndIndex = strFileContents.IndexOf(";", nStartIndex);
                 if (nEndIndex != -1)
                 {
-                    Song.astrArtists.AddIfUnique(strFileContents.Substring(nStartIndex, nEndIndex - nStartIndex));
-                    Song.astrSimplifiedArtists.AddIfUnique(CSong.RemovePunctuation(CSong.RemoveParenthensis(Song.astrArtists.LastOrDefault().ToLower())));
+                    Song.astrArtists.Add(strFileContents.Substring(nStartIndex, nEndIndex - nStartIndex));
+                    Song.astrSimplifiedArtists.Add(CSong.RemovePunctuation(CSong.RemoveParenthensis(Song.astrArtists.LastOrDefault().ToLower())));
                 }
             }
         }        

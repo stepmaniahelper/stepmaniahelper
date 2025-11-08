@@ -61,7 +61,8 @@ namespace StepManiaHelper
                                     if (ParsedSong.aDifficulties.Count == OtherParsedSong.aDifficulties.Count)
                                     {
                                         // If they have the same number of total difficulties, we'll have to use a different metric
-                                        if (ParsedSong.aDifficulties.Count == OtherParsedSong.aDifficulties.Count)
+                                        if ((ParsedSong.aDifficulties.Count == OtherParsedSong.aDifficulties.Count)
+                                        &&  (ParsedSong.aDifficulties.Count > 0))
                                         {
                                             // If they have the same number of measures, we'll have to use a different metric
                                             if (ParsedSong.aDifficulties[0].NumberOfMeasures == OtherParsedSong.aDifficulties[0].NumberOfMeasures)
