@@ -28,100 +28,99 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbxProperty = new System.Windows.Forms.ComboBox();
-            this.txtValue = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.SuspendLayout();
+            cbxProperty = new System.Windows.Forms.ComboBox();
+            txtValue = new System.Windows.Forms.TextBox();
+            label1 = new System.Windows.Forms.Label();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            btnDelete = new System.Windows.Forms.Button();
+            tableLayoutPanel1.SuspendLayout();
+            SuspendLayout();
             // 
             // cbxProperty
             // 
-            this.cbxProperty.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxProperty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxProperty.FormattingEnabled = true;
-            this.cbxProperty.Location = new System.Drawing.Point(0, 0);
-            this.cbxProperty.Margin = new System.Windows.Forms.Padding(0);
-            this.cbxProperty.Name = "cbxProperty";
-            this.cbxProperty.Size = new System.Drawing.Size(115, 21);
-            this.cbxProperty.TabIndex = 0;
+            cbxProperty.Dock = System.Windows.Forms.DockStyle.Fill;
+            cbxProperty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cbxProperty.FormattingEnabled = true;
+            cbxProperty.Location = new System.Drawing.Point(0, 0);
+            cbxProperty.Margin = new System.Windows.Forms.Padding(0);
+            cbxProperty.Name = "cbxProperty";
+            cbxProperty.Size = new System.Drawing.Size(134, 23);
+            cbxProperty.TabIndex = 0;
             // 
             // txtValue
             // 
-            this.txtValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtValue.Location = new System.Drawing.Point(215, 0);
-            this.txtValue.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(112, 20);
-            this.txtValue.TabIndex = 1;
-            this.txtValue.Validated += new System.EventHandler(this.textBox1_Validated);
+            txtValue.Dock = System.Windows.Forms.DockStyle.Fill;
+            txtValue.Location = new System.Drawing.Point(251, 0);
+            txtValue.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            txtValue.Name = "txtValue";
+            txtValue.Size = new System.Drawing.Size(130, 23);
+            txtValue.TabIndex = 1;
+            txtValue.Validated += textBox1_Validated;
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.Location = new System.Drawing.Point(115, 3);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.MaximumSize = new System.Drawing.Size(0, 15);
-            this.label1.MinimumSize = new System.Drawing.Size(100, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Regex Text Match:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            label1.Location = new System.Drawing.Point(134, 4);
+            label1.Margin = new System.Windows.Forms.Padding(0);
+            label1.MaximumSize = new System.Drawing.Size(0, 17);
+            label1.MinimumSize = new System.Drawing.Size(117, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(117, 17);
+            label1.TabIndex = 2;
+            label1.Text = "Regex Text Match:";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.cbxProperty, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtValue, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnDelete, 3, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(0, 22);
-            this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(379, 22);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(379, 22);
-            this.tableLayoutPanel1.TabIndex = 3;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            tableLayoutPanel1.AutoSize = true;
+            tableLayoutPanel1.ColumnCount = 4;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanel1.Controls.Add(cbxProperty, 0, 0);
+            tableLayoutPanel1.Controls.Add(txtValue, 2, 0);
+            tableLayoutPanel1.Controls.Add(label1, 1, 0);
+            tableLayoutPanel1.Controls.Add(btnDelete, 3, 0);
+            tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            tableLayoutPanel1.MaximumSize = new System.Drawing.Size(0, 25);
+            tableLayoutPanel1.MinimumSize = new System.Drawing.Size(442, 25);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new System.Drawing.Size(442, 25);
+            tableLayoutPanel1.TabIndex = 3;
+            tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
             // btnDelete
             // 
-            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDelete.Location = new System.Drawing.Point(330, 0);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(0);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(48, 21);
-            this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnDelete.Location = new System.Drawing.Point(385, 0);
+            btnDelete.Margin = new System.Windows.Forms.Padding(0);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new System.Drawing.Size(56, 24);
+            btnDelete.TabIndex = 3;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // TextSearch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = false;
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(0);
-            this.MaximumSize = new System.Drawing.Size(0, 21);
-            this.MinimumSize = new System.Drawing.Size(379, 21);
-            this.Name = "TextSearch";
-            this.Size = new System.Drawing.Size(379, 21);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoSize = false;
+            Controls.Add(tableLayoutPanel1);
+            Margin = new System.Windows.Forms.Padding(0);
+            MaximumSize = new System.Drawing.Size(0, 24);
+            MinimumSize = new System.Drawing.Size(442, 24);
+            Name = "TextSearch";
+            Size = new System.Drawing.Size(442, 24);
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

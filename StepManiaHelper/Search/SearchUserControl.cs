@@ -55,6 +55,9 @@ namespace StepManiaHelper.Search
             // Remove the control from the table
             Table.Controls.Remove(this);
 
+            // Remove the row style from the deleted row
+            Table.RowStyles.RemoveAt(Row);
+
             // Delete the last row
             Table.RowCount -= 1;
 
