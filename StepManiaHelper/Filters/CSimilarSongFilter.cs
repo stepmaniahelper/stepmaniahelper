@@ -105,7 +105,7 @@ namespace StepManiaHelper
                                         }
                                     }
                                     // If the "OtherParsedSong" has more difficulties, replace the "ParsedSong"
-                                    if (ParsedSong.aDifficulties.Count < OtherParsedSong.aDifficulties.Count)
+                                    else if (ParsedSong.aDifficulties.Count < OtherParsedSong.aDifficulties.Count)
                                     {
                                         this.aSimilarSongs.Add(ParsedSong);
                                         ParsedSong.bFlagged = true;
@@ -140,7 +140,11 @@ namespace StepManiaHelper
                                    "\t\tSimilar To: " + SimilarSong.aSimilarSongs[0].GetSongDataString(ESongData.EBasic) + "\n");
 
                 SimilarSong.MoveFilterSong(FilterFolder);
-                lstSongs.Remove(SimilarSong);
+
+                if (OutputForm.SavedOptions.IncludeAlreadyFiltered == false)
+                {
+                    lstSongs.Remove(SimilarSong);
+                }
             }
         }
     }

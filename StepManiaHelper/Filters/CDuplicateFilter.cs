@@ -44,8 +44,10 @@ namespace StepManiaHelper
                 // Loop through all step files assocaited with the song
                 foreach (string path in ParsedSong.StepFilePaths)
                 {
-                    lstHashes.Add(CSong.GetHash(path));
+                    lstHashes.Add(CSong.GetHash(ParsedSong.FolderPath + "\\" + path));
                 }
+                // Add the hash list to the dictionary
+                dicStepHashes.Add(ParsedSong, lstHashes);
             }
 
             // Loop through all the parsed songs

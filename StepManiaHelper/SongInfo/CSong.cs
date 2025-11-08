@@ -842,7 +842,8 @@ namespace StepManiaHelper
                 }
 
                 // 100 points are awarded for identical music
-                if (DoHashesMatch(CSong.GetHash(Song1.MusicPath), CSong.GetHash(Song2.MusicPath)))
+                if (DoHashesMatch(CSong.GetHash(Song1.FolderPath + "\\" + Song1.MusicPath), 
+                                  CSong.GetHash(Song2.FolderPath + "\\" + Song2.MusicPath)))
                 {
                     nPoints += 100;
                 }
@@ -851,7 +852,15 @@ namespace StepManiaHelper
                 if (nPoints >= nSongSimilarity)
                 {
                     bAreSongsSimilar = true;
+                    if (Song1.aSimilarSongs == null)
+                    {
+                        Song1.aSimilarSongs = new List<CSong>();
+                    }
                     Song1.aSimilarSongs.Add(Song2);
+                    if (Song2.aSimilarSongs == null)
+                    {
+                        Song2.aSimilarSongs = new List<CSong>();
+                    }
                     Song2.aSimilarSongs.Add(Song1);
                 }
             }
@@ -986,6 +995,49 @@ namespace StepManiaHelper
             }
         }
 
+        public void RecursivelyMoveFolderContents(DirectoryInfo src, DirectoryInfo dst)
+        {
+            FileInfo[] dstFiles = dst?.GetFiles();
+            FileInfo[] srcFiles = src?.GetFiles();
+            foreach (var file in srcFiles)
+            {
+                // Exact match
+                var match = dstFiles.FirstOrDefault(x => (x.Name == file.Name) && (x.Length == file.Length));
+                if (match == null)
+                {
+                    // If there's not an exact match, we'd ideally want to move the file to the destination folder.
+                    // This will throw an exception if a file with the same name already exists.
+                    file.MoveTo(dst.FullName);
+                }
+                // If the file already exists in the destination, we can delete it from the source
+                else
+                {
+                    file.Delete();
+                }
+            }
+            DirectoryInfo[] dstFolders = dst?.GetDirectories();
+            DirectoryInfo[] srcFolders = src?.GetDirectories();
+            foreach (var folder in srcFolders)
+            {
+                // Exact match
+                var match = dstFolders.FirstOrDefault(x => (x.Name == folder.Name));
+                if (match == null)
+                {
+                    // If there's not an exact match, we'd ideally want to move the folder to the destination folder.
+                    folder.MoveTo(dst.FullName);
+                }
+                // If the folder already exists in the destination, we can need to recursively check the contents
+                else
+                {
+                    RecursivelyMoveFolderContents(folder, match);
+                }
+            }
+            // If every file from the source folder is now in the destination folder,
+            // we can safely delete the source folder. This will throw an exception if
+            // not all files and folders were moved out of the folder.
+            src.Delete();
+        }
+
         // Called with a folder will filter the song to that folder, without will restore it to "Songs"
         public void MoveFilterSong(string strFolderName = null)
         {
@@ -998,15 +1050,18 @@ namespace StepManiaHelper
                 if (!Directory.Exists(NewPath))
                 {
                     Directory.CreateDirectory(NewPath);
-                }
-                // This will only delete the song folder (we can't move it here if there's a folder already there)
-                if (Directory.Exists(NewPath))
-                {
-                    Directory.Delete(NewPath);
-                }
 
-                // Move the song folder to the new directory
-                Directory.Move(FolderPath, NewPath);
+                    // This will only delete the song folder (we can't move it here if there's a folder already there)
+                    Directory.Delete(NewPath);
+
+                    // Move the song folder to the new directory
+                    Directory.Move(FolderPath, NewPath);
+                }
+                // If the destination already exists (and it's not the same as the source), try moving individual files instead
+                else if (FolderPath != NewPath)
+                {
+                    RecursivelyMoveFolderContents(new DirectoryInfo(FolderPath), new DirectoryInfo(NewPath));
+                }
 
                 // If the song pack folder is now empty, delete it
                 DirectoryInfo packFolder = Directory.GetParent(FolderPath);
