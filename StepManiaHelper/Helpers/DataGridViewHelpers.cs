@@ -233,17 +233,7 @@ namespace StepManiaHelper.Helpers
             {
                 // Determine if the checkbox is checked or not
                 bool value = (bool)row.Cells[e.ColumnIndex].Value;
-
-                // If this is a custom song pack folder
-                if (folder.Type == EFolderTypes.CustomSongPack)
-                {
-                    song.MoveCustomPackSong(folder.Name, value);
-                }
-                // If this is a filter folder
-                else if (folder.Type == EFolderTypes.Filter)
-                {
-                    song.MoveFilterSong(value ? folder.Name : null);
-                }
+                folder.Toggle(song, value);
             }
             else
             {

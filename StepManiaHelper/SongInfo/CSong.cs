@@ -1039,8 +1039,9 @@ namespace StepManiaHelper
         }
 
         // Called with a folder will filter the song to that folder, without will restore it to "Songs"
-        public void MoveFilterSong(string strFolderName = null)
+        public bool MoveFilterSong(string strFolderName = null)
         {
+            bool success = true;
             try
             {
                 string NewPath = FolderPath + "\\..\\..\\..\\" + (strFolderName ?? "Songs") + "\\" + Pack + "\\" + FolderName;
@@ -1085,14 +1086,17 @@ namespace StepManiaHelper
             }
             catch (IOException exp)
             {
+                success = false;
                 MessageBox.Show($"{exp.Message}", "Error Filtering Song(s)",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            return success;
         }
 
         // Called with a folder will copy the song to that folder, without will delete the copy
-        public void MoveCustomPackSong(string strFolderName, bool create)
+        public bool MoveCustomPackSong(string strFolderName, bool create)
         {
+            bool success = true;
             try
             {
                 // Safeguard against copying from a filtered song
@@ -1124,8 +1128,10 @@ namespace StepManiaHelper
             }
             catch (IOException exp)
             {
+                success = false;
                 Console.WriteLine(exp.Message);
             }
+            return success;
         }
 
         public Image ImageFromFile(string propertyName, CSavedOptions SavedOptions)

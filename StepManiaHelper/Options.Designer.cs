@@ -28,1001 +28,1192 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.grpSpecialFilters = new System.Windows.Forms.GroupBox();
-            this.cboSongSimilarity = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.chkAltFolder = new System.Windows.Forms.CheckBox();
-            this.chkExactDuplicates = new System.Windows.Forms.CheckBox();
-            this.txtSongsDirectory = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnSongsDirectory = new System.Windows.Forms.Button();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnParse = new System.Windows.Forms.Button();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.chkSongHeaderVisible = new System.Windows.Forms.CheckBox();
-            this.lblSongListHeader = new System.Windows.Forms.Label();
-            this.cbSongListHeaders = new System.Windows.Forms.ComboBox();
-            this.dgvSongList = new System.Windows.Forms.DataGridView();
-            this.folderNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cSongBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.grpOutput = new System.Windows.Forms.GroupBox();
-            this.txtStatus = new System.Windows.Forms.TextBox();
-            this.rtbOutput = new System.Windows.Forms.RichTextBox();
-            this.grpProgramOptions = new System.Windows.Forms.GroupBox();
-            this.chkSaveBinaryFile = new System.Windows.Forms.CheckBox();
-            this.chkLoadBinaryFile = new System.Windows.Forms.CheckBox();
-            this.radParseAll = new System.Windows.Forms.RadioButton();
-            this.radParseUnparsed = new System.Windows.Forms.RadioButton();
-            this.radNoParse = new System.Windows.Forms.RadioButton();
-            this.chkIncludeAlreadyFiltered = new System.Windows.Forms.CheckBox();
-            this.chkDetectOnlyDisplayedData = new System.Windows.Forms.CheckBox();
-            this.chkSearchForNewSongs = new System.Windows.Forms.CheckBox();
-            this.grpSearch = new System.Windows.Forms.GroupBox();
-            this.tlpSearchOperands = new System.Windows.Forms.TableLayoutPanel();
-            this.btnAddSearchOperand = new System.Windows.Forms.Button();
-            this.tlpSearchComboType = new System.Windows.Forms.TableLayoutPanel();
-            this.radSearchAnd = new System.Windows.Forms.RadioButton();
-            this.btnClearSearch = new System.Windows.Forms.Button();
-            this.btnApplySearch = new System.Windows.Forms.Button();
-            this.radSearchOr = new System.Windows.Forms.RadioButton();
-            this.btnSearchDelete = new System.Windows.Forms.Button();
-            this.cbxSearchName = new System.Windows.Forms.ComboBox();
-            this.lblSearchName = new System.Windows.Forms.Label();
-            this.grpSongInfo = new System.Windows.Forms.GroupBox();
-            this.chkDiffHeaderVisible = new System.Windows.Forms.CheckBox();
-            this.txtFolderName = new System.Windows.Forms.TextBox();
-            this.lblDiffListHeader = new System.Windows.Forms.Label();
-            this.cbDiffListHeaders = new System.Windows.Forms.ComboBox();
-            this.lblFolderName = new System.Windows.Forms.Label();
-            this.btnPlayPause = new System.Windows.Forms.Button();
-            this.txtPack = new System.Windows.Forms.TextBox();
-            this.lblPack = new System.Windows.Forms.Label();
-            this.dgvDifficulties = new System.Windows.Forms.DataGridView();
-            this.difficultyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stepsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jumpsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.holdsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rollsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.minesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nonPadJumpsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDifficultyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.grpFilterCustomPack = new System.Windows.Forms.GroupBox();
-            this.tlpFilterCustomSongPack = new System.Windows.Forms.TableLayoutPanel();
-            this.radCustomSongPack = new System.Windows.Forms.RadioButton();
-            this.btnClearAllVisible = new System.Windows.Forms.Button();
-            this.btnApplyAllVisible = new System.Windows.Forms.Button();
-            this.radFilter = new System.Windows.Forms.RadioButton();
-            this.btnFolderDelete = new System.Windows.Forms.Button();
-            this.cbxFolders = new System.Windows.Forms.ComboBox();
-            this.lblCustomFolderName = new System.Windows.Forms.Label();
-            this.tlpLeft = new System.Windows.Forms.TableLayoutPanel();
-            this.tlpRight = new System.Windows.Forms.TableLayoutPanel();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.grpSpecialFilters.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSongList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cSongBindingSource)).BeginInit();
-            this.grpOutput.SuspendLayout();
-            this.grpProgramOptions.SuspendLayout();
-            this.grpSearch.SuspendLayout();
-            this.tlpSearchOperands.SuspendLayout();
-            this.tlpSearchComboType.SuspendLayout();
-            this.grpSongInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDifficulties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cDifficultyBindingSource)).BeginInit();
-            this.grpFilterCustomPack.SuspendLayout();
-            this.tlpFilterCustomSongPack.SuspendLayout();
-            this.tlpLeft.SuspendLayout();
-            this.tlpRight.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            grpSpecialFilters = new System.Windows.Forms.GroupBox();
+            cboSongSimilarity = new System.Windows.Forms.ComboBox();
+            label3 = new System.Windows.Forms.Label();
+            chkAltFolder = new System.Windows.Forms.CheckBox();
+            chkExactDuplicates = new System.Windows.Forms.CheckBox();
+            txtSongsDirectory = new System.Windows.Forms.TextBox();
+            label2 = new System.Windows.Forms.Label();
+            btnSongsDirectory = new System.Windows.Forms.Button();
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            btnParse = new System.Windows.Forms.Button();
+            folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            grpSongList = new System.Windows.Forms.GroupBox();
+            btnExport = new System.Windows.Forms.Button();
+            chkSongHeaderVisible = new System.Windows.Forms.CheckBox();
+            lblSongListHeader = new System.Windows.Forms.Label();
+            cbSongListHeaders = new System.Windows.Forms.ComboBox();
+            dgvSongList = new System.Windows.Forms.DataGridView();
+            folderNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            cSongBindingSource = new System.Windows.Forms.BindingSource(components);
+            grpOutput = new System.Windows.Forms.GroupBox();
+            txtStatus = new System.Windows.Forms.TextBox();
+            rtbOutput = new System.Windows.Forms.RichTextBox();
+            grpProgramOptions = new System.Windows.Forms.GroupBox();
+            chkSaveBinaryFile = new System.Windows.Forms.CheckBox();
+            chkLoadBinaryFile = new System.Windows.Forms.CheckBox();
+            radParseAll = new System.Windows.Forms.RadioButton();
+            radParseUnparsed = new System.Windows.Forms.RadioButton();
+            radNoParse = new System.Windows.Forms.RadioButton();
+            chkIncludeAlreadyFiltered = new System.Windows.Forms.CheckBox();
+            chkDetectOnlyDisplayedData = new System.Windows.Forms.CheckBox();
+            chkSearchForNewSongs = new System.Windows.Forms.CheckBox();
+            grpSearch = new System.Windows.Forms.GroupBox();
+            tlpSearchOperands = new System.Windows.Forms.TableLayoutPanel();
+            btnAddSearchOperand = new System.Windows.Forms.Button();
+            tlpSearchComboType = new System.Windows.Forms.TableLayoutPanel();
+            radSearchAnd = new System.Windows.Forms.RadioButton();
+            btnClearSearch = new System.Windows.Forms.Button();
+            btnApplySearch = new System.Windows.Forms.Button();
+            radSearchOr = new System.Windows.Forms.RadioButton();
+            btnSearchDelete = new System.Windows.Forms.Button();
+            cbxSearchName = new System.Windows.Forms.ComboBox();
+            lblSearchName = new System.Windows.Forms.Label();
+            grpSongInfo = new System.Windows.Forms.GroupBox();
+            chkDiffHeaderVisible = new System.Windows.Forms.CheckBox();
+            txtFolderName = new System.Windows.Forms.TextBox();
+            lblDiffListHeader = new System.Windows.Forms.Label();
+            cbDiffListHeaders = new System.Windows.Forms.ComboBox();
+            lblFolderName = new System.Windows.Forms.Label();
+            btnPlayPause = new System.Windows.Forms.Button();
+            txtPack = new System.Windows.Forms.TextBox();
+            lblPack = new System.Windows.Forms.Label();
+            dgvDifficulties = new System.Windows.Forms.DataGridView();
+            difficultyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            stepsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            jumpsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            holdsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            rollsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            minesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            nonPadJumpsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            cDifficultyBindingSource = new System.Windows.Forms.BindingSource(components);
+            grpFilterCustomPack = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            label5 = new System.Windows.Forms.Label();
+            chkHotkeyAlt = new System.Windows.Forms.CheckBox();
+            chkHotkeyShift = new System.Windows.Forms.CheckBox();
+            cbxHotkey = new System.Windows.Forms.ComboBox();
+            chkHotkeyCtrl = new System.Windows.Forms.CheckBox();
+            tlpFilterCustomSongPack = new System.Windows.Forms.TableLayoutPanel();
+            radCustomSongPack = new System.Windows.Forms.RadioButton();
+            btnClearAllVisible = new System.Windows.Forms.Button();
+            btnApplyAllVisible = new System.Windows.Forms.Button();
+            radFilter = new System.Windows.Forms.RadioButton();
+            btnFolderDelete = new System.Windows.Forms.Button();
+            cbxFolders = new System.Windows.Forms.ComboBox();
+            lblCustomFolderName = new System.Windows.Forms.Label();
+            tlpLeft = new System.Windows.Forms.TableLayoutPanel();
+            tlpRight = new System.Windows.Forms.TableLayoutPanel();
+            grpGameMonitor = new System.Windows.Forms.GroupBox();
+            tlpGameMonitor = new System.Windows.Forms.TableLayoutPanel();
+            txtMonitorExe = new System.Windows.Forms.TextBox();
+            txtMonitorSong = new System.Windows.Forms.TextBox();
+            btnMonitor = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            grpSpecialFilters.SuspendLayout();
+            grpSongList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSongList).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cSongBindingSource).BeginInit();
+            grpOutput.SuspendLayout();
+            grpProgramOptions.SuspendLayout();
+            grpSearch.SuspendLayout();
+            tlpSearchOperands.SuspendLayout();
+            tlpSearchComboType.SuspendLayout();
+            grpSongInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDifficulties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cDifficultyBindingSource).BeginInit();
+            grpFilterCustomPack.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            tlpFilterCustomSongPack.SuspendLayout();
+            tlpLeft.SuspendLayout();
+            tlpRight.SuspendLayout();
+            grpGameMonitor.SuspendLayout();
+            tlpGameMonitor.SuspendLayout();
+            SuspendLayout();
             // 
             // grpSpecialFilters
             // 
-            this.grpSpecialFilters.Controls.Add(this.cboSongSimilarity);
-            this.grpSpecialFilters.Controls.Add(this.label3);
-            this.grpSpecialFilters.Controls.Add(this.chkAltFolder);
-            this.grpSpecialFilters.Controls.Add(this.chkExactDuplicates);
-            this.grpSpecialFilters.Location = new System.Drawing.Point(0, 198);
-            this.grpSpecialFilters.Margin = new System.Windows.Forms.Padding(0);
-            this.grpSpecialFilters.Name = "grpSpecialFilters";
-            this.grpSpecialFilters.Size = new System.Drawing.Size(440, 95);
-            this.grpSpecialFilters.TabIndex = 2;
-            this.grpSpecialFilters.TabStop = false;
-            this.grpSpecialFilters.Text = "Special Filters";
+            grpSpecialFilters.Controls.Add(cboSongSimilarity);
+            grpSpecialFilters.Controls.Add(label3);
+            grpSpecialFilters.Controls.Add(chkAltFolder);
+            grpSpecialFilters.Controls.Add(chkExactDuplicates);
+            grpSpecialFilters.Location = new System.Drawing.Point(0, 254);
+            grpSpecialFilters.Margin = new System.Windows.Forms.Padding(0);
+            grpSpecialFilters.Name = "grpSpecialFilters";
+            grpSpecialFilters.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grpSpecialFilters.Size = new System.Drawing.Size(513, 110);
+            grpSpecialFilters.TabIndex = 2;
+            grpSpecialFilters.TabStop = false;
+            grpSpecialFilters.Text = "Special Filters";
             // 
             // cboSongSimilarity
             // 
-            this.cboSongSimilarity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboSongSimilarity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSongSimilarity.Enabled = false;
-            this.cboSongSimilarity.FormattingEnabled = true;
-            this.cboSongSimilarity.Items.AddRange(new object[] {
-            "4 - Lowest",
-            "5",
-            "6",
-            "7 - Recommended",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13 - Highest"});
-            this.cboSongSimilarity.Location = new System.Drawing.Point(297, 67);
-            this.cboSongSimilarity.Name = "cboSongSimilarity";
-            this.cboSongSimilarity.Size = new System.Drawing.Size(137, 21);
-            this.cboSongSimilarity.TabIndex = 7;
+            cboSongSimilarity.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            cboSongSimilarity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboSongSimilarity.Enabled = false;
+            cboSongSimilarity.FormattingEnabled = true;
+            cboSongSimilarity.Items.AddRange(new object[] { "4 - Lowest", "5", "6", "7 - Recommended", "8", "9", "10", "11", "12", "13 - Highest" });
+            cboSongSimilarity.Location = new System.Drawing.Point(346, 77);
+            cboSongSimilarity.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            cboSongSimilarity.Name = "cboSongSimilarity";
+            cboSongSimilarity.Size = new System.Drawing.Size(159, 23);
+            cboSongSimilarity.TabIndex = 7;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(163, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Song Similarity Threshold:";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(190, 81);
+            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(144, 15);
+            label3.TabIndex = 6;
+            label3.Text = "Song Similarity Threshold:";
             // 
             // chkAltFolder
             // 
-            this.chkAltFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkAltFolder.Location = new System.Drawing.Point(9, 46);
-            this.chkAltFolder.Name = "chkAltFolder";
-            this.chkAltFolder.Size = new System.Drawing.Size(425, 21);
-            this.chkAltFolder.TabIndex = 2;
-            this.chkAltFolder.Text = "Move Different Versions of Same Song to \"_ALT\" Folder";
-            this.chkAltFolder.UseVisualStyleBackColor = true;
+            chkAltFolder.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            chkAltFolder.Location = new System.Drawing.Point(10, 53);
+            chkAltFolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkAltFolder.Name = "chkAltFolder";
+            chkAltFolder.Size = new System.Drawing.Size(496, 24);
+            chkAltFolder.TabIndex = 2;
+            chkAltFolder.Text = "Move Different Versions of Same Song to \"_ALT\" Folder";
+            chkAltFolder.UseVisualStyleBackColor = true;
             // 
             // chkExactDuplicates
             // 
-            this.chkExactDuplicates.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkExactDuplicates.Location = new System.Drawing.Point(9, 19);
-            this.chkExactDuplicates.Name = "chkExactDuplicates";
-            this.chkExactDuplicates.Size = new System.Drawing.Size(425, 21);
-            this.chkExactDuplicates.TabIndex = 0;
-            this.chkExactDuplicates.Text = "Move Exactly Duplicated Songs to \"_DUPLICATE\" Folder";
-            this.toolTip.SetToolTip(this.chkExactDuplicates, "If two songs have the exact same \"SM\" or \"DWI\" file, one will be moved.");
-            this.chkExactDuplicates.UseVisualStyleBackColor = true;
+            chkExactDuplicates.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            chkExactDuplicates.Location = new System.Drawing.Point(10, 22);
+            chkExactDuplicates.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkExactDuplicates.Name = "chkExactDuplicates";
+            chkExactDuplicates.Size = new System.Drawing.Size(496, 24);
+            chkExactDuplicates.TabIndex = 0;
+            chkExactDuplicates.Text = "Move Exactly Duplicated Songs to \"_DUPLICATE\" Folder";
+            toolTip.SetToolTip(chkExactDuplicates, "If two songs have the exact same \"SM\" or \"DWI\" file, one will be moved.");
+            chkExactDuplicates.UseVisualStyleBackColor = true;
             // 
             // txtSongsDirectory
             // 
-            this.txtSongsDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSongsDirectory.Location = new System.Drawing.Point(9, 21);
-            this.txtSongsDirectory.Name = "txtSongsDirectory";
-            this.txtSongsDirectory.Size = new System.Drawing.Size(771, 20);
-            this.txtSongsDirectory.TabIndex = 3;
-            this.txtSongsDirectory.TextChanged += new System.EventHandler(this.DetermineParseButtonEnabledState);
-            this.txtSongsDirectory.DoubleClick += new System.EventHandler(this.OpenFolderBrowser);
+            txtSongsDirectory.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtSongsDirectory.Location = new System.Drawing.Point(10, 24);
+            txtSongsDirectory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtSongsDirectory.Name = "txtSongsDirectory";
+            txtSongsDirectory.Size = new System.Drawing.Size(899, 23);
+            txtSongsDirectory.TabIndex = 3;
+            txtSongsDirectory.TextChanged += SongsDirectoryChanged;
+            txtSongsDirectory.DoubleClick += OpenFolderBrowser;
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Location = new System.Drawing.Point(12, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(984, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Select StepMania Directory, Songs Directory, Song Pack Directory, or Individual S" +
-    "ong Directory:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            label2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            label2.Location = new System.Drawing.Point(14, 6);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(1148, 15);
+            label2.TabIndex = 4;
+            label2.Text = "Select StepMania Directory, Songs Directory, Song Pack Directory, or Individual Song Directory:";
+            label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnSongsDirectory
             // 
-            this.btnSongsDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSongsDirectory.Location = new System.Drawing.Point(786, 18);
-            this.btnSongsDirectory.Name = "btnSongsDirectory";
-            this.btnSongsDirectory.Size = new System.Drawing.Size(24, 23);
-            this.btnSongsDirectory.TabIndex = 5;
-            this.btnSongsDirectory.Text = "...";
-            this.btnSongsDirectory.UseVisualStyleBackColor = true;
-            this.btnSongsDirectory.Click += new System.EventHandler(this.OpenFolderBrowser);
+            btnSongsDirectory.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnSongsDirectory.Location = new System.Drawing.Point(917, 21);
+            btnSongsDirectory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnSongsDirectory.Name = "btnSongsDirectory";
+            btnSongsDirectory.Size = new System.Drawing.Size(28, 27);
+            btnSongsDirectory.TabIndex = 5;
+            btnSongsDirectory.Text = "...";
+            btnSongsDirectory.UseVisualStyleBackColor = true;
+            btnSongsDirectory.Click += OpenFolderBrowser;
             // 
             // toolTip
             // 
-            this.toolTip.AutoPopDelay = 20000;
-            this.toolTip.InitialDelay = 500;
-            this.toolTip.ReshowDelay = 100;
+            toolTip.AutoPopDelay = 20000;
+            toolTip.InitialDelay = 500;
+            toolTip.ReshowDelay = 100;
             // 
             // btnParse
             // 
-            this.btnParse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnParse.Enabled = false;
-            this.btnParse.Location = new System.Drawing.Point(816, 18);
-            this.btnParse.Name = "btnParse";
-            this.btnParse.Size = new System.Drawing.Size(180, 23);
-            this.btnParse.TabIndex = 7;
-            this.btnParse.Text = "Search/Parse/Run-Special-Filter";
-            this.btnParse.UseVisualStyleBackColor = true;
-            this.btnParse.Click += new System.EventHandler(this.btnStartParse_Click);
+            btnParse.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnParse.Enabled = false;
+            btnParse.Location = new System.Drawing.Point(952, 21);
+            btnParse.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnParse.Name = "btnParse";
+            btnParse.Size = new System.Drawing.Size(210, 27);
+            btnParse.TabIndex = 7;
+            btnParse.Text = "Search/Parse/Run-Special-Filter";
+            btnParse.UseVisualStyleBackColor = true;
+            btnParse.Click += btnStartParse_Click;
             // 
-            // groupBox3
+            // grpSongList
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox3.Controls.Add(this.btnExport);
-            this.groupBox3.Controls.Add(this.chkSongHeaderVisible);
-            this.groupBox3.Controls.Add(this.lblSongListHeader);
-            this.groupBox3.Controls.Add(this.cbSongListHeaders);
-            this.groupBox3.Controls.Add(this.dgvSongList);
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(544, 514);
-            this.groupBox3.TabIndex = 8;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Song List";
+            grpSongList.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            grpSongList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            grpSongList.Controls.Add(btnExport);
+            grpSongList.Controls.Add(chkSongHeaderVisible);
+            grpSongList.Controls.Add(lblSongListHeader);
+            grpSongList.Controls.Add(cbSongListHeaders);
+            grpSongList.Controls.Add(dgvSongList);
+            grpSongList.Location = new System.Drawing.Point(0, 50);
+            grpSongList.Margin = new System.Windows.Forms.Padding(0);
+            grpSongList.Name = "grpSongList";
+            grpSongList.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grpSongList.Size = new System.Drawing.Size(635, 543);
+            grpSongList.TabIndex = 8;
+            grpSongList.TabStop = false;
+            grpSongList.Text = "Song List";
             // 
             // btnExport
             // 
-            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExport.Location = new System.Drawing.Point(463, 15);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
-            this.btnExport.TabIndex = 4;
-            this.btnExport.Text = "Export";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            btnExport.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnExport.Location = new System.Drawing.Point(540, 17);
+            btnExport.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new System.Drawing.Size(88, 27);
+            btnExport.TabIndex = 4;
+            btnExport.Text = "Export";
+            btnExport.UseVisualStyleBackColor = true;
+            btnExport.Click += btnExport_Click;
             // 
             // chkSongHeaderVisible
             // 
-            this.chkSongHeaderVisible.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkSongHeaderVisible.AutoSize = true;
-            this.chkSongHeaderVisible.Location = new System.Drawing.Point(364, 19);
-            this.chkSongHeaderVisible.Name = "chkSongHeaderVisible";
-            this.chkSongHeaderVisible.Size = new System.Drawing.Size(94, 17);
-            this.chkSongHeaderVisible.TabIndex = 3;
-            this.chkSongHeaderVisible.Text = "Header Visible";
-            this.chkSongHeaderVisible.UseVisualStyleBackColor = true;
+            chkSongHeaderVisible.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            chkSongHeaderVisible.AutoSize = true;
+            chkSongHeaderVisible.Location = new System.Drawing.Point(433, 22);
+            chkSongHeaderVisible.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkSongHeaderVisible.Name = "chkSongHeaderVisible";
+            chkSongHeaderVisible.Size = new System.Drawing.Size(101, 19);
+            chkSongHeaderVisible.TabIndex = 3;
+            chkSongHeaderVisible.Text = "Header Visible";
+            chkSongHeaderVisible.UseVisualStyleBackColor = true;
             // 
             // lblSongListHeader
             // 
-            this.lblSongListHeader.AutoSize = true;
-            this.lblSongListHeader.Location = new System.Drawing.Point(6, 22);
-            this.lblSongListHeader.Name = "lblSongListHeader";
-            this.lblSongListHeader.Size = new System.Drawing.Size(69, 13);
-            this.lblSongListHeader.TabIndex = 2;
-            this.lblSongListHeader.Text = "List Headers:";
+            lblSongListHeader.AutoSize = true;
+            lblSongListHeader.Location = new System.Drawing.Point(7, 25);
+            lblSongListHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblSongListHeader.Name = "lblSongListHeader";
+            lblSongListHeader.Size = new System.Drawing.Size(74, 15);
+            lblSongListHeader.TabIndex = 2;
+            lblSongListHeader.Text = "List Headers:";
             // 
             // cbSongListHeaders
             // 
-            this.cbSongListHeaders.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbSongListHeaders.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSongListHeaders.FormattingEnabled = true;
-            this.cbSongListHeaders.Location = new System.Drawing.Point(81, 17);
-            this.cbSongListHeaders.Name = "cbSongListHeaders";
-            this.cbSongListHeaders.Size = new System.Drawing.Size(277, 21);
-            this.cbSongListHeaders.TabIndex = 1;
+            cbSongListHeaders.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            cbSongListHeaders.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cbSongListHeaders.FormattingEnabled = true;
+            cbSongListHeaders.Location = new System.Drawing.Point(94, 20);
+            cbSongListHeaders.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            cbSongListHeaders.Name = "cbSongListHeaders";
+            cbSongListHeaders.Size = new System.Drawing.Size(322, 23);
+            cbSongListHeaders.TabIndex = 1;
             // 
             // dgvSongList
             // 
-            this.dgvSongList.AllowUserToAddRows = false;
-            this.dgvSongList.AllowUserToDeleteRows = false;
-            this.dgvSongList.AllowUserToOrderColumns = true;
-            this.dgvSongList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvSongList.AutoGenerateColumns = false;
-            this.dgvSongList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSongList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.folderNameDataGridViewTextBoxColumn});
-            this.dgvSongList.DataSource = this.cSongBindingSource;
-            this.dgvSongList.Location = new System.Drawing.Point(6, 44);
-            this.dgvSongList.MultiSelect = false;
-            this.dgvSongList.Name = "dgvSongList";
-            this.dgvSongList.Size = new System.Drawing.Size(532, 464);
-            this.dgvSongList.TabIndex = 0;
-            this.dgvSongList.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvSongList_RowPostPaint);
+            dgvSongList.AllowUserToAddRows = false;
+            dgvSongList.AllowUserToDeleteRows = false;
+            dgvSongList.AllowUserToOrderColumns = true;
+            dgvSongList.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dgvSongList.AutoGenerateColumns = false;
+            dgvSongList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSongList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { folderNameDataGridViewTextBoxColumn });
+            dgvSongList.DataSource = cSongBindingSource;
+            dgvSongList.Location = new System.Drawing.Point(7, 51);
+            dgvSongList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            dgvSongList.MultiSelect = false;
+            dgvSongList.Name = "dgvSongList";
+            dgvSongList.Size = new System.Drawing.Size(621, 485);
+            dgvSongList.TabIndex = 0;
+            dgvSongList.RowPostPaint += dgvSongList_RowPostPaint;
             // 
             // folderNameDataGridViewTextBoxColumn
             // 
-            this.folderNameDataGridViewTextBoxColumn.DataPropertyName = "FolderName";
-            this.folderNameDataGridViewTextBoxColumn.HeaderText = "FolderName";
-            this.folderNameDataGridViewTextBoxColumn.Name = "folderNameDataGridViewTextBoxColumn";
+            folderNameDataGridViewTextBoxColumn.DataPropertyName = "FolderName";
+            folderNameDataGridViewTextBoxColumn.HeaderText = "FolderName";
+            folderNameDataGridViewTextBoxColumn.Name = "folderNameDataGridViewTextBoxColumn";
             // 
             // cSongBindingSource
             // 
-            this.cSongBindingSource.DataSource = typeof(StepManiaHelper.CSong);
+            cSongBindingSource.DataSource = typeof(CSong);
             // 
             // grpOutput
             // 
-            this.grpOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.grpOutput.Controls.Add(this.txtStatus);
-            this.grpOutput.Controls.Add(this.rtbOutput);
-            this.grpOutput.Location = new System.Drawing.Point(0, 397);
-            this.grpOutput.Margin = new System.Windows.Forms.Padding(0);
-            this.grpOutput.MinimumSize = new System.Drawing.Size(0, 50);
-            this.grpOutput.Name = "grpOutput";
-            this.grpOutput.Size = new System.Drawing.Size(440, 273);
-            this.grpOutput.TabIndex = 10;
-            this.grpOutput.TabStop = false;
-            this.grpOutput.Text = "Parse/Filter Output";
+            grpOutput.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            grpOutput.Controls.Add(txtStatus);
+            grpOutput.Controls.Add(rtbOutput);
+            grpOutput.Location = new System.Drawing.Point(0, 484);
+            grpOutput.Margin = new System.Windows.Forms.Padding(0);
+            grpOutput.MinimumSize = new System.Drawing.Size(0, 58);
+            grpOutput.Name = "grpOutput";
+            grpOutput.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grpOutput.Size = new System.Drawing.Size(513, 289);
+            grpOutput.TabIndex = 10;
+            grpOutput.TabStop = false;
+            grpOutput.Text = "Parse/Filter Output";
             // 
             // txtStatus
             // 
-            this.txtStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtStatus.Location = new System.Drawing.Point(9, 19);
-            this.txtStatus.Name = "txtStatus";
-            this.txtStatus.ReadOnly = true;
-            this.txtStatus.Size = new System.Drawing.Size(425, 20);
-            this.txtStatus.TabIndex = 1;
+            txtStatus.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtStatus.Location = new System.Drawing.Point(10, 22);
+            txtStatus.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtStatus.Name = "txtStatus";
+            txtStatus.ReadOnly = true;
+            txtStatus.Size = new System.Drawing.Size(495, 23);
+            txtStatus.TabIndex = 1;
             // 
             // rtbOutput
             // 
-            this.rtbOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtbOutput.Location = new System.Drawing.Point(9, 45);
-            this.rtbOutput.Name = "rtbOutput";
-            this.rtbOutput.Size = new System.Drawing.Size(425, 222);
-            this.rtbOutput.TabIndex = 0;
-            this.rtbOutput.Text = "";
+            rtbOutput.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            rtbOutput.Location = new System.Drawing.Point(10, 52);
+            rtbOutput.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            rtbOutput.Name = "rtbOutput";
+            rtbOutput.Size = new System.Drawing.Size(495, 231);
+            rtbOutput.TabIndex = 0;
+            rtbOutput.Text = "";
             // 
             // grpProgramOptions
             // 
-            this.grpProgramOptions.Controls.Add(this.chkSaveBinaryFile);
-            this.grpProgramOptions.Controls.Add(this.chkLoadBinaryFile);
-            this.grpProgramOptions.Controls.Add(this.radParseAll);
-            this.grpProgramOptions.Controls.Add(this.radParseUnparsed);
-            this.grpProgramOptions.Controls.Add(this.radNoParse);
-            this.grpProgramOptions.Controls.Add(this.chkIncludeAlreadyFiltered);
-            this.grpProgramOptions.Controls.Add(this.chkDetectOnlyDisplayedData);
-            this.grpProgramOptions.Controls.Add(this.chkSearchForNewSongs);
-            this.grpProgramOptions.Location = new System.Drawing.Point(0, 0);
-            this.grpProgramOptions.Margin = new System.Windows.Forms.Padding(0);
-            this.grpProgramOptions.Name = "grpProgramOptions";
-            this.grpProgramOptions.Size = new System.Drawing.Size(440, 116);
-            this.grpProgramOptions.TabIndex = 12;
-            this.grpProgramOptions.TabStop = false;
-            this.grpProgramOptions.Text = "Program Options";
+            grpProgramOptions.Controls.Add(chkSaveBinaryFile);
+            grpProgramOptions.Controls.Add(chkLoadBinaryFile);
+            grpProgramOptions.Controls.Add(radParseAll);
+            grpProgramOptions.Controls.Add(radParseUnparsed);
+            grpProgramOptions.Controls.Add(radNoParse);
+            grpProgramOptions.Controls.Add(chkIncludeAlreadyFiltered);
+            grpProgramOptions.Controls.Add(chkDetectOnlyDisplayedData);
+            grpProgramOptions.Controls.Add(chkSearchForNewSongs);
+            grpProgramOptions.Location = new System.Drawing.Point(0, 0);
+            grpProgramOptions.Margin = new System.Windows.Forms.Padding(0);
+            grpProgramOptions.Name = "grpProgramOptions";
+            grpProgramOptions.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grpProgramOptions.Size = new System.Drawing.Size(513, 134);
+            grpProgramOptions.TabIndex = 12;
+            grpProgramOptions.TabStop = false;
+            grpProgramOptions.Text = "Program Options";
             // 
             // chkSaveBinaryFile
             // 
-            this.chkSaveBinaryFile.AutoSize = true;
-            this.chkSaveBinaryFile.Location = new System.Drawing.Point(245, 65);
-            this.chkSaveBinaryFile.Name = "chkSaveBinaryFile";
-            this.chkSaveBinaryFile.Size = new System.Drawing.Size(128, 17);
-            this.chkSaveBinaryFile.TabIndex = 7;
-            this.chkSaveBinaryFile.Text = "Save data after parse";
-            this.chkSaveBinaryFile.UseVisualStyleBackColor = true;
+            chkSaveBinaryFile.AutoSize = true;
+            chkSaveBinaryFile.Location = new System.Drawing.Point(286, 75);
+            chkSaveBinaryFile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkSaveBinaryFile.Name = "chkSaveBinaryFile";
+            chkSaveBinaryFile.Size = new System.Drawing.Size(134, 19);
+            chkSaveBinaryFile.TabIndex = 7;
+            chkSaveBinaryFile.Text = "Save data after parse";
+            chkSaveBinaryFile.UseVisualStyleBackColor = true;
             // 
             // chkLoadBinaryFile
             // 
-            this.chkLoadBinaryFile.AutoSize = true;
-            this.chkLoadBinaryFile.Location = new System.Drawing.Point(9, 65);
-            this.chkLoadBinaryFile.Name = "chkLoadBinaryFile";
-            this.chkLoadBinaryFile.Size = new System.Drawing.Size(165, 17);
-            this.chkLoadBinaryFile.TabIndex = 6;
-            this.chkLoadBinaryFile.Text = "Load saved data (if available)";
-            this.chkLoadBinaryFile.UseVisualStyleBackColor = true;
+            chkLoadBinaryFile.AutoSize = true;
+            chkLoadBinaryFile.Location = new System.Drawing.Point(10, 75);
+            chkLoadBinaryFile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkLoadBinaryFile.Name = "chkLoadBinaryFile";
+            chkLoadBinaryFile.Size = new System.Drawing.Size(178, 19);
+            chkLoadBinaryFile.TabIndex = 6;
+            chkLoadBinaryFile.Text = "Load saved data (if available)";
+            chkLoadBinaryFile.UseVisualStyleBackColor = true;
             // 
             // radParseAll
             // 
-            this.radParseAll.AutoSize = true;
-            this.radParseAll.Location = new System.Drawing.Point(338, 88);
-            this.radParseAll.Name = "radParseAll";
-            this.radParseAll.Size = new System.Drawing.Size(96, 17);
-            this.radParseAll.TabIndex = 5;
-            this.radParseAll.TabStop = true;
-            this.radParseAll.Text = "Parse all songs";
-            this.radParseAll.UseVisualStyleBackColor = true;
+            radParseAll.AutoSize = true;
+            radParseAll.Location = new System.Drawing.Point(394, 102);
+            radParseAll.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radParseAll.Name = "radParseAll";
+            radParseAll.Size = new System.Drawing.Size(102, 19);
+            radParseAll.TabIndex = 5;
+            radParseAll.TabStop = true;
+            radParseAll.Text = "Parse all songs";
+            radParseAll.UseVisualStyleBackColor = true;
             // 
             // radParseUnparsed
             // 
-            this.radParseUnparsed.AutoSize = true;
-            this.radParseUnparsed.Location = new System.Drawing.Point(153, 88);
-            this.radParseUnparsed.Name = "radParseUnparsed";
-            this.radParseUnparsed.Size = new System.Drawing.Size(152, 17);
-            this.radParseUnparsed.TabIndex = 4;
-            this.radParseUnparsed.TabStop = true;
-            this.radParseUnparsed.Text = "Parse only unparsed songs";
-            this.radParseUnparsed.UseVisualStyleBackColor = true;
+            radParseUnparsed.AutoSize = true;
+            radParseUnparsed.Location = new System.Drawing.Point(178, 102);
+            radParseUnparsed.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radParseUnparsed.Name = "radParseUnparsed";
+            radParseUnparsed.Size = new System.Drawing.Size(165, 19);
+            radParseUnparsed.TabIndex = 4;
+            radParseUnparsed.TabStop = true;
+            radParseUnparsed.Text = "Parse only unparsed songs";
+            radParseUnparsed.UseVisualStyleBackColor = true;
             // 
             // radNoParse
             // 
-            this.radNoParse.AutoSize = true;
-            this.radNoParse.Location = new System.Drawing.Point(9, 88);
-            this.radNoParse.Name = "radNoParse";
-            this.radNoParse.Size = new System.Drawing.Size(110, 17);
-            this.radNoParse.TabIndex = 3;
-            this.radNoParse.TabStop = true;
-            this.radNoParse.Text = "Don\'t parse songs";
-            this.radNoParse.UseVisualStyleBackColor = true;
+            radNoParse.AutoSize = true;
+            radNoParse.Location = new System.Drawing.Point(10, 102);
+            radNoParse.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radNoParse.Name = "radNoParse";
+            radNoParse.Size = new System.Drawing.Size(119, 19);
+            radNoParse.TabIndex = 3;
+            radNoParse.TabStop = true;
+            radNoParse.Text = "Don't parse songs";
+            radNoParse.UseVisualStyleBackColor = true;
             // 
             // chkIncludeAlreadyFiltered
             // 
-            this.chkIncludeAlreadyFiltered.AutoSize = true;
-            this.chkIncludeAlreadyFiltered.Location = new System.Drawing.Point(245, 19);
-            this.chkIncludeAlreadyFiltered.Name = "chkIncludeAlreadyFiltered";
-            this.chkIncludeAlreadyFiltered.Size = new System.Drawing.Size(189, 17);
-            this.chkIncludeAlreadyFiltered.TabIndex = 2;
-            this.chkIncludeAlreadyFiltered.Text = "Include already filtered songs in list";
-            this.chkIncludeAlreadyFiltered.UseVisualStyleBackColor = true;
+            chkIncludeAlreadyFiltered.AutoSize = true;
+            chkIncludeAlreadyFiltered.Location = new System.Drawing.Point(286, 22);
+            chkIncludeAlreadyFiltered.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkIncludeAlreadyFiltered.Name = "chkIncludeAlreadyFiltered";
+            chkIncludeAlreadyFiltered.Size = new System.Drawing.Size(211, 19);
+            chkIncludeAlreadyFiltered.TabIndex = 2;
+            chkIncludeAlreadyFiltered.Text = "Include already filtered songs in list";
+            chkIncludeAlreadyFiltered.UseVisualStyleBackColor = true;
             // 
             // chkDetectOnlyDisplayedData
             // 
-            this.chkDetectOnlyDisplayedData.AutoSize = true;
-            this.chkDetectOnlyDisplayedData.Checked = true;
-            this.chkDetectOnlyDisplayedData.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDetectOnlyDisplayedData.Location = new System.Drawing.Point(9, 42);
-            this.chkDetectOnlyDisplayedData.Name = "chkDetectOnlyDisplayedData";
-            this.chkDetectOnlyDisplayedData.Size = new System.Drawing.Size(273, 17);
-            this.chkDetectOnlyDisplayedData.TabIndex = 1;
-            this.chkDetectOnlyDisplayedData.Text = "If parsing, only parse songs for info visible in song list";
-            this.chkDetectOnlyDisplayedData.UseVisualStyleBackColor = true;
+            chkDetectOnlyDisplayedData.AutoSize = true;
+            chkDetectOnlyDisplayedData.Checked = true;
+            chkDetectOnlyDisplayedData.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkDetectOnlyDisplayedData.Location = new System.Drawing.Point(10, 48);
+            chkDetectOnlyDisplayedData.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkDetectOnlyDisplayedData.Name = "chkDetectOnlyDisplayedData";
+            chkDetectOnlyDisplayedData.Size = new System.Drawing.Size(307, 19);
+            chkDetectOnlyDisplayedData.TabIndex = 1;
+            chkDetectOnlyDisplayedData.Text = "If parsing, only parse songs for info visible in song list";
+            chkDetectOnlyDisplayedData.UseVisualStyleBackColor = true;
             // 
             // chkSearchForNewSongs
             // 
-            this.chkSearchForNewSongs.AutoSize = true;
-            this.chkSearchForNewSongs.Location = new System.Drawing.Point(9, 19);
-            this.chkSearchForNewSongs.Name = "chkSearchForNewSongs";
-            this.chkSearchForNewSongs.Size = new System.Drawing.Size(129, 17);
-            this.chkSearchForNewSongs.TabIndex = 0;
-            this.chkSearchForNewSongs.Text = "Search for new songs";
-            this.chkSearchForNewSongs.UseVisualStyleBackColor = true;
+            chkSearchForNewSongs.AutoSize = true;
+            chkSearchForNewSongs.Location = new System.Drawing.Point(10, 22);
+            chkSearchForNewSongs.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkSearchForNewSongs.Name = "chkSearchForNewSongs";
+            chkSearchForNewSongs.Size = new System.Drawing.Size(138, 19);
+            chkSearchForNewSongs.TabIndex = 0;
+            chkSearchForNewSongs.Text = "Search for new songs";
+            chkSearchForNewSongs.UseVisualStyleBackColor = true;
             // 
             // grpSearch
             // 
-            this.grpSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.grpSearch.Controls.Add(this.tlpSearchOperands);
-            this.grpSearch.Controls.Add(this.tlpSearchComboType);
-            this.grpSearch.Controls.Add(this.btnSearchDelete);
-            this.grpSearch.Controls.Add(this.cbxSearchName);
-            this.grpSearch.Controls.Add(this.lblSearchName);
-            this.grpSearch.Location = new System.Drawing.Point(0, 293);
-            this.grpSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.grpSearch.Name = "grpSearch";
-            this.grpSearch.Size = new System.Drawing.Size(440, 104);
-            this.grpSearch.TabIndex = 13;
-            this.grpSearch.TabStop = false;
-            this.grpSearch.Text = "Song Search";
+            grpSearch.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            grpSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            grpSearch.Controls.Add(tlpSearchOperands);
+            grpSearch.Controls.Add(tlpSearchComboType);
+            grpSearch.Controls.Add(btnSearchDelete);
+            grpSearch.Controls.Add(cbxSearchName);
+            grpSearch.Controls.Add(lblSearchName);
+            grpSearch.Location = new System.Drawing.Point(0, 364);
+            grpSearch.Margin = new System.Windows.Forms.Padding(0);
+            grpSearch.Name = "grpSearch";
+            grpSearch.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grpSearch.Size = new System.Drawing.Size(513, 120);
+            grpSearch.TabIndex = 13;
+            grpSearch.TabStop = false;
+            grpSearch.Text = "Song Search";
             // 
             // tlpSearchOperands
             // 
-            this.tlpSearchOperands.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpSearchOperands.AutoScroll = true;
-            this.tlpSearchOperands.AutoSize = true;
-            this.tlpSearchOperands.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpSearchOperands.ColumnCount = 1;
-            this.tlpSearchOperands.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpSearchOperands.Controls.Add(this.btnAddSearchOperand, 0, 0);
-            this.tlpSearchOperands.Location = new System.Drawing.Point(9, 72);
-            this.tlpSearchOperands.Name = "tlpSearchOperands";
-            this.tlpSearchOperands.RowCount = 1;
-            this.tlpSearchOperands.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpSearchOperands.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpSearchOperands.Size = new System.Drawing.Size(425, 23);
-            this.tlpSearchOperands.TabIndex = 7;
+            tlpSearchOperands.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tlpSearchOperands.AutoScroll = true;
+            tlpSearchOperands.AutoSize = true;
+            tlpSearchOperands.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            tlpSearchOperands.ColumnCount = 1;
+            tlpSearchOperands.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tlpSearchOperands.Controls.Add(btnAddSearchOperand, 0, 0);
+            tlpSearchOperands.Location = new System.Drawing.Point(10, 83);
+            tlpSearchOperands.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tlpSearchOperands.Name = "tlpSearchOperands";
+            tlpSearchOperands.RowCount = 1;
+            tlpSearchOperands.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tlpSearchOperands.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tlpSearchOperands.Size = new System.Drawing.Size(496, 29);
+            tlpSearchOperands.TabIndex = 7;
             // 
             // btnAddSearchOperand
             // 
-            this.btnAddSearchOperand.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddSearchOperand.AutoSize = true;
-            this.btnAddSearchOperand.Location = new System.Drawing.Point(154, 0);
-            this.btnAddSearchOperand.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAddSearchOperand.Name = "btnAddSearchOperand";
-            this.btnAddSearchOperand.Size = new System.Drawing.Size(117, 23);
-            this.btnAddSearchOperand.TabIndex = 0;
-            this.btnAddSearchOperand.Text = "Add Search Operand";
-            this.btnAddSearchOperand.UseVisualStyleBackColor = true;
-            this.btnAddSearchOperand.Click += new System.EventHandler(this.btnAddSearchOperand_Click);
+            btnAddSearchOperand.Anchor = System.Windows.Forms.AnchorStyles.None;
+            btnAddSearchOperand.AutoSize = true;
+            btnAddSearchOperand.Location = new System.Drawing.Point(174, 0);
+            btnAddSearchOperand.Margin = new System.Windows.Forms.Padding(0);
+            btnAddSearchOperand.Name = "btnAddSearchOperand";
+            btnAddSearchOperand.Size = new System.Drawing.Size(147, 29);
+            btnAddSearchOperand.TabIndex = 0;
+            btnAddSearchOperand.Text = "Add Search Operand";
+            btnAddSearchOperand.UseVisualStyleBackColor = true;
+            btnAddSearchOperand.Click += btnAddSearchOperand_Click;
             // 
             // tlpSearchComboType
             // 
-            this.tlpSearchComboType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpSearchComboType.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpSearchComboType.ColumnCount = 7;
-            this.tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpSearchComboType.Controls.Add(this.radSearchAnd, 0, 0);
-            this.tlpSearchComboType.Controls.Add(this.btnClearSearch, 6, 0);
-            this.tlpSearchComboType.Controls.Add(this.btnApplySearch, 4, 0);
-            this.tlpSearchComboType.Controls.Add(this.radSearchOr, 2, 0);
-            this.tlpSearchComboType.Location = new System.Drawing.Point(9, 46);
-            this.tlpSearchComboType.Margin = new System.Windows.Forms.Padding(0);
-            this.tlpSearchComboType.Name = "tlpSearchComboType";
-            this.tlpSearchComboType.RowCount = 1;
-            this.tlpSearchComboType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpSearchComboType.Size = new System.Drawing.Size(424, 23);
-            this.tlpSearchComboType.TabIndex = 6;
+            tlpSearchComboType.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tlpSearchComboType.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            tlpSearchComboType.ColumnCount = 7;
+            tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            tlpSearchComboType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tlpSearchComboType.Controls.Add(radSearchAnd, 0, 0);
+            tlpSearchComboType.Controls.Add(btnClearSearch, 6, 0);
+            tlpSearchComboType.Controls.Add(btnApplySearch, 4, 0);
+            tlpSearchComboType.Controls.Add(radSearchOr, 2, 0);
+            tlpSearchComboType.Location = new System.Drawing.Point(10, 53);
+            tlpSearchComboType.Margin = new System.Windows.Forms.Padding(0);
+            tlpSearchComboType.Name = "tlpSearchComboType";
+            tlpSearchComboType.RowCount = 1;
+            tlpSearchComboType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tlpSearchComboType.Size = new System.Drawing.Size(495, 27);
+            tlpSearchComboType.TabIndex = 6;
             // 
             // radSearchAnd
             // 
-            this.radSearchAnd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radSearchAnd.AutoSize = true;
-            this.radSearchAnd.Checked = true;
-            this.radSearchAnd.Location = new System.Drawing.Point(3, 3);
-            this.radSearchAnd.Name = "radSearchAnd";
-            this.radSearchAnd.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.radSearchAnd.Size = new System.Drawing.Size(128, 17);
-            this.radSearchAnd.TabIndex = 4;
-            this.radSearchAnd.TabStop = true;
-            this.radSearchAnd.Text = "AND (all must be true)";
-            this.radSearchAnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radSearchAnd.UseVisualStyleBackColor = true;
+            radSearchAnd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            radSearchAnd.AutoSize = true;
+            radSearchAnd.Checked = true;
+            radSearchAnd.Location = new System.Drawing.Point(4, 4);
+            radSearchAnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radSearchAnd.Name = "radSearchAnd";
+            radSearchAnd.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            radSearchAnd.Size = new System.Drawing.Size(143, 19);
+            radSearchAnd.TabIndex = 4;
+            radSearchAnd.TabStop = true;
+            radSearchAnd.Text = "AND (all must be true)";
+            radSearchAnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            radSearchAnd.UseVisualStyleBackColor = true;
             // 
             // btnClearSearch
             // 
-            this.btnClearSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClearSearch.AutoSize = true;
-            this.btnClearSearch.Location = new System.Drawing.Point(348, 0);
-            this.btnClearSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.btnClearSearch.Name = "btnClearSearch";
-            this.btnClearSearch.Size = new System.Drawing.Size(76, 23);
-            this.btnClearSearch.TabIndex = 6;
-            this.btnClearSearch.Text = "Clear search";
-            this.btnClearSearch.UseVisualStyleBackColor = true;
-            this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
+            btnClearSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            btnClearSearch.AutoSize = true;
+            btnClearSearch.Location = new System.Drawing.Point(400, 0);
+            btnClearSearch.Margin = new System.Windows.Forms.Padding(0);
+            btnClearSearch.Name = "btnClearSearch";
+            btnClearSearch.Size = new System.Drawing.Size(94, 27);
+            btnClearSearch.TabIndex = 6;
+            btnClearSearch.Text = "Clear search";
+            btnClearSearch.UseVisualStyleBackColor = true;
+            btnClearSearch.Click += btnClearSearch_Click;
             // 
             // btnApplySearch
             // 
-            this.btnApplySearch.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnApplySearch.AutoSize = true;
-            this.btnApplySearch.Location = new System.Drawing.Point(268, 0);
-            this.btnApplySearch.Margin = new System.Windows.Forms.Padding(0);
-            this.btnApplySearch.Name = "btnApplySearch";
-            this.btnApplySearch.Size = new System.Drawing.Size(78, 23);
-            this.btnApplySearch.TabIndex = 5;
-            this.btnApplySearch.Text = "Apply search";
-            this.btnApplySearch.UseVisualStyleBackColor = true;
-            this.btnApplySearch.Click += new System.EventHandler(this.btnApplySearch_Click);
+            btnApplySearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            btnApplySearch.AutoSize = true;
+            btnApplySearch.Location = new System.Drawing.Point(298, 0);
+            btnApplySearch.Margin = new System.Windows.Forms.Padding(0);
+            btnApplySearch.Name = "btnApplySearch";
+            btnApplySearch.Size = new System.Drawing.Size(99, 27);
+            btnApplySearch.TabIndex = 5;
+            btnApplySearch.Text = "Apply search";
+            btnApplySearch.UseVisualStyleBackColor = true;
+            btnApplySearch.Click += btnApplySearch_Click;
             // 
             // radSearchOr
             // 
-            this.radSearchOr.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radSearchOr.AutoSize = true;
-            this.radSearchOr.Location = new System.Drawing.Point(139, 3);
-            this.radSearchOr.Name = "radSearchOr";
-            this.radSearchOr.Size = new System.Drawing.Size(124, 17);
-            this.radSearchOr.TabIndex = 3;
-            this.radSearchOr.Text = "OR (any can be true)";
-            this.radSearchOr.UseVisualStyleBackColor = true;
+            radSearchOr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            radSearchOr.AutoSize = true;
+            radSearchOr.Location = new System.Drawing.Point(158, 4);
+            radSearchOr.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radSearchOr.Name = "radSearchOr";
+            radSearchOr.Size = new System.Drawing.Size(133, 19);
+            radSearchOr.TabIndex = 3;
+            radSearchOr.Text = "OR (any can be true)";
+            radSearchOr.UseVisualStyleBackColor = true;
             // 
             // btnSearchDelete
             // 
-            this.btnSearchDelete.Location = new System.Drawing.Point(359, 17);
-            this.btnSearchDelete.Name = "btnSearchDelete";
-            this.btnSearchDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnSearchDelete.TabIndex = 3;
-            this.btnSearchDelete.Text = "Delete";
-            this.btnSearchDelete.UseVisualStyleBackColor = true;
-            this.btnSearchDelete.Click += new System.EventHandler(this.btnSearchDelete_Click);
+            btnSearchDelete.Location = new System.Drawing.Point(419, 20);
+            btnSearchDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnSearchDelete.Name = "btnSearchDelete";
+            btnSearchDelete.Size = new System.Drawing.Size(88, 27);
+            btnSearchDelete.TabIndex = 3;
+            btnSearchDelete.Text = "Delete";
+            btnSearchDelete.UseVisualStyleBackColor = true;
+            btnSearchDelete.Click += btnSearchDelete_Click;
             // 
             // cbxSearchName
             // 
-            this.cbxSearchName.FormattingEnabled = true;
-            this.cbxSearchName.Location = new System.Drawing.Point(87, 19);
-            this.cbxSearchName.MaxLength = 255;
-            this.cbxSearchName.Name = "cbxSearchName";
-            this.cbxSearchName.Size = new System.Drawing.Size(266, 21);
-            this.cbxSearchName.TabIndex = 1;
-            this.cbxSearchName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxSearchName_KeyPress);
+            cbxSearchName.FormattingEnabled = true;
+            cbxSearchName.Location = new System.Drawing.Point(102, 22);
+            cbxSearchName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            cbxSearchName.MaxLength = 255;
+            cbxSearchName.Name = "cbxSearchName";
+            cbxSearchName.Size = new System.Drawing.Size(310, 23);
+            cbxSearchName.TabIndex = 1;
+            cbxSearchName.KeyPress += cbxSearchName_KeyPress;
             // 
             // lblSearchName
             // 
-            this.lblSearchName.AutoSize = true;
-            this.lblSearchName.Location = new System.Drawing.Point(6, 22);
-            this.lblSearchName.Name = "lblSearchName";
-            this.lblSearchName.Size = new System.Drawing.Size(75, 13);
-            this.lblSearchName.TabIndex = 0;
-            this.lblSearchName.Text = "Search Name:";
+            lblSearchName.AutoSize = true;
+            lblSearchName.Location = new System.Drawing.Point(7, 25);
+            lblSearchName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblSearchName.Name = "lblSearchName";
+            lblSearchName.Size = new System.Drawing.Size(80, 15);
+            lblSearchName.TabIndex = 0;
+            lblSearchName.Text = "Search Name:";
             // 
             // grpSongInfo
             // 
-            this.grpSongInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpSongInfo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.grpSongInfo.Controls.Add(this.chkDiffHeaderVisible);
-            this.grpSongInfo.Controls.Add(this.txtFolderName);
-            this.grpSongInfo.Controls.Add(this.lblDiffListHeader);
-            this.grpSongInfo.Controls.Add(this.cbDiffListHeaders);
-            this.grpSongInfo.Controls.Add(this.lblFolderName);
-            this.grpSongInfo.Controls.Add(this.btnPlayPause);
-            this.grpSongInfo.Controls.Add(this.txtPack);
-            this.grpSongInfo.Controls.Add(this.lblPack);
-            this.grpSongInfo.Controls.Add(this.dgvDifficulties);
-            this.grpSongInfo.Location = new System.Drawing.Point(0, 514);
-            this.grpSongInfo.Margin = new System.Windows.Forms.Padding(0);
-            this.grpSongInfo.Name = "grpSongInfo";
-            this.grpSongInfo.Size = new System.Drawing.Size(544, 156);
-            this.grpSongInfo.TabIndex = 4;
-            this.grpSongInfo.TabStop = false;
-            this.grpSongInfo.Text = "Song Info";
+            grpSongInfo.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            grpSongInfo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            grpSongInfo.Controls.Add(chkDiffHeaderVisible);
+            grpSongInfo.Controls.Add(txtFolderName);
+            grpSongInfo.Controls.Add(lblDiffListHeader);
+            grpSongInfo.Controls.Add(cbDiffListHeaders);
+            grpSongInfo.Controls.Add(lblFolderName);
+            grpSongInfo.Controls.Add(btnPlayPause);
+            grpSongInfo.Controls.Add(txtPack);
+            grpSongInfo.Controls.Add(lblPack);
+            grpSongInfo.Controls.Add(dgvDifficulties);
+            grpSongInfo.Location = new System.Drawing.Point(0, 593);
+            grpSongInfo.Margin = new System.Windows.Forms.Padding(0);
+            grpSongInfo.Name = "grpSongInfo";
+            grpSongInfo.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grpSongInfo.Size = new System.Drawing.Size(635, 180);
+            grpSongInfo.TabIndex = 4;
+            grpSongInfo.TabStop = false;
+            grpSongInfo.Text = "Song Info";
             // 
             // chkDiffHeaderVisible
             // 
-            this.chkDiffHeaderVisible.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkDiffHeaderVisible.AutoSize = true;
-            this.chkDiffHeaderVisible.Location = new System.Drawing.Point(441, 102);
-            this.chkDiffHeaderVisible.Name = "chkDiffHeaderVisible";
-            this.chkDiffHeaderVisible.Size = new System.Drawing.Size(94, 17);
-            this.chkDiffHeaderVisible.TabIndex = 6;
-            this.chkDiffHeaderVisible.Text = "Header Visible";
-            this.chkDiffHeaderVisible.UseVisualStyleBackColor = true;
+            chkDiffHeaderVisible.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            chkDiffHeaderVisible.AutoSize = true;
+            chkDiffHeaderVisible.Location = new System.Drawing.Point(523, 118);
+            chkDiffHeaderVisible.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkDiffHeaderVisible.Name = "chkDiffHeaderVisible";
+            chkDiffHeaderVisible.Size = new System.Drawing.Size(101, 19);
+            chkDiffHeaderVisible.TabIndex = 6;
+            chkDiffHeaderVisible.Text = "Header Visible";
+            chkDiffHeaderVisible.UseVisualStyleBackColor = true;
             // 
             // txtFolderName
             // 
-            this.txtFolderName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFolderName.Location = new System.Drawing.Point(82, 45);
-            this.txtFolderName.Name = "txtFolderName";
-            this.txtFolderName.ReadOnly = true;
-            this.txtFolderName.Size = new System.Drawing.Size(456, 20);
-            this.txtFolderName.TabIndex = 5;
+            txtFolderName.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtFolderName.Location = new System.Drawing.Point(96, 52);
+            txtFolderName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtFolderName.Name = "txtFolderName";
+            txtFolderName.ReadOnly = true;
+            txtFolderName.Size = new System.Drawing.Size(531, 23);
+            txtFolderName.TabIndex = 5;
             // 
             // lblDiffListHeader
             // 
-            this.lblDiffListHeader.AutoSize = true;
-            this.lblDiffListHeader.Location = new System.Drawing.Point(6, 103);
-            this.lblDiffListHeader.Name = "lblDiffListHeader";
-            this.lblDiffListHeader.Size = new System.Drawing.Size(69, 13);
-            this.lblDiffListHeader.TabIndex = 5;
-            this.lblDiffListHeader.Text = "List Headers:";
+            lblDiffListHeader.AutoSize = true;
+            lblDiffListHeader.Location = new System.Drawing.Point(7, 119);
+            lblDiffListHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblDiffListHeader.Name = "lblDiffListHeader";
+            lblDiffListHeader.Size = new System.Drawing.Size(74, 15);
+            lblDiffListHeader.TabIndex = 5;
+            lblDiffListHeader.Text = "List Headers:";
             // 
             // cbDiffListHeaders
             // 
-            this.cbDiffListHeaders.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbDiffListHeaders.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDiffListHeaders.FormattingEnabled = true;
-            this.cbDiffListHeaders.Location = new System.Drawing.Point(78, 100);
-            this.cbDiffListHeaders.Name = "cbDiffListHeaders";
-            this.cbDiffListHeaders.Size = new System.Drawing.Size(357, 21);
-            this.cbDiffListHeaders.TabIndex = 4;
+            cbDiffListHeaders.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            cbDiffListHeaders.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cbDiffListHeaders.FormattingEnabled = true;
+            cbDiffListHeaders.Location = new System.Drawing.Point(91, 115);
+            cbDiffListHeaders.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            cbDiffListHeaders.Name = "cbDiffListHeaders";
+            cbDiffListHeaders.Size = new System.Drawing.Size(416, 23);
+            cbDiffListHeaders.TabIndex = 4;
             // 
             // lblFolderName
             // 
-            this.lblFolderName.AutoSize = true;
-            this.lblFolderName.Location = new System.Drawing.Point(6, 48);
-            this.lblFolderName.Name = "lblFolderName";
-            this.lblFolderName.Size = new System.Drawing.Size(70, 13);
-            this.lblFolderName.TabIndex = 4;
-            this.lblFolderName.Text = "Folder Name:";
+            lblFolderName.AutoSize = true;
+            lblFolderName.Location = new System.Drawing.Point(7, 55);
+            lblFolderName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblFolderName.Name = "lblFolderName";
+            lblFolderName.Size = new System.Drawing.Size(78, 15);
+            lblFolderName.TabIndex = 4;
+            lblFolderName.Text = "Folder Name:";
             // 
             // btnPlayPause
             // 
-            this.btnPlayPause.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPlayPause.Location = new System.Drawing.Point(9, 71);
-            this.btnPlayPause.Name = "btnPlayPause";
-            this.btnPlayPause.Size = new System.Drawing.Size(529, 23);
-            this.btnPlayPause.TabIndex = 3;
-            this.btnPlayPause.Text = "Play/Pause";
-            this.btnPlayPause.UseVisualStyleBackColor = true;
-            this.btnPlayPause.Click += new System.EventHandler(this.btnPlayPause_Click);
+            btnPlayPause.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            btnPlayPause.Location = new System.Drawing.Point(10, 82);
+            btnPlayPause.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnPlayPause.Name = "btnPlayPause";
+            btnPlayPause.Size = new System.Drawing.Size(617, 27);
+            btnPlayPause.TabIndex = 3;
+            btnPlayPause.Text = "Play/Pause";
+            btnPlayPause.UseVisualStyleBackColor = true;
+            btnPlayPause.Click += btnPlayPause_Click;
             // 
             // txtPack
             // 
-            this.txtPack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPack.Location = new System.Drawing.Point(81, 19);
-            this.txtPack.Name = "txtPack";
-            this.txtPack.ReadOnly = true;
-            this.txtPack.Size = new System.Drawing.Size(457, 20);
-            this.txtPack.TabIndex = 2;
+            txtPack.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtPack.Location = new System.Drawing.Point(94, 22);
+            txtPack.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtPack.Name = "txtPack";
+            txtPack.ReadOnly = true;
+            txtPack.Size = new System.Drawing.Size(532, 23);
+            txtPack.TabIndex = 2;
             // 
             // lblPack
             // 
-            this.lblPack.AutoSize = true;
-            this.lblPack.Location = new System.Drawing.Point(6, 22);
-            this.lblPack.Name = "lblPack";
-            this.lblPack.Size = new System.Drawing.Size(35, 13);
-            this.lblPack.TabIndex = 1;
-            this.lblPack.Text = "Pack:";
+            lblPack.AutoSize = true;
+            lblPack.Location = new System.Drawing.Point(7, 25);
+            lblPack.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblPack.Name = "lblPack";
+            lblPack.Size = new System.Drawing.Size(35, 15);
+            lblPack.TabIndex = 1;
+            lblPack.Text = "Pack:";
             // 
             // dgvDifficulties
             // 
-            this.dgvDifficulties.AllowUserToAddRows = false;
-            this.dgvDifficulties.AllowUserToDeleteRows = false;
-            this.dgvDifficulties.AllowUserToResizeRows = false;
-            this.dgvDifficulties.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvDifficulties.AutoGenerateColumns = false;
-            this.dgvDifficulties.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvDifficulties.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDifficulties.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.difficultyDataGridViewTextBoxColumn,
-            this.notesDataGridViewTextBoxColumn,
-            this.stepsDataGridViewTextBoxColumn,
-            this.jumpsDataGridViewTextBoxColumn,
-            this.holdsDataGridViewTextBoxColumn,
-            this.rollsDataGridViewTextBoxColumn,
-            this.minesDataGridViewTextBoxColumn,
-            this.nonPadJumpsDataGridViewTextBoxColumn});
-            this.dgvDifficulties.DataSource = this.cDifficultyBindingSource;
-            this.dgvDifficulties.Location = new System.Drawing.Point(6, 127);
-            this.dgvDifficulties.MinimumSize = new System.Drawing.Size(0, 21);
-            this.dgvDifficulties.MultiSelect = false;
-            this.dgvDifficulties.Name = "dgvDifficulties";
-            this.dgvDifficulties.Size = new System.Drawing.Size(532, 21);
-            this.dgvDifficulties.TabIndex = 0;
+            dgvDifficulties.AllowUserToAddRows = false;
+            dgvDifficulties.AllowUserToDeleteRows = false;
+            dgvDifficulties.AllowUserToResizeRows = false;
+            dgvDifficulties.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dgvDifficulties.AutoGenerateColumns = false;
+            dgvDifficulties.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dgvDifficulties.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDifficulties.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { difficultyDataGridViewTextBoxColumn, notesDataGridViewTextBoxColumn, stepsDataGridViewTextBoxColumn, jumpsDataGridViewTextBoxColumn, holdsDataGridViewTextBoxColumn, rollsDataGridViewTextBoxColumn, minesDataGridViewTextBoxColumn, nonPadJumpsDataGridViewTextBoxColumn });
+            dgvDifficulties.DataSource = cDifficultyBindingSource;
+            dgvDifficulties.Location = new System.Drawing.Point(7, 147);
+            dgvDifficulties.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            dgvDifficulties.MinimumSize = new System.Drawing.Size(0, 24);
+            dgvDifficulties.MultiSelect = false;
+            dgvDifficulties.Name = "dgvDifficulties";
+            dgvDifficulties.Size = new System.Drawing.Size(621, 24);
+            dgvDifficulties.TabIndex = 0;
             // 
             // difficultyDataGridViewTextBoxColumn
             // 
-            this.difficultyDataGridViewTextBoxColumn.DataPropertyName = "Difficulty";
-            this.difficultyDataGridViewTextBoxColumn.HeaderText = "Difficulty";
-            this.difficultyDataGridViewTextBoxColumn.Name = "difficultyDataGridViewTextBoxColumn";
+            difficultyDataGridViewTextBoxColumn.DataPropertyName = "Difficulty";
+            difficultyDataGridViewTextBoxColumn.HeaderText = "Difficulty";
+            difficultyDataGridViewTextBoxColumn.Name = "difficultyDataGridViewTextBoxColumn";
             // 
             // notesDataGridViewTextBoxColumn
             // 
-            this.notesDataGridViewTextBoxColumn.DataPropertyName = "Notes";
-            this.notesDataGridViewTextBoxColumn.HeaderText = "Notes";
-            this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
+            notesDataGridViewTextBoxColumn.DataPropertyName = "Notes";
+            notesDataGridViewTextBoxColumn.HeaderText = "Notes";
+            notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
             // 
             // stepsDataGridViewTextBoxColumn
             // 
-            this.stepsDataGridViewTextBoxColumn.DataPropertyName = "Steps";
-            this.stepsDataGridViewTextBoxColumn.HeaderText = "Steps";
-            this.stepsDataGridViewTextBoxColumn.Name = "stepsDataGridViewTextBoxColumn";
+            stepsDataGridViewTextBoxColumn.DataPropertyName = "Steps";
+            stepsDataGridViewTextBoxColumn.HeaderText = "Steps";
+            stepsDataGridViewTextBoxColumn.Name = "stepsDataGridViewTextBoxColumn";
             // 
             // jumpsDataGridViewTextBoxColumn
             // 
-            this.jumpsDataGridViewTextBoxColumn.DataPropertyName = "Jumps";
-            this.jumpsDataGridViewTextBoxColumn.HeaderText = "Jumps";
-            this.jumpsDataGridViewTextBoxColumn.Name = "jumpsDataGridViewTextBoxColumn";
+            jumpsDataGridViewTextBoxColumn.DataPropertyName = "Jumps";
+            jumpsDataGridViewTextBoxColumn.HeaderText = "Jumps";
+            jumpsDataGridViewTextBoxColumn.Name = "jumpsDataGridViewTextBoxColumn";
             // 
             // holdsDataGridViewTextBoxColumn
             // 
-            this.holdsDataGridViewTextBoxColumn.DataPropertyName = "Holds";
-            this.holdsDataGridViewTextBoxColumn.HeaderText = "Holds";
-            this.holdsDataGridViewTextBoxColumn.Name = "holdsDataGridViewTextBoxColumn";
+            holdsDataGridViewTextBoxColumn.DataPropertyName = "Holds";
+            holdsDataGridViewTextBoxColumn.HeaderText = "Holds";
+            holdsDataGridViewTextBoxColumn.Name = "holdsDataGridViewTextBoxColumn";
             // 
             // rollsDataGridViewTextBoxColumn
             // 
-            this.rollsDataGridViewTextBoxColumn.DataPropertyName = "Rolls";
-            this.rollsDataGridViewTextBoxColumn.HeaderText = "Rolls";
-            this.rollsDataGridViewTextBoxColumn.Name = "rollsDataGridViewTextBoxColumn";
+            rollsDataGridViewTextBoxColumn.DataPropertyName = "Rolls";
+            rollsDataGridViewTextBoxColumn.HeaderText = "Rolls";
+            rollsDataGridViewTextBoxColumn.Name = "rollsDataGridViewTextBoxColumn";
             // 
             // minesDataGridViewTextBoxColumn
             // 
-            this.minesDataGridViewTextBoxColumn.DataPropertyName = "Mines";
-            this.minesDataGridViewTextBoxColumn.HeaderText = "Mines";
-            this.minesDataGridViewTextBoxColumn.Name = "minesDataGridViewTextBoxColumn";
+            minesDataGridViewTextBoxColumn.DataPropertyName = "Mines";
+            minesDataGridViewTextBoxColumn.HeaderText = "Mines";
+            minesDataGridViewTextBoxColumn.Name = "minesDataGridViewTextBoxColumn";
             // 
             // nonPadJumpsDataGridViewTextBoxColumn
             // 
-            this.nonPadJumpsDataGridViewTextBoxColumn.DataPropertyName = "NonPadJumps";
-            this.nonPadJumpsDataGridViewTextBoxColumn.HeaderText = "NonPadJumps";
-            this.nonPadJumpsDataGridViewTextBoxColumn.Name = "nonPadJumpsDataGridViewTextBoxColumn";
+            nonPadJumpsDataGridViewTextBoxColumn.DataPropertyName = "NonPadJumps";
+            nonPadJumpsDataGridViewTextBoxColumn.HeaderText = "NonPadJumps";
+            nonPadJumpsDataGridViewTextBoxColumn.Name = "nonPadJumpsDataGridViewTextBoxColumn";
             // 
             // cDifficultyBindingSource
             // 
-            this.cDifficultyBindingSource.DataSource = typeof(StepManiaHelper.CDifficulty);
+            cDifficultyBindingSource.DataSource = typeof(CDifficulty);
             // 
             // grpFilterCustomPack
             // 
-            this.grpFilterCustomPack.AutoSize = true;
-            this.grpFilterCustomPack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.grpFilterCustomPack.Controls.Add(this.tlpFilterCustomSongPack);
-            this.grpFilterCustomPack.Controls.Add(this.btnFolderDelete);
-            this.grpFilterCustomPack.Controls.Add(this.cbxFolders);
-            this.grpFilterCustomPack.Controls.Add(this.lblCustomFolderName);
-            this.grpFilterCustomPack.Location = new System.Drawing.Point(0, 116);
-            this.grpFilterCustomPack.Margin = new System.Windows.Forms.Padding(0);
-            this.grpFilterCustomPack.Name = "grpFilterCustomPack";
-            this.grpFilterCustomPack.Padding = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.grpFilterCustomPack.Size = new System.Drawing.Size(440, 82);
-            this.grpFilterCustomPack.TabIndex = 14;
-            this.grpFilterCustomPack.TabStop = false;
-            this.grpFilterCustomPack.Text = "Filter Folders / Custom Song Pack Folders";
+            grpFilterCustomPack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            grpFilterCustomPack.Controls.Add(tableLayoutPanel1);
+            grpFilterCustomPack.Controls.Add(tlpFilterCustomSongPack);
+            grpFilterCustomPack.Controls.Add(btnFolderDelete);
+            grpFilterCustomPack.Controls.Add(cbxFolders);
+            grpFilterCustomPack.Controls.Add(lblCustomFolderName);
+            grpFilterCustomPack.Location = new System.Drawing.Point(0, 134);
+            grpFilterCustomPack.Margin = new System.Windows.Forms.Padding(0);
+            grpFilterCustomPack.Name = "grpFilterCustomPack";
+            grpFilterCustomPack.Padding = new System.Windows.Forms.Padding(4, 3, 4, 0);
+            grpFilterCustomPack.Size = new System.Drawing.Size(513, 120);
+            grpFilterCustomPack.TabIndex = 14;
+            grpFilterCustomPack.TabStop = false;
+            grpFilterCustomPack.Text = "Filter Folders / Custom Song Pack Folders";
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 5;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(label5, 0, 0);
+            tableLayoutPanel1.Controls.Add(chkHotkeyAlt, 3, 0);
+            tableLayoutPanel1.Controls.Add(chkHotkeyShift, 1, 0);
+            tableLayoutPanel1.Controls.Add(cbxHotkey, 5, 0);
+            tableLayoutPanel1.Controls.Add(chkHotkeyCtrl, 2, 0);
+            tableLayoutPanel1.Location = new System.Drawing.Point(7, 83);
+            tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.Size = new System.Drawing.Size(499, 33);
+            tableLayoutPanel1.TabIndex = 9;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(3, 7);
+            label5.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(165, 15);
+            label5.TabIndex = 6;
+            label5.Text = "Game Monitor Global Hotkey:";
+            // 
+            // chkHotkeyAlt
+            // 
+            chkHotkeyAlt.AutoSize = true;
+            chkHotkeyAlt.Checked = true;
+            chkHotkeyAlt.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkHotkeyAlt.Location = new System.Drawing.Point(281, 7);
+            chkHotkeyAlt.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
+            chkHotkeyAlt.Name = "chkHotkeyAlt";
+            chkHotkeyAlt.Size = new System.Drawing.Size(41, 19);
+            chkHotkeyAlt.TabIndex = 7;
+            chkHotkeyAlt.Text = "Alt";
+            chkHotkeyAlt.UseVisualStyleBackColor = true;
+            // 
+            // chkHotkeyShift
+            // 
+            chkHotkeyShift.AutoSize = true;
+            chkHotkeyShift.Checked = true;
+            chkHotkeyShift.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkHotkeyShift.Location = new System.Drawing.Point(174, 7);
+            chkHotkeyShift.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
+            chkHotkeyShift.Name = "chkHotkeyShift";
+            chkHotkeyShift.Size = new System.Drawing.Size(50, 19);
+            chkHotkeyShift.TabIndex = 8;
+            chkHotkeyShift.Text = "Shift";
+            chkHotkeyShift.UseVisualStyleBackColor = true;
+            // 
+            // cbxHotkey
+            // 
+            cbxHotkey.FormattingEnabled = true;
+            cbxHotkey.Location = new System.Drawing.Point(328, 3);
+            cbxHotkey.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            cbxHotkey.Name = "cbxHotkey";
+            cbxHotkey.Size = new System.Drawing.Size(168, 23);
+            cbxHotkey.TabIndex = 9;
+            // 
+            // chkHotkeyCtrl
+            // 
+            chkHotkeyCtrl.AutoSize = true;
+            chkHotkeyCtrl.Checked = true;
+            chkHotkeyCtrl.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkHotkeyCtrl.Location = new System.Drawing.Point(230, 7);
+            chkHotkeyCtrl.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
+            chkHotkeyCtrl.Name = "chkHotkeyCtrl";
+            chkHotkeyCtrl.Size = new System.Drawing.Size(45, 19);
+            chkHotkeyCtrl.TabIndex = 10;
+            chkHotkeyCtrl.Text = "Ctrl";
+            chkHotkeyCtrl.UseVisualStyleBackColor = true;
             // 
             // tlpFilterCustomSongPack
             // 
-            this.tlpFilterCustomSongPack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpFilterCustomSongPack.ColumnCount = 7;
-            this.tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpFilterCustomSongPack.Controls.Add(this.radCustomSongPack, 0, 0);
-            this.tlpFilterCustomSongPack.Controls.Add(this.btnClearAllVisible, 6, 0);
-            this.tlpFilterCustomSongPack.Controls.Add(this.btnApplyAllVisible, 4, 0);
-            this.tlpFilterCustomSongPack.Controls.Add(this.radFilter, 2, 0);
-            this.tlpFilterCustomSongPack.Location = new System.Drawing.Point(6, 46);
-            this.tlpFilterCustomSongPack.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.tlpFilterCustomSongPack.Name = "tlpFilterCustomSongPack";
-            this.tlpFilterCustomSongPack.RowCount = 1;
-            this.tlpFilterCustomSongPack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpFilterCustomSongPack.Size = new System.Drawing.Size(428, 23);
-            this.tlpFilterCustomSongPack.TabIndex = 5;
+            tlpFilterCustomSongPack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            tlpFilterCustomSongPack.ColumnCount = 7;
+            tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            tlpFilterCustomSongPack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tlpFilterCustomSongPack.Controls.Add(radCustomSongPack, 0, 0);
+            tlpFilterCustomSongPack.Controls.Add(btnClearAllVisible, 6, 0);
+            tlpFilterCustomSongPack.Controls.Add(btnApplyAllVisible, 4, 0);
+            tlpFilterCustomSongPack.Controls.Add(radFilter, 2, 0);
+            tlpFilterCustomSongPack.Location = new System.Drawing.Point(7, 53);
+            tlpFilterCustomSongPack.Margin = new System.Windows.Forms.Padding(4, 3, 4, 0);
+            tlpFilterCustomSongPack.Name = "tlpFilterCustomSongPack";
+            tlpFilterCustomSongPack.RowCount = 1;
+            tlpFilterCustomSongPack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tlpFilterCustomSongPack.Size = new System.Drawing.Size(499, 27);
+            tlpFilterCustomSongPack.TabIndex = 5;
             // 
             // radCustomSongPack
             // 
-            this.radCustomSongPack.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radCustomSongPack.AutoSize = true;
-            this.radCustomSongPack.Checked = true;
-            this.radCustomSongPack.Location = new System.Drawing.Point(3, 3);
-            this.radCustomSongPack.Name = "radCustomSongPack";
-            this.radCustomSongPack.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.radCustomSongPack.Size = new System.Drawing.Size(116, 17);
-            this.radCustomSongPack.TabIndex = 4;
-            this.radCustomSongPack.TabStop = true;
-            this.radCustomSongPack.Text = "Custom Song Pack";
-            this.radCustomSongPack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radCustomSongPack.UseVisualStyleBackColor = true;
-            this.radCustomSongPack.CheckedChanged += new System.EventHandler(this.radCustomSongPack_CheckedChanged);
+            radCustomSongPack.Anchor = System.Windows.Forms.AnchorStyles.None;
+            radCustomSongPack.AutoSize = true;
+            radCustomSongPack.Checked = true;
+            radCustomSongPack.Location = new System.Drawing.Point(4, 4);
+            radCustomSongPack.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radCustomSongPack.Name = "radCustomSongPack";
+            radCustomSongPack.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            radCustomSongPack.Size = new System.Drawing.Size(125, 19);
+            radCustomSongPack.TabIndex = 4;
+            radCustomSongPack.TabStop = true;
+            radCustomSongPack.Text = "Custom Song Pack";
+            radCustomSongPack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            radCustomSongPack.UseVisualStyleBackColor = true;
+            radCustomSongPack.CheckedChanged += radCustomSongPack_CheckedChanged;
             // 
             // btnClearAllVisible
             // 
-            this.btnClearAllVisible.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClearAllVisible.AutoSize = true;
-            this.btnClearAllVisible.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnClearAllVisible.Location = new System.Drawing.Point(318, 0);
-            this.btnClearAllVisible.Margin = new System.Windows.Forms.Padding(0);
-            this.btnClearAllVisible.Name = "btnClearAllVisible";
-            this.btnClearAllVisible.Size = new System.Drawing.Size(109, 23);
-            this.btnClearAllVisible.TabIndex = 6;
-            this.btnClearAllVisible.Text = "Clear from all visible";
-            this.btnClearAllVisible.UseVisualStyleBackColor = true;
-            this.btnClearAllVisible.Click += new System.EventHandler(this.btnClearAllVisible_Click);
+            btnClearAllVisible.Anchor = System.Windows.Forms.AnchorStyles.None;
+            btnClearAllVisible.AutoSize = true;
+            btnClearAllVisible.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnClearAllVisible.Location = new System.Drawing.Point(374, 1);
+            btnClearAllVisible.Margin = new System.Windows.Forms.Padding(0);
+            btnClearAllVisible.Name = "btnClearAllVisible";
+            btnClearAllVisible.Size = new System.Drawing.Size(124, 25);
+            btnClearAllVisible.TabIndex = 6;
+            btnClearAllVisible.Text = "Clear from all visible";
+            btnClearAllVisible.UseVisualStyleBackColor = true;
+            btnClearAllVisible.Click += btnClearAllVisible_Click;
             // 
             // btnApplyAllVisible
             // 
-            this.btnApplyAllVisible.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnApplyAllVisible.AutoSize = true;
-            this.btnApplyAllVisible.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnApplyAllVisible.Location = new System.Drawing.Point(203, 0);
-            this.btnApplyAllVisible.Margin = new System.Windows.Forms.Padding(0);
-            this.btnApplyAllVisible.Name = "btnApplyAllVisible";
-            this.btnApplyAllVisible.Size = new System.Drawing.Size(100, 23);
-            this.btnApplyAllVisible.TabIndex = 5;
-            this.btnApplyAllVisible.Text = "Apply to all visible";
-            this.btnApplyAllVisible.UseVisualStyleBackColor = true;
-            this.btnApplyAllVisible.Click += new System.EventHandler(this.btnApplyAllVisible_Click);
+            btnApplyAllVisible.Anchor = System.Windows.Forms.AnchorStyles.None;
+            btnApplyAllVisible.AutoSize = true;
+            btnApplyAllVisible.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnApplyAllVisible.Location = new System.Drawing.Point(238, 1);
+            btnApplyAllVisible.Margin = new System.Windows.Forms.Padding(0);
+            btnApplyAllVisible.Name = "btnApplyAllVisible";
+            btnApplyAllVisible.Size = new System.Drawing.Size(113, 25);
+            btnApplyAllVisible.TabIndex = 5;
+            btnApplyAllVisible.Text = "Apply to all visible";
+            btnApplyAllVisible.UseVisualStyleBackColor = true;
+            btnApplyAllVisible.Click += btnApplyAllVisible_Click;
             // 
             // radFilter
             // 
-            this.radFilter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radFilter.AutoSize = true;
-            this.radFilter.Location = new System.Drawing.Point(139, 3);
-            this.radFilter.Name = "radFilter";
-            this.radFilter.Size = new System.Drawing.Size(47, 17);
-            this.radFilter.TabIndex = 3;
-            this.radFilter.Text = "Filter";
-            this.radFilter.UseVisualStyleBackColor = true;
-            this.radFilter.CheckedChanged += new System.EventHandler(this.radFilter_CheckedChanged);
+            radFilter.Anchor = System.Windows.Forms.AnchorStyles.None;
+            radFilter.AutoSize = true;
+            radFilter.Location = new System.Drawing.Point(160, 4);
+            radFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radFilter.Name = "radFilter";
+            radFilter.Size = new System.Drawing.Size(51, 19);
+            radFilter.TabIndex = 3;
+            radFilter.Text = "Filter";
+            radFilter.UseVisualStyleBackColor = true;
+            radFilter.CheckedChanged += radFilter_CheckedChanged;
             // 
             // btnFolderDelete
             // 
-            this.btnFolderDelete.Location = new System.Drawing.Point(359, 17);
-            this.btnFolderDelete.Name = "btnFolderDelete";
-            this.btnFolderDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnFolderDelete.TabIndex = 2;
-            this.btnFolderDelete.Text = "Delete";
-            this.btnFolderDelete.UseVisualStyleBackColor = true;
-            this.btnFolderDelete.Click += new System.EventHandler(this.btnFolderDelete_Click);
+            btnFolderDelete.Location = new System.Drawing.Point(419, 20);
+            btnFolderDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnFolderDelete.Name = "btnFolderDelete";
+            btnFolderDelete.Size = new System.Drawing.Size(88, 27);
+            btnFolderDelete.TabIndex = 2;
+            btnFolderDelete.Text = "Delete";
+            btnFolderDelete.UseVisualStyleBackColor = true;
+            btnFolderDelete.Click += btnFolderDelete_Click;
             // 
             // cbxFolders
             // 
-            this.cbxFolders.FormattingEnabled = true;
-            this.cbxFolders.Location = new System.Drawing.Point(82, 19);
-            this.cbxFolders.MaxLength = 255;
-            this.cbxFolders.Name = "cbxFolders";
-            this.cbxFolders.Size = new System.Drawing.Size(271, 21);
-            this.cbxFolders.TabIndex = 1;
-            this.cbxFolders.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxFolders_KeyPress);
+            cbxFolders.FormattingEnabled = true;
+            cbxFolders.Location = new System.Drawing.Point(96, 22);
+            cbxFolders.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            cbxFolders.MaxLength = 255;
+            cbxFolders.Name = "cbxFolders";
+            cbxFolders.Size = new System.Drawing.Size(316, 23);
+            cbxFolders.TabIndex = 1;
+            cbxFolders.KeyPress += cbxFolders_KeyPress;
             // 
             // lblCustomFolderName
             // 
-            this.lblCustomFolderName.AutoSize = true;
-            this.lblCustomFolderName.Location = new System.Drawing.Point(6, 22);
-            this.lblCustomFolderName.Name = "lblCustomFolderName";
-            this.lblCustomFolderName.Size = new System.Drawing.Size(70, 13);
-            this.lblCustomFolderName.TabIndex = 0;
-            this.lblCustomFolderName.Text = "Folder Name:";
+            lblCustomFolderName.AutoSize = true;
+            lblCustomFolderName.Location = new System.Drawing.Point(7, 25);
+            lblCustomFolderName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblCustomFolderName.Name = "lblCustomFolderName";
+            lblCustomFolderName.Size = new System.Drawing.Size(78, 15);
+            lblCustomFolderName.TabIndex = 0;
+            lblCustomFolderName.Text = "Folder Name:";
             // 
             // tlpLeft
             // 
-            this.tlpLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.tlpLeft.ColumnCount = 1;
-            this.tlpLeft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpLeft.Controls.Add(this.grpProgramOptions, 0, 0);
-            this.tlpLeft.Controls.Add(this.grpFilterCustomPack, 0, 1);
-            this.tlpLeft.Controls.Add(this.grpOutput, 0, 4);
-            this.tlpLeft.Controls.Add(this.grpSearch, 0, 3);
-            this.tlpLeft.Controls.Add(this.grpSpecialFilters, 0, 2);
-            this.tlpLeft.Location = new System.Drawing.Point(9, 47);
-            this.tlpLeft.Margin = new System.Windows.Forms.Padding(0);
-            this.tlpLeft.Name = "tlpLeft";
-            this.tlpLeft.RowCount = 5;
-            this.tlpLeft.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpLeft.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpLeft.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpLeft.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpLeft.Size = new System.Drawing.Size(440, 670);
-            this.tlpLeft.TabIndex = 15;
+            tlpLeft.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            tlpLeft.ColumnCount = 1;
+            tlpLeft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tlpLeft.Controls.Add(grpProgramOptions, 0, 0);
+            tlpLeft.Controls.Add(grpFilterCustomPack, 0, 1);
+            tlpLeft.Controls.Add(grpOutput, 0, 4);
+            tlpLeft.Controls.Add(grpSearch, 0, 3);
+            tlpLeft.Controls.Add(grpSpecialFilters, 0, 2);
+            tlpLeft.Location = new System.Drawing.Point(10, 54);
+            tlpLeft.Margin = new System.Windows.Forms.Padding(0);
+            tlpLeft.Name = "tlpLeft";
+            tlpLeft.RowCount = 5;
+            tlpLeft.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tlpLeft.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tlpLeft.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tlpLeft.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tlpLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tlpLeft.Size = new System.Drawing.Size(513, 773);
+            tlpLeft.TabIndex = 15;
             // 
             // tlpRight
             // 
-            this.tlpRight.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpRight.ColumnCount = 1;
-            this.tlpRight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpRight.Controls.Add(this.groupBox3, 0, 0);
-            this.tlpRight.Controls.Add(this.grpSongInfo, 0, 1);
-            this.tlpRight.Location = new System.Drawing.Point(452, 47);
-            this.tlpRight.Margin = new System.Windows.Forms.Padding(0);
-            this.tlpRight.Name = "tlpRight";
-            this.tlpRight.RowCount = 2;
-            this.tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpRight.Size = new System.Drawing.Size(544, 670);
-            this.tlpRight.TabIndex = 16;
+            tlpRight.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tlpRight.ColumnCount = 1;
+            tlpRight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tlpRight.Controls.Add(grpSongList, 0, 1);
+            tlpRight.Controls.Add(grpSongInfo, 0, 2);
+            tlpRight.Controls.Add(grpGameMonitor, 0, 0);
+            tlpRight.Location = new System.Drawing.Point(527, 54);
+            tlpRight.Margin = new System.Windows.Forms.Padding(0);
+            tlpRight.Name = "tlpRight";
+            tlpRight.RowCount = 3;
+            tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tlpRight.Size = new System.Drawing.Size(635, 773);
+            tlpRight.TabIndex = 16;
+            // 
+            // grpGameMonitor
+            // 
+            grpGameMonitor.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            grpGameMonitor.Controls.Add(tlpGameMonitor);
+            grpGameMonitor.Location = new System.Drawing.Point(0, 0);
+            grpGameMonitor.Margin = new System.Windows.Forms.Padding(0);
+            grpGameMonitor.Name = "grpGameMonitor";
+            grpGameMonitor.Padding = new System.Windows.Forms.Padding(0);
+            grpGameMonitor.Size = new System.Drawing.Size(635, 50);
+            grpGameMonitor.TabIndex = 9;
+            grpGameMonitor.TabStop = false;
+            grpGameMonitor.Text = "Game Monitor";
+            grpGameMonitor.Enter += grpGameMonitor_Enter;
+            // 
+            // tlpGameMonitor
+            // 
+            tlpGameMonitor.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tlpGameMonitor.AutoSize = true;
+            tlpGameMonitor.ColumnCount = 5;
+            tlpGameMonitor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tlpGameMonitor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tlpGameMonitor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tlpGameMonitor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            tlpGameMonitor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tlpGameMonitor.Controls.Add(txtMonitorExe, 1, 0);
+            tlpGameMonitor.Controls.Add(txtMonitorSong, 3, 0);
+            tlpGameMonitor.Controls.Add(btnMonitor, 4, 0);
+            tlpGameMonitor.Controls.Add(label1, 0, 0);
+            tlpGameMonitor.Controls.Add(label4, 2, 0);
+            tlpGameMonitor.Location = new System.Drawing.Point(7, 14);
+            tlpGameMonitor.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            tlpGameMonitor.Name = "tlpGameMonitor";
+            tlpGameMonitor.RowCount = 1;
+            tlpGameMonitor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tlpGameMonitor.Size = new System.Drawing.Size(621, 29);
+            tlpGameMonitor.TabIndex = 0;
+            // 
+            // txtMonitorExe
+            // 
+            txtMonitorExe.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtMonitorExe.Location = new System.Drawing.Point(76, 3);
+            txtMonitorExe.Name = "txtMonitorExe";
+            txtMonitorExe.ReadOnly = true;
+            txtMonitorExe.Size = new System.Drawing.Size(134, 23);
+            txtMonitorExe.TabIndex = 0;
+            // 
+            // txtMonitorSong
+            // 
+            txtMonitorSong.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtMonitorSong.Location = new System.Drawing.Point(259, 3);
+            txtMonitorSong.Name = "txtMonitorSong";
+            txtMonitorSong.ReadOnly = true;
+            txtMonitorSong.Size = new System.Drawing.Size(204, 23);
+            txtMonitorSong.TabIndex = 1;
+            txtMonitorSong.Text = "N/A";
+            // 
+            // btnMonitor
+            // 
+            btnMonitor.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            btnMonitor.Location = new System.Drawing.Point(469, 2);
+            btnMonitor.Margin = new System.Windows.Forms.Padding(3, 2, 0, 2);
+            btnMonitor.Name = "btnMonitor";
+            btnMonitor.Size = new System.Drawing.Size(152, 25);
+            btnMonitor.TabIndex = 2;
+            btnMonitor.Text = "Start Monitoring";
+            btnMonitor.UseVisualStyleBackColor = true;
+            btnMonitor.Click += btnMonitor_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(3, 7);
+            label1.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(67, 15);
+            label1.TabIndex = 3;
+            label1.Text = "Executable:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(216, 7);
+            label4.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(37, 15);
+            label4.TabIndex = 4;
+            label4.Text = "Song:";
             // 
             // Options
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.tlpRight);
-            this.Controls.Add(this.tlpLeft);
-            this.Controls.Add(this.btnParse);
-            this.Controls.Add(this.btnSongsDirectory);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtSongsDirectory);
-            this.MinimumSize = new System.Drawing.Size(1024, 768);
-            this.Name = "Options";
-            this.Text = "StepMania Helper V1.04.00";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Options_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Options_FormClosed);
-            this.Load += new System.EventHandler(this.Options_Load);
-            this.grpSpecialFilters.ResumeLayout(false);
-            this.grpSpecialFilters.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSongList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cSongBindingSource)).EndInit();
-            this.grpOutput.ResumeLayout(false);
-            this.grpOutput.PerformLayout();
-            this.grpProgramOptions.ResumeLayout(false);
-            this.grpProgramOptions.PerformLayout();
-            this.grpSearch.ResumeLayout(false);
-            this.grpSearch.PerformLayout();
-            this.tlpSearchOperands.ResumeLayout(false);
-            this.tlpSearchOperands.PerformLayout();
-            this.tlpSearchComboType.ResumeLayout(false);
-            this.tlpSearchComboType.PerformLayout();
-            this.grpSongInfo.ResumeLayout(false);
-            this.grpSongInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDifficulties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cDifficultyBindingSource)).EndInit();
-            this.grpFilterCustomPack.ResumeLayout(false);
-            this.grpFilterCustomPack.PerformLayout();
-            this.tlpFilterCustomSongPack.ResumeLayout(false);
-            this.tlpFilterCustomSongPack.PerformLayout();
-            this.tlpLeft.ResumeLayout(false);
-            this.tlpLeft.PerformLayout();
-            this.tlpRight.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1176, 841);
+            Controls.Add(tlpRight);
+            Controls.Add(tlpLeft);
+            Controls.Add(btnParse);
+            Controls.Add(btnSongsDirectory);
+            Controls.Add(label2);
+            Controls.Add(txtSongsDirectory);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MinimumSize = new System.Drawing.Size(1192, 880);
+            Name = "Options";
+            Text = "StepMania Helper V1.04.00";
+            FormClosing += Options_FormClosing;
+            FormClosed += Options_FormClosed;
+            Load += Options_Load;
+            grpSpecialFilters.ResumeLayout(false);
+            grpSpecialFilters.PerformLayout();
+            grpSongList.ResumeLayout(false);
+            grpSongList.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSongList).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cSongBindingSource).EndInit();
+            grpOutput.ResumeLayout(false);
+            grpOutput.PerformLayout();
+            grpProgramOptions.ResumeLayout(false);
+            grpProgramOptions.PerformLayout();
+            grpSearch.ResumeLayout(false);
+            grpSearch.PerformLayout();
+            tlpSearchOperands.ResumeLayout(false);
+            tlpSearchOperands.PerformLayout();
+            tlpSearchComboType.ResumeLayout(false);
+            tlpSearchComboType.PerformLayout();
+            grpSongInfo.ResumeLayout(false);
+            grpSongInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDifficulties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cDifficultyBindingSource).EndInit();
+            grpFilterCustomPack.ResumeLayout(false);
+            grpFilterCustomPack.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            tlpFilterCustomSongPack.ResumeLayout(false);
+            tlpFilterCustomSongPack.PerformLayout();
+            tlpLeft.ResumeLayout(false);
+            tlpRight.ResumeLayout(false);
+            grpGameMonitor.ResumeLayout(false);
+            grpGameMonitor.PerformLayout();
+            tlpGameMonitor.ResumeLayout(false);
+            tlpGameMonitor.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -1037,7 +1228,7 @@
         public System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.ComboBox cboSongSimilarity;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox grpSongList;
         private System.Windows.Forms.GroupBox grpOutput;
         private System.Windows.Forms.RichTextBox rtbOutput;
         private System.Windows.Forms.DataGridViewTextBoxColumn nExpectedDifficultyCountDataGridViewTextBoxColumn;
@@ -1119,5 +1310,18 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         public System.Windows.Forms.Button btnApplySearch;
+        private System.Windows.Forms.GroupBox grpGameMonitor;
+        private System.Windows.Forms.TableLayoutPanel tlpGameMonitor;
+        public System.Windows.Forms.TextBox txtMonitorExe;
+        public System.Windows.Forms.TextBox txtMonitorSong;
+        public System.Windows.Forms.Button btnMonitor;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.CheckBox chkHotkeyAlt;
+        private System.Windows.Forms.CheckBox chkHotkeyShift;
+        private System.Windows.Forms.ComboBox cbxHotkey;
+        private System.Windows.Forms.CheckBox chkHotkeyCtrl;
     }
 }

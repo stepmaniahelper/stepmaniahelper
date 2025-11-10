@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
+using Shell32;
 
 namespace StepManiaHelper.Helpers
 {
@@ -29,11 +31,31 @@ namespace StepManiaHelper.Helpers
     {
         public string Name { get; set; }
         public EFolderTypes Type { get; set; }
+        public bool HotkeyShift { get; set; } = true;
+        public bool HotkeyCtrl { get; set; } = true;
+        public bool HotkeyAlt { get; set; } = true;
+        public Keys HotkeyKey { get; set; } = Keys.None;
 
         public CSavedFolder(string Name, EFolderTypes Type)
         {
             this.Name = Name;
             this.Type = Type;
+        }
+
+        public bool Toggle(CSong song, bool value)
+        {
+            bool success = true;
+            // If this is a custom song pack folder
+            if (Type == EFolderTypes.CustomSongPack)
+            {
+                success = song.MoveCustomPackSong(Name, value);
+            }
+            // If this is a filter folder
+            else if (Type == EFolderTypes.Filter)
+            {
+                success = song.MoveFilterSong(value ? Name : null);
+            }
+            return success;
         }
 
         public override string ToString()

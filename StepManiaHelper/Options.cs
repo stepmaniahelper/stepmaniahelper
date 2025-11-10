@@ -19,6 +19,7 @@ using System.Text.RegularExpressions;
 using StepManiaHelper.Logic;
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
+using Shell32;
 
 namespace StepManiaHelper
 {
@@ -45,6 +46,7 @@ namespace StepManiaHelper
         public CSavedOptions SavedOptions;
         public CSongListPopulator StepManiaParser;
         public CSongSearcher SongSearch;
+        public CGameMonitor GameMonitor;
         Dictionary<CheckBox, ComboBox> AssociatedControls;
         Boolean IsParsing = false;
         public Boolean ChangingSongListSource = false;
@@ -70,11 +72,19 @@ namespace StepManiaHelper
             this.SavedOptions = new CSavedOptions();
             this.StepManiaParser = new CSongListPopulator();
             this.SongSearch = new CSongSearcher(this);
+            this.GameMonitor = new CGameMonitor(this);
             this.AssociatedControls = new Dictionary<CheckBox, ComboBox>();
 
             SelectedSong.aDifficulties = new List<CDifficulty>();
             Difficulties = new SortableBindingList<CDifficulty>(SelectedSong.aDifficulties);
             dataGridViewHelpers = new DataGridViewHelpers(this);
+
+            // Populate the hotkey dropdown
+            foreach (var key in Enum.GetNames(typeof(Keys)))
+            {
+                cbxHotkey.Items.Add(key);
+            }
+            cbxHotkey.SelectedItem = cbxHotkey.Items[0];
         }
 
         private void LoadVlc()
@@ -111,8 +121,8 @@ namespace StepManiaHelper
                 // If the combobox exists, set its selected-index-changed handler
                 if (AssociatedControls[Key] != null)
                 {
-                    AssociatedControls[Key].SelectedIndexChanged += new System.EventHandler(this.DetermineParseButtonEnabledState);
-                    AssociatedControls[Key].TextChanged += new System.EventHandler(this.DetermineParseButtonEnabledState);
+                    AssociatedControls[Key].SelectedIndexChanged += new System.EventHandler(this.SongsDirectoryChanged);
+                    AssociatedControls[Key].TextChanged += new System.EventHandler(this.SongsDirectoryChanged);
                 }
             }
 
@@ -193,7 +203,7 @@ namespace StepManiaHelper
                 case EParseTypes.All:
                     radParseAll.Checked = true;
                     break;
-            }            
+            }
 
             // Don't add event handlers until all of the above setup has occurred
 
@@ -204,6 +214,18 @@ namespace StepManiaHelper
 
             radSearchAnd.CheckedChanged += RadSearch_CheckedChanged;
             radSearchOr.CheckedChanged += RadSearch_CheckedChanged;
+
+            // TEST CODE
+            CSavedFolder filter = SavedOptions.Folders.FirstOrDefault(x => x.Name == "_DELETED");
+            if (filter == null)
+            {
+                filter = new CSavedFolder("_DELETED", EFolderTypes.Filter);
+                SavedOptions.Folders.Add(filter);
+                cbxFolders.Items.Add(filter);
+            }
+            GameMonitor.RegisterHotKey(
+                Helpers.ModifierKeys.Control | Helpers.ModifierKeys.Alt, Keys.D,
+                filter);
         }
 
         public void ChangeSongListSource(SortableBindingList<CSong> List)
@@ -289,7 +311,7 @@ namespace StepManiaHelper
                 MessageBox.Show(
                     "The supplied folder name contains invalid characters.",
                     title,
-                    MessageBoxButtons.OK, 
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             // If the folder name is empty
@@ -334,11 +356,11 @@ namespace StepManiaHelper
             }
             // If the renamed folder name would duplicate the add new options
             else if ((SelectedFolder != null)
-            &&       (name.ToLower() == strNewItem.ToLower()))
+            && (name.ToLower() == strNewItem.ToLower()))
             {
                 Success = false;
                 MessageBox.Show(
-                    "The foldername \""+strNewItem+"\" is reserved.",
+                    "The foldername \"" + strNewItem + "\" is reserved.",
                     title,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -374,7 +396,7 @@ namespace StepManiaHelper
             }
             // If the renamed folder name would duplicate the add new options
             else if ((SelectedSearch != DefaultSearch)
-            &&       (name.ToLower() == strNewItem.ToLower()))
+            && (name.ToLower() == strNewItem.ToLower()))
             {
                 Success = false;
                 MessageBox.Show(
@@ -573,7 +595,7 @@ namespace StepManiaHelper
             // If the user selected a saved search from the list
             CSavedSearch search = cbxSearchName.SelectedItem as CSavedSearch;
             if ((search != null)
-            &&  (search != SelectedSearch))
+            && (search != SelectedSearch))
             {
                 // Save the selection
                 SelectedSearch = search;
@@ -586,7 +608,7 @@ namespace StepManiaHelper
             }
             // If "Add New" was selected (it's a string, not a search)
             else if ((search == null)
-            &&       (SelectedSearch != DefaultSearch))
+            && (SelectedSearch != DefaultSearch))
             {
                 // The "Add New" option can't be deleted (it's not a real folder)
                 btnSearchDelete.Enabled = false;
@@ -653,7 +675,7 @@ namespace StepManiaHelper
             // If the user has a folder selected
             CSavedFolder folder = cbxFolders.SelectedItem as CSavedFolder;
             if ((folder != null)
-            &&  (radCustomSongPack.Checked == true))
+            && (radCustomSongPack.Checked == true))
             {
                 folder.Type = EFolderTypes.CustomSongPack;
             }
@@ -665,7 +687,7 @@ namespace StepManiaHelper
             // If the user has a folder selected
             CSavedFolder folder = cbxFolders.SelectedItem as CSavedFolder;
             if ((folder != null)
-            &&  (radFilter.Checked == true))
+            && (radFilter.Checked == true))
             {
                 folder.Type = EFolderTypes.Filter;
             }
@@ -723,12 +745,15 @@ namespace StepManiaHelper
             }
         }
 
-        private void DetermineParseButtonEnabledState(object sender, EventArgs e)
+        private void SongsDirectoryChanged(object sender, EventArgs e)
         {
             WriteSavedOptions();
 
             // We can only search/parse if the directory exists
             this.btnParse.Enabled = Directory.Exists(txtSongsDirectory.Text);
+
+            // Search for the game executable
+            GameMonitor.FindExecutable(txtSongsDirectory.Text);
         }
 
         private void Generic_CheckedChanged(object sender, EventArgs e)
@@ -750,7 +775,7 @@ namespace StepManiaHelper
                 }
             }
 
-            DetermineParseButtonEnabledState(sender, e);
+            SongsDirectoryChanged(sender, e);
         }
 
         private void ParseButtonClick(Boolean bUseFilter)
@@ -816,7 +841,7 @@ namespace StepManiaHelper
             }
             else
             {
-                this.StepManiaParser.StopParsing(ParseCancelComplete);                
+                this.StepManiaParser.StopParsing(ParseCancelComplete);
             }
         }
 
@@ -1130,7 +1155,7 @@ namespace StepManiaHelper
             }
         }
 
-        private  void PlayPauseSongLogic()
+        private void PlayPauseSongLogic()
         {
             try
             {
@@ -1183,7 +1208,7 @@ namespace StepManiaHelper
             switch (search.Type)
             {
                 case ESearchTypes.AND: radSearchAnd.Checked = true; break;
-                case ESearchTypes.OR:  radSearchOr.Checked = true;  break;
+                case ESearchTypes.OR: radSearchOr.Checked = true; break;
             }
 
             // Add controls to GUI for each operand in the search
@@ -1276,7 +1301,7 @@ namespace StepManiaHelper
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 using (StreamWriter writer = new StreamWriter(saveFileDialog1.FileName))
-                {                    
+                {
                     // Get a list of properties from the song class
                     IEnumerable<PropertyInfo> properties = typeof(CSong).GetProperties().Where(x => x.PropertyType != typeof(Image));
 
@@ -1321,7 +1346,7 @@ namespace StepManiaHelper
 
                     // If the cell is currently unchecked
                     if ((cell.Value == null)
-                    ||  ((bool)cell.Value == false))
+                    || ((bool)cell.Value == false))
                     {
                         // Check it
                         cell.Value = true;
@@ -1352,10 +1377,20 @@ namespace StepManiaHelper
                         // Check it
                         cell.Value = false;
                         // Simulate a click event to run the backend logic
-                        dataGridViewHelpers.dgvSongList_CellContentClick(dgvSongList, new DataGridViewCellEventArgs(cell.ColumnIndex, cell.RowIndex));                        
+                        dataGridViewHelpers.dgvSongList_CellContentClick(dgvSongList, new DataGridViewCellEventArgs(cell.ColumnIndex, cell.RowIndex));
                     }
                 }
             }
+        }
+
+        private void btnMonitor_Click(object sender, EventArgs e)
+        {
+            GameMonitor.ToggleMonitoring();
+        }
+
+        private void grpGameMonitor_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

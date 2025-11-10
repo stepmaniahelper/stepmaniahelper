@@ -310,7 +310,7 @@ namespace StepManiaHelper
             if (this.lstRemainingSongs.Count > 0)
             {
                 // Update the current progress so the user knows what's going on
-                OutputForm.UpdateTitleAndText("Processing Song Files (This may take a while)");
+                OutputForm.UpdateTitleAndText("Processing Song Files");
             }
             else
             {
