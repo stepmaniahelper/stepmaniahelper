@@ -22,7 +22,7 @@ namespace StepManiaHelper
             return "Moved " + this.aUnparsedSongs.Count.ToString() + " songs into the '" + FilterFolder + "' folder because the parser couldn't read them.\n";
         }
 
-        internal override void Filter(Options OutputForm, List<CSong> lstSongs)
+        internal override void Filter(Options OutputForm, List<CSong> lstSongs, ref bool RunThread)
         {
             int nSong = 0;
             OutputForm.SetStatus("Searching For Songs That Couldn't Be Parsed", 2);
@@ -30,6 +30,12 @@ namespace StepManiaHelper
             // Loop through all the parsed songs
             foreach (CSong ParsedSong in lstSongs)
             {
+                // Gracefully handle aborting the thread
+                if (!RunThread)
+                {
+                    break;
+                }
+
                 // Let the user know which song we're currently examining the playability of
                 OutputForm.AddText("\t" + ParsedSong.FolderName + "\n");
 
@@ -48,6 +54,12 @@ namespace StepManiaHelper
             // For songs that are unplayable on a dance pad, move them into the "NONPAD" folder
             foreach (CSong UnparsedSong in this.aUnparsedSongs)
             {
+                // Gracefully handle aborting the thread
+                if (!RunThread)
+                {
+                    break;
+                }
+
                 // Let the user know which song we're currently moving
                 OutputForm.AddText("\t" + UnparsedSong.FolderName + "\n");
 

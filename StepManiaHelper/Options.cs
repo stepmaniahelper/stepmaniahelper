@@ -216,7 +216,11 @@ namespace StepManiaHelper
             radSearchOr.CheckedChanged += RadSearch_CheckedChanged;
 
             // TEST CODE
-            CSavedFolder filter = SavedOptions.Folders.FirstOrDefault(x => x.Name == "_DELETED");
+            if (SavedOptions.Folders == null)
+            {
+                SavedOptions.Folders = new List<CSavedFolder>();
+            }
+            CSavedFolder filter = SavedOptions.Folders?.FirstOrDefault(x => x.Name == "_DELETED");
             if (filter == null)
             {
                 filter = new CSavedFolder("_DELETED", EFolderTypes.Filter);

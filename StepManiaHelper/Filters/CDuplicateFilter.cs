@@ -24,7 +24,7 @@ namespace StepManiaHelper
             return "Moved " + this.aDuplicateSongs.Count.ToString() + " songs into the '" + FilterFolder + "' folder because they were exact duplicates.\n";
         }
 
-        internal override void Filter(Options OutputForm, List<CSong> lstSongs)
+        internal override void Filter(Options OutputForm, List<CSong> lstSongs, ref bool RunThread)
         {
             int nSong = 0;
             OutputForm.SetStatus("Searching For Duplicate Songs", 2);
@@ -38,6 +38,12 @@ namespace StepManiaHelper
             // Loop through all the parsed songs
             foreach (CSong ParsedSong in lstSongs)
             {
+                // Gracefully handle aborting the thread
+                if (!RunThread)
+                {
+                    break;
+                }
+
                 // Create the internal dictionary for the song
                 List<byte[]> lstHashes = new List<byte[]>();
 
@@ -53,6 +59,12 @@ namespace StepManiaHelper
             // Loop through all the parsed songs
             foreach (CSong ParsedSong in lstSongs)
             {
+                // Gracefully handle aborting the thread
+                if (!RunThread)
+                {
+                    break;
+                }
+
                 OutputForm.SetStatus("(Song " + nSong + " of " + lstSongs.Count + ")", 3);
 
                 // Because of the nature of the double loop, the first "ParsedSong" will flag all duplicates as needing deletion.
@@ -65,6 +77,12 @@ namespace StepManiaHelper
                     // Loop through all the parsed songs again, comparing the inner loop's song to the outer loop's song
                     foreach (CSong OtherParsedSong in lstSongs)
                     {
+                        // Gracefully handle aborting the thread
+                        if (!RunThread)
+                        {
+                            break;
+                        }
+
                         // If the song objects don't point to the same place, 
                         // and if the "OtherParsedSong" hasn't already been scanned
                         if ((ParsedSong != OtherParsedSong)
@@ -131,6 +149,12 @@ namespace StepManiaHelper
             // Delete all duplicate song files
             foreach (CSong DuplicateSong in this.aDuplicateSongs)
             {
+                // Gracefully handle aborting the thread
+                if (!RunThread)
+                {
+                    break;
+                }
+
                 // Let the user know which song we're currently deleting
                 OutputForm.AddText("\t" + DuplicateSong.FolderName + DuplicateSong.GetSongDataString(ESongData.EBasic) + "\n");
 

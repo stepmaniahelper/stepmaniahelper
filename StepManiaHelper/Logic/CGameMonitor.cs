@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -139,13 +140,14 @@ namespace StepManiaHelper.Logic
                 Owner.btnMonitor.Text = "Stop Monitoring";
                 IsRunning = true;
                 BackgroundThread = new Thread(Monitor);
-                this.BackgroundThread.Start();
+                BackgroundThread.IsBackground = true;
+                BackgroundThread.Start();
             }
             else
             {
                 // To prevent locking up the GUI thread if the session doesn't
                 // terminate in a timely manner, we run this logic in a separate thread.
-                new Thread(() =>
+                Thread StopThread = new Thread(() =>
                 {
                     Session?.Source?.Dispose();
                     Session?.Dispose();
@@ -156,7 +158,9 @@ namespace StepManiaHelper.Logic
                     Owner.txtMonitorSong.Text = "N/A";
                     SelectedSong = null;
 
-                }).Start();
+                });
+                StopThread.IsBackground = true;
+                StopThread.Start();
             }
         }
 
@@ -179,23 +183,29 @@ namespace StepManiaHelper.Logic
             catch (Exception ex)
             {
                 Session = null;
-                MessageBox.Show($"{ex.Message}", "Error Monitoring Game",
+                StackFrame[] frames = (new StackTrace(ex, true)).GetFrames();
+                string stackTrace = "";
+                foreach (var frame in frames)
+                {
+                    stackTrace += $"{frame.GetMethod().Name}:{frame.GetFileLineNumber()}\n";
+                }
+                MessageBox.Show($"{ex.Message}\n\n{stackTrace}", "Error Monitoring Game",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void Kernel_FileIOCreate(FileIOCreateTraceData obj)
         {
-            if (((obj.FileName?.Length ?? 0) > 0)
-            && (obj.ProcessName?.Contains(Executable?.Name?.Replace(Executable?.Extension, ""), StringComparison.OrdinalIgnoreCase) == true))
+            if (((obj?.FileName?.Length ?? 0) > 0)
+            && (obj?.ProcessName?.Contains(Executable?.Name?.Replace(Executable?.Extension, ""), StringComparison.OrdinalIgnoreCase) == true))
             {
-                FileInfo file = new FileInfo(obj.FileName);
+                FileInfo file = new FileInfo(obj?.FileName);
                 DirectoryInfo songFolder = file?.Directory;
                 DirectoryInfo packFolder = songFolder?.Parent;
 
-                CSong song = Owner.StepManiaParser.lstAllSongs.FirstOrDefault(x => 
-                    (x.FolderName == songFolder.Name) &&
-                    (new DirectoryInfo(x.FolderPath)?.Parent.Name == packFolder.Name));
+                CSong song = Owner?.StepManiaParser?.lstAllSongs?.FirstOrDefault(x => 
+                    (x?.FolderName == songFolder?.Name) &&
+                    (new DirectoryInfo(x?.FolderPath)?.Parent?.Name == packFolder?.Name));
 
                 if (song != null)
                 {
@@ -203,15 +213,16 @@ namespace StepManiaHelper.Logic
                     SelectedSong = song;
                     // If the selected song changed, apply any pending edits
                     if ((OldSelectedSong != null)
+                    &&  (SelectedSong != null)
                     &&  (SelectedSong != OldSelectedSong)
                     &&  (PendingEdits.ContainsKey(OldSelectedSong)))
                     {
                         ApplyFolderToSong(OldSelectedSong, PendingEdits[OldSelectedSong]);
                     }
                     
-                    if (Owner.txtMonitorSong.Text != SelectedSong.FolderName)
+                    if (Owner?.txtMonitorSong?.Text != SelectedSong?.FolderName)
                     {
-                        Owner.txtMonitorSong.BeginInvoke(new Action(() => { Owner.txtMonitorSong.Text = SelectedSong.FolderName; }));
+                        Owner.txtMonitorSong.BeginInvoke(new Action(() => { Owner.txtMonitorSong.Text = SelectedSong?.FolderName; }));
                     }
                 }
             }

@@ -24,7 +24,7 @@ namespace StepManiaHelper
             return "Moved " + this.aSimilarSongs.Count.ToString() + " songs into the '" + FilterFolder + "' folder because a better version exists.\n";
         }
 
-        internal override void Filter(Options OutputForm, List<CSong> lstSongs)
+        internal override void Filter(Options OutputForm, List<CSong> lstSongs, ref bool RunThread)
         {
             int nSong = 0;
             OutputForm.SetStatus("Searching For Similar Songs", 2);
@@ -35,6 +35,12 @@ namespace StepManiaHelper
             // Loop through all the parsed songs
             foreach (CSong ParsedSong in lstSongs)
             {
+                // Gracefully handle aborting the thread
+                if (!RunThread)
+                {
+                    break;
+                }
+
                 // Because of the nature of the double loop, the first "ParsedSong" will flag all similar songs.
                 // If we come across an already flagged song, we know that all similar songs have already been found, so we can skip it.
                 if (ParsedSong.bFlagged == false)
@@ -46,6 +52,12 @@ namespace StepManiaHelper
                     // Loop through all the parsed songs again, comparing the inner loop's song to the outer loop's song
                     foreach (CSong OtherParsedSong in lstSongs)
                     {
+                        // Gracefully handle aborting the thread
+                        if (!RunThread)
+                        {
+                            break;
+                        }
+
                         // If the "OtherParsedSong" is already flagged, we can ignore it because it's already being moved
                         if (OtherParsedSong.bFlagged == false)
                         {
@@ -136,6 +148,12 @@ namespace StepManiaHelper
             // For songs that are similar, move all worse versions into "ALT" folder
             foreach (CSong SimilarSong in this.aSimilarSongs)
             {
+                // Gracefully handle aborting the thread
+                if (!RunThread)
+                {
+                    break;
+                }
+
                 // Let the user know which song we're currently deleting
                 OutputForm.AddText("\t" + SimilarSong.FolderName + SimilarSong.GetSongDataString(ESongData.EBasic) + "\n" +
                                    "\t\tSimilar To: " + SimilarSong.aSimilarSongs[0].GetSongDataString(ESongData.EBasic) + "\n");

@@ -74,18 +74,18 @@ namespace StepManiaHelper
         [JsonIgnore]
         public Image DiskImage { get; set; }
         public string FolderPath { get; set; }
-        public List<string> StepFilePaths { get; set; }
+        public List<string> StepFilePaths { get; set; } = new List<string>();
 
         public int? nExpectedDifficultyCount;
-        public List<CDifficulty> aDifficulties;
-        public List<CSong> aSimilarSongs;        
-        public List<string> astrNames;
-        public List<string> astrArtists;
-        public List<string> astrSimplifiedNames;
-        public List<string> astrSimplifiedArtists;
-        public List<string> astrGenres;        
-        public List<CBpmSegment> aBpms;
-        public List<CStop> aStops;        
+        public List<CDifficulty> aDifficulties = new List<CDifficulty>();
+        public List<CSong> aSimilarSongs = new List<CSong>();
+        public List<string> astrNames = new List<string>();
+        public List<string> astrArtists = new List<string>();
+        public List<string> astrSimplifiedNames = new List<string>();
+        public List<string> astrSimplifiedArtists = new List<string>();
+        public List<string> astrGenres = new List<string>();
+        public List<CBpmSegment> aBpms = new List<CBpmSegment>();
+        public List<CStop> aStops = new List<CStop>();
         public bool bFlagged;
         public bool bAlreadyScanned; // Used in the duplicate and similar song filter logic       
         public double? fModeBpm;

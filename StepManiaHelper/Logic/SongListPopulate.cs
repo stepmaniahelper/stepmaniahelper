@@ -69,13 +69,14 @@ namespace StepManiaHelper
         public void StartParsing()
         {
             this.BackgroundThread = new Thread(ParseFolderStart);
-            this.RunThread = true;
+            this.BackgroundThread.IsBackground = true;
             this.BackgroundThread.Start();
+            this.RunThread = true;
         }
 
         public void StopParsing(Action Callback)
         {
-            new Thread(() =>
+            Thread StopThread = new Thread(() =>
             {
                 // The background thread will need to run stuff on the GUI thread, so the GUI 
                 // thread can't lock here waiting for the background thread to exit. Instead 
@@ -83,7 +84,9 @@ namespace StepManiaHelper
                 this.RunThread = false;
                 this.BackgroundThread?.Join();
                 Callback();
-            }).Start();            
+            });
+            StopThread.IsBackground = true;
+            StopThread.Start();
         }
 
         public void ParseFolderStart()
@@ -384,7 +387,7 @@ namespace StepManiaHelper
                 }
 
                 OutputForm.SetStatus("(Filter " + nFilter + " of " + nFilterCount + ")", 1);
-                Filter.Filter(OutputForm, this.lstAllSongs);
+                Filter.Filter(OutputForm, this.lstAllSongs, ref RunThread);
                 nFilter += 1;
             }
         }

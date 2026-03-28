@@ -21,7 +21,7 @@ namespace StepManiaHelper
 
         }
 
-        internal virtual void Filter(Options OutputForm, List<CSong> lstSongs)
+        internal virtual void Filter(Options OutputForm, List<CSong> lstSongs, ref bool RunThread)
         {
 
         }

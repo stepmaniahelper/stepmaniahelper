@@ -170,7 +170,7 @@
             label3.Location = new System.Drawing.Point(190, 81);
             label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(144, 15);
+            label3.Size = new System.Drawing.Size(145, 15);
             label3.TabIndex = 6;
             label3.Text = "Song Similarity Threshold:";
             // 
@@ -1114,7 +1114,7 @@
             // txtMonitorExe
             // 
             txtMonitorExe.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            txtMonitorExe.Location = new System.Drawing.Point(76, 3);
+            txtMonitorExe.Location = new System.Drawing.Point(75, 3);
             txtMonitorExe.Name = "txtMonitorExe";
             txtMonitorExe.ReadOnly = true;
             txtMonitorExe.Size = new System.Drawing.Size(134, 23);
@@ -1123,7 +1123,7 @@
             // txtMonitorSong
             // 
             txtMonitorSong.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            txtMonitorSong.Location = new System.Drawing.Point(259, 3);
+            txtMonitorSong.Location = new System.Drawing.Point(258, 3);
             txtMonitorSong.Name = "txtMonitorSong";
             txtMonitorSong.ReadOnly = true;
             txtMonitorSong.Size = new System.Drawing.Size(204, 23);
@@ -1133,10 +1133,10 @@
             // btnMonitor
             // 
             btnMonitor.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            btnMonitor.Location = new System.Drawing.Point(469, 2);
+            btnMonitor.Location = new System.Drawing.Point(468, 2);
             btnMonitor.Margin = new System.Windows.Forms.Padding(3, 2, 0, 2);
             btnMonitor.Name = "btnMonitor";
-            btnMonitor.Size = new System.Drawing.Size(152, 25);
+            btnMonitor.Size = new System.Drawing.Size(153, 25);
             btnMonitor.TabIndex = 2;
             btnMonitor.Text = "Start Monitoring";
             btnMonitor.UseVisualStyleBackColor = true;
@@ -1148,14 +1148,14 @@
             label1.Location = new System.Drawing.Point(3, 7);
             label1.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(67, 15);
+            label1.Size = new System.Drawing.Size(66, 15);
             label1.TabIndex = 3;
             label1.Text = "Executable:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(216, 7);
+            label4.Location = new System.Drawing.Point(215, 7);
             label4.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(37, 15);

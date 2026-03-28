@@ -126,10 +126,10 @@ namespace StepManiaHelper.Helpers
         public Boolean FilterStops { get; set; }
         public int FilterStopsValue { get; set; }
 
-        public List<string> SongColumns { get; set; }
-        public List<string> DiffColumns { get; set; }
+        public List<string> SongColumns { get; set; } = new List<string>();
+        public List<string> DiffColumns { get; set; } = new List<string>();
 
-        public List<CSavedFolder> Folders { get; set; }
-        public List<CSavedSearch> Searches { get; set; }
+        public List<CSavedFolder> Folders { get; set; } = new List<CSavedFolder>();
+        public List<CSavedSearch> Searches { get; set; } = new List<CSavedSearch>();
     }
 }

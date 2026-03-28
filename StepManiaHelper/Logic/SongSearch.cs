@@ -49,21 +49,23 @@ namespace StepManiaHelper.Logic
         private void StartSearching()
         {
             this.BackgroundThread = new Thread(Search);
+            this.BackgroundThread.IsBackground = true;
             this.RunThread = true;
             this.BackgroundThread.Start();
         }
 
         private void StopSearching()
         {
-            new Thread(() =>
+            Thread StopThread = new Thread(() =>
             {
                 // The background thread will need to run stuff on the GUI thread, so the GUI 
                 // thread can't lock here waiting for the background thread to exit. Instead 
                 // we wait in a separate thread with a callback to handle when the thread completes
                 this.RunThread = false;
                 this.BackgroundThread?.Join();
-
-            }).Start();
+            });
+            StopThread.IsBackground = true;
+            StopThread.Start();
         }
 
         private void Search()
