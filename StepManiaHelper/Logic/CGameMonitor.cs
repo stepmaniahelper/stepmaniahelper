@@ -95,9 +95,9 @@ namespace StepManiaHelper.Logic
 
                         // Duplicating or restoring a filtered song can always be done,
                         // and modifications to the non-selected-song can also always be done
-                        if ((folder.Type == EFolderTypes.CustomSongPack)
+                        /*if ((folder.Type == EFolderTypes.CustomSongPack)
                         ||  (newValue == false)
-                        ||  (song != Owner.SelectedSong))
+                        ||  (song != Owner.SelectedSong))*/
                         {
                             // Run the proper folder logic
                             if (folder.Toggle(song, newValue) == true)
@@ -114,10 +114,10 @@ namespace StepManiaHelper.Logic
                         // Filtering a song cannot be done while the song is selected,
                         // so create a pending edit for it. This will be applied when
                         // the song selection changes.
-                        else
+                        /*else
                         {
                             PendingEdits[song] = folder;
-                        }
+                        }*/
                     }
                 }
             }
@@ -160,19 +160,26 @@ namespace StepManiaHelper.Logic
                 // terminate in a timely manner, we run this logic in a separate thread.
                 Thread StopThread = new Thread(() =>
                 {
-                    Session?.Source?.Dispose();
-                    Session?.Dispose();
-                    Session = null;
-                    BackgroundThread.Join();
-                    IsRunning = false;
-                    Owner.btnMonitor.Text = "Start Monitoring";
-                    Owner.txtMonitorSong.Text = "N/A";
-                    SelectedSong = null;
-
+                    ToggleMonitoringOff();
                 });
                 StopThread.IsBackground = true;
                 StopThread.Start();
             }
+        }
+
+        private void ToggleMonitoringOff()
+        {
+            Session?.Source?.Dispose();
+            Session?.Dispose();
+            Session = null;
+            if (System.Threading.Thread.CurrentThread != BackgroundThread)
+            {
+                BackgroundThread.Join();
+            }
+            IsRunning = false;
+            Owner.btnMonitor.BeginInvoke(new Action(() => { Owner.btnMonitor.Text = "Start Monitoring"; }));
+            Owner.txtMonitorSong.BeginInvoke(new Action(() => { Owner.txtMonitorSong.Text = "N/A"; }));
+            SelectedSong = null;
         }
 
         private void Monitor()
@@ -202,6 +209,7 @@ namespace StepManiaHelper.Logic
                 }
                 MessageBox.Show($"{ex.Message}\n\n{stackTrace}", "Error Monitoring Game",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ToggleMonitoringOff();
             }
         }
 
