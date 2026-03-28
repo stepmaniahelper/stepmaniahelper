@@ -46,7 +46,6 @@
             lblSongListHeader = new System.Windows.Forms.Label();
             cbSongListHeaders = new System.Windows.Forms.ComboBox();
             dgvSongList = new System.Windows.Forms.DataGridView();
-            folderNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             cSongBindingSource = new System.Windows.Forms.BindingSource(components);
             grpOutput = new System.Windows.Forms.GroupBox();
             txtStatus = new System.Windows.Forms.TextBox();
@@ -321,7 +320,6 @@
             dgvSongList.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dgvSongList.AutoGenerateColumns = false;
             dgvSongList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSongList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { folderNameDataGridViewTextBoxColumn });
             dgvSongList.DataSource = cSongBindingSource;
             dgvSongList.Location = new System.Drawing.Point(7, 51);
             dgvSongList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -330,12 +328,6 @@
             dgvSongList.Size = new System.Drawing.Size(621, 485);
             dgvSongList.TabIndex = 0;
             dgvSongList.RowPostPaint += dgvSongList_RowPostPaint;
-            // 
-            // folderNameDataGridViewTextBoxColumn
-            // 
-            folderNameDataGridViewTextBoxColumn.DataPropertyName = "FolderName";
-            folderNameDataGridViewTextBoxColumn.HeaderText = "FolderName";
-            folderNameDataGridViewTextBoxColumn.Name = "folderNameDataGridViewTextBoxColumn";
             // 
             // cSongBindingSource
             // 
@@ -885,6 +877,7 @@
             chkHotkeyAlt.TabIndex = 7;
             chkHotkeyAlt.Text = "Alt";
             chkHotkeyAlt.UseVisualStyleBackColor = true;
+            chkHotkeyAlt.CheckedChanged += chkHotkeyAlt_CheckedChanged;
             // 
             // chkHotkeyShift
             // 
@@ -898,6 +891,7 @@
             chkHotkeyShift.TabIndex = 8;
             chkHotkeyShift.Text = "Shift";
             chkHotkeyShift.UseVisualStyleBackColor = true;
+            chkHotkeyShift.CheckedChanged += chkHotkeyShift_CheckedChanged;
             // 
             // cbxHotkey
             // 
@@ -907,6 +901,7 @@
             cbxHotkey.Name = "cbxHotkey";
             cbxHotkey.Size = new System.Drawing.Size(168, 23);
             cbxHotkey.TabIndex = 9;
+            cbxHotkey.SelectedIndexChanged += cbxHotkey_SelectedIndexChanged;
             // 
             // chkHotkeyCtrl
             // 
@@ -920,6 +915,7 @@
             chkHotkeyCtrl.TabIndex = 10;
             chkHotkeyCtrl.Text = "Ctrl";
             chkHotkeyCtrl.UseVisualStyleBackColor = true;
+            chkHotkeyCtrl.CheckedChanged += chkHotkeyCtrl_CheckedChanged;
             // 
             // tlpFilterCustomSongPack
             // 
@@ -1234,7 +1230,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nExpectedDifficultyCountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nLengthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn strPackDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn folderNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fDurationDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn strMusicFilePathDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn strStepFilePathDataGridViewTextBoxColumn;

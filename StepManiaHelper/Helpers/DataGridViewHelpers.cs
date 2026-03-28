@@ -99,6 +99,8 @@ namespace StepManiaHelper.Helpers
                 int ColumnIndex = Form.SavedOptions.SongColumns.IndexOf(column.HeaderText);
                 column.Visible = (ColumnIndex != -1);
             }
+            // Fix the header visible checkbox now that the column visibility has updated
+            cbSongListHeaders_SelectedIndexChanged(null, null);
             // Must re-arrange the order of columns by increasing display index, 
             // because higher number display indexes can be modified automatically 
             // when modifying lower number display indexes
@@ -404,7 +406,8 @@ namespace StepManiaHelper.Helpers
         // When the song list header dropdown selects a new item, we have to update the checkbox state to match the new header
         public void cbSongListHeaders_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Form.chkSongHeaderVisible.Checked = Form.dgvSongList?.Columns?.OfType<DataGridViewColumn>()?.ToList()?.FirstOrDefault(x => x.HeaderText == Form.cbSongListHeaders.SelectedItem as string)?.Visible ?? false;
+            var selected = Form.dgvSongList?.Columns?.OfType<DataGridViewColumn>()?.ToList()?.FirstOrDefault(x => x.HeaderText == Form.cbSongListHeaders.SelectedItem as string);
+            Form.chkSongHeaderVisible.Checked = selected?.Visible ?? false;
         }
 
         // When the user hides a column in the difficulty grid view, we need to update our saved data to match

@@ -39,13 +39,22 @@ namespace StepManiaHelper.Logic
 
         public void RegisterHotKey(ModifierKeys modifier, Keys key, CSavedFolder cSavedFolder)
         {
-            Hook.RegisterHotKey(modifier, key);
-            Hotkeys.Add(new Tuple<ModifierKeys, Keys>(modifier, key), cSavedFolder);
+            if (cSavedFolder.HotKeyId != null)
+            {
+                Hook.UnRegisterHotKey(cSavedFolder.HotKeyId);
+                var old = Hotkeys.FirstOrDefault(x => x.Value == cSavedFolder);
+                Hotkeys.Remove(old.Key);
+            }
+            if (key != Keys.None)
+            {
+                cSavedFolder.HotKeyId = Hook.RegisterHotKey(modifier, key);
+                Hotkeys.Add(new Tuple<ModifierKeys, Keys>(modifier, key), cSavedFolder);
+            }
         }
 
         private void Hook_KeyPressed(object sender, KeyPressedEventArgs e)
         {
-            if (SelectedSong != null)
+            if (Owner.SelectedSong != null)
             {
                 Tuple<ModifierKeys, Keys>? key = Hotkeys.Keys.FirstOrDefault(x => (x.Item1 == e.Modifier) && (x.Item2 == e.Key));
                 if (key != null)
@@ -53,7 +62,7 @@ namespace StepManiaHelper.Logic
                     CSavedFolder folder = Hotkeys[key];
                     if (folder != null)
                     {
-                        ApplyFolderToSong(SelectedSong, folder);
+                        ApplyFolderToSong(Owner.SelectedSong, folder);
                     }
                 }
             }
@@ -73,8 +82,10 @@ namespace StepManiaHelper.Logic
                 // Loop through all rows in the data grid            
                 foreach (DataGridViewRow row in Owner.dgvSongList.Rows)
                 {
-                    // If this is the row for the specified song
-                    if (row.DataBoundItem == song)
+                    // If this is the row for the specified song (we can't use object equality since the 
+                    // selected song is a constant object that constantly has its properties copied over)
+                    CSong rowSong = row.DataBoundItem as CSong;
+                    if (rowSong.FolderPath == song.FolderPath)
                     {
                         // Get the cell associated with the checkbox
                         DataGridViewCheckBoxCell cell = row.Cells[column.Index] as DataGridViewCheckBoxCell;
@@ -86,7 +97,7 @@ namespace StepManiaHelper.Logic
                         // and modifications to the non-selected-song can also always be done
                         if ((folder.Type == EFolderTypes.CustomSongPack)
                         ||  (newValue == false)
-                        ||  (song != SelectedSong))
+                        ||  (song != Owner.SelectedSong))
                         {
                             // Run the proper folder logic
                             if (folder.Toggle(song, newValue) == true)
@@ -210,6 +221,7 @@ namespace StepManiaHelper.Logic
                 if (song != null)
                 {
                     CSong OldSelectedSong = SelectedSong;
+                    Owner.SelectedSong = song;
                     SelectedSong = song;
                     // If the selected song changed, apply any pending edits
                     if ((OldSelectedSong != null)

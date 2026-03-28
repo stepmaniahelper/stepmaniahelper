@@ -81,7 +81,7 @@ namespace StepManiaHelper.Helpers
         /// </summary>
         /// <param name="modifier">The modifiers that are associated with the hot key.</param>
         /// <param name="key">The key itself that is associated with the hot key.</param>
-        public void RegisterHotKey(ModifierKeys modifier, Keys key)
+        public int RegisterHotKey(ModifierKeys modifier, Keys key)
         {
             // increment the counter.
             _currentId = _currentId + 1;
@@ -89,6 +89,18 @@ namespace StepManiaHelper.Helpers
             // register the hot key.
             if (!RegisterHotKey(_window.Handle, _currentId, (uint)modifier, (uint)key))
                 throw new InvalidOperationException("Couldn’t register the hot key.");
+
+            return _currentId;
+        }
+
+        public void UnRegisterHotKey(int? hotkeyId)
+        {
+            if (hotkeyId != null)
+            {
+                // register the hot key.
+                if (!UnregisterHotKey(_window.Handle, hotkeyId.Value))
+                    throw new InvalidOperationException("Couldn’t unregister the hot key.");
+            }
         }
 
         /// <summary>

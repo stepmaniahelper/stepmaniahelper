@@ -80,7 +80,7 @@ namespace StepManiaHelper
             dataGridViewHelpers = new DataGridViewHelpers(this);
 
             // Populate the hotkey dropdown
-            foreach (var key in Enum.GetNames(typeof(Keys)))
+            foreach (var key in Enum.GetValues(typeof(Keys)))
             {
                 cbxHotkey.Items.Add(key);
             }
@@ -158,6 +158,8 @@ namespace StepManiaHelper
                 {
                     // Add the folders to the folder dropdown
                     cbxFolders.Items.Add(folder);
+                    folder.HotKeyId = null;
+                    UpdateHotkey(folder);
                 }
             }
             cbxFolders.Items.Add(strNewItem);
@@ -215,21 +217,10 @@ namespace StepManiaHelper
             radSearchAnd.CheckedChanged += RadSearch_CheckedChanged;
             radSearchOr.CheckedChanged += RadSearch_CheckedChanged;
 
-            // TEST CODE
             if (SavedOptions.Folders == null)
             {
                 SavedOptions.Folders = new List<CSavedFolder>();
             }
-            CSavedFolder filter = SavedOptions.Folders?.FirstOrDefault(x => x.Name == "_DELETED");
-            if (filter == null)
-            {
-                filter = new CSavedFolder("_DELETED", EFolderTypes.Filter);
-                SavedOptions.Folders.Add(filter);
-                cbxFolders.Items.Add(filter);
-            }
-            GameMonitor.RegisterHotKey(
-                Helpers.ModifierKeys.Control | Helpers.ModifierKeys.Alt, Keys.D,
-                filter);
         }
 
         public void ChangeSongListSource(SortableBindingList<CSong> List)
@@ -582,6 +573,10 @@ namespace StepManiaHelper
                 // Update the radio buttons to match the folder type
                 radCustomSongPack.Checked = (folder.Type == EFolderTypes.CustomSongPack);
                 radFilter.Checked = (folder.Type == EFolderTypes.Filter);
+                chkHotkeyShift.Checked = folder.HotkeyShift;
+                chkHotkeyCtrl.Checked = folder.HotkeyCtrl;
+                chkHotkeyAlt.Checked = folder.HotkeyAlt;
+                cbxHotkey.SelectedItem = folder.HotkeyKey;
             }
             else
             {
@@ -1395,6 +1390,55 @@ namespace StepManiaHelper
         private void grpGameMonitor_Enter(object sender, EventArgs e)
         {
 
+        }
+        private void UpdateHotkey(CSavedFolder folder)
+        {
+            GameMonitor.RegisterHotKey(
+                (folder.HotkeyShift ? Helpers.ModifierKeys.Shift : 0) |
+                (folder.HotkeyAlt ? Helpers.ModifierKeys.Alt : 0) |
+                (folder.HotkeyCtrl ? Helpers.ModifierKeys.Control : 0),
+                folder.HotkeyKey,
+                folder);
+        }
+
+        private void chkHotkeyShift_CheckedChanged(object sender, EventArgs e)
+        {
+            CSavedFolder folder = cbxFolders.SelectedItem as CSavedFolder;
+            if (folder != null)
+            {
+                folder.HotkeyShift = chkHotkeyShift.Checked;
+                UpdateHotkey(folder);
+            }
+        }
+
+        private void chkHotkeyCtrl_CheckedChanged(object sender, EventArgs e)
+        {
+            CSavedFolder folder = cbxFolders.SelectedItem as CSavedFolder;
+            if (folder != null)
+            {
+                folder.HotkeyCtrl = chkHotkeyCtrl.Checked;
+                UpdateHotkey(folder);
+            }
+        }
+
+        private void chkHotkeyAlt_CheckedChanged(object sender, EventArgs e)
+        {
+            CSavedFolder folder = cbxFolders.SelectedItem as CSavedFolder;
+            if (folder != null)
+            {
+                folder.HotkeyAlt = chkHotkeyAlt.Checked;
+                UpdateHotkey(folder);
+            }
+        }
+
+        private void cbxHotkey_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CSavedFolder folder = cbxFolders.SelectedItem as CSavedFolder;
+            if (folder != null)
+            {
+                folder.HotkeyKey = (Keys)cbxHotkey.SelectedItem;
+                UpdateHotkey(folder);
+            }
         }
     }
 }

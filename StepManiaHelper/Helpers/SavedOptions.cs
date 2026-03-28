@@ -29,6 +29,7 @@ namespace StepManiaHelper.Helpers
     [Serializable]
     public class CSavedFolder
     {
+        public int? HotKeyId { get; set; } = null;
         public string Name { get; set; }
         public EFolderTypes Type { get; set; }
         public bool HotkeyShift { get; set; } = true;
