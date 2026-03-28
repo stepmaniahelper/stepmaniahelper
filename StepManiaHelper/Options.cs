@@ -31,7 +31,7 @@ namespace StepManiaHelper
     {
         static private string strTempFileName = "SavedOptions.json";
 
-        public CSong SelectedSong = new CSong();
+        public CSong SelectedSong { get; private set; } = new CSong();
         public SortableBindingList<CDifficulty> Difficulties { get; }
 
         public CSavedFolder SelectedFolder;
@@ -207,6 +207,9 @@ namespace StepManiaHelper
                     break;
             }
 
+            // Restore the similarity threshold
+            cboSongSimilarity.SelectedIndex = this.SavedOptions.FilterAltSongsIndex;
+
             // Don't add event handlers until all of the above setup has occurred
 
             // Add event handlers for the program options
@@ -231,6 +234,29 @@ namespace StepManiaHelper
             ChangingSongListSource = false;
         }
 
+        public void SelectSong(CSong song)
+        {
+            SelectedSong.ReplaceWith(song);
+            int songIndex = cSongBindingSource.IndexOf(song);
+            if (songIndex != -1)
+            {
+                dgvSongList.Rows[songIndex].Selected = true;
+                if (dgvSongList.CurrentCell.RowIndex != songIndex)
+                {
+                    foreach (DataGridViewCell cell in dgvSongList.Rows[songIndex].Cells)
+                    {
+                        if (cell.Visible)
+                        {
+                            dgvSongList.CurrentCell = cell;
+                            break;
+                        }
+                    }
+                }
+            }
+            txtPack.DataBindings.OfType<Binding>().FirstOrDefault().ReadValue();
+            txtFolderName.DataBindings.OfType<Binding>().FirstOrDefault().ReadValue();
+            Difficulties.ResetBindings();
+        }
         public void RefreshSongListSource()
         {
             ChangingSongListSource = true;
@@ -1439,6 +1465,11 @@ namespace StepManiaHelper
                 folder.HotkeyKey = (Keys)cbxHotkey.SelectedItem;
                 UpdateHotkey(folder);
             }
+        }
+
+        private void cboSongSimilarity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SavedOptions.FilterAltSongsIndex = cboSongSimilarity.SelectedIndex;
         }
     }
 }

@@ -46,6 +46,40 @@
             lblSongListHeader = new System.Windows.Forms.Label();
             cbSongListHeaders = new System.Windows.Forms.ComboBox();
             dgvSongList = new System.Windows.Forms.DataGridView();
+            packDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            folderNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            artistsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            genresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            extensionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            lowDifficultyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            highDifficultyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            difficultiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            difficultyCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            songLengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            minBpmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            averageBpmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            maxBpmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            bpmVarianceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            displayBpmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            bpmCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            bpmsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            stopsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            minDifficultyInaccuracyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            maxDifficultyInaccuracyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            nonPadJumpsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            musicPathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            bannerPathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            bannerDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            backgroundPathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            backgroundDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            cdTitlePathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            cdTitleDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            jacketPathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            jacketDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            diskImagePathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            diskImageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            folderPathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             cSongBindingSource = new System.Windows.Forms.BindingSource(components);
             grpOutput = new System.Windows.Forms.GroupBox();
             txtStatus = new System.Windows.Forms.TextBox();
@@ -162,6 +196,7 @@
             cboSongSimilarity.Name = "cboSongSimilarity";
             cboSongSimilarity.Size = new System.Drawing.Size(159, 23);
             cboSongSimilarity.TabIndex = 7;
+            cboSongSimilarity.SelectedIndexChanged += cboSongSimilarity_SelectedIndexChanged;
             // 
             // label3
             // 
@@ -320,6 +355,7 @@
             dgvSongList.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dgvSongList.AutoGenerateColumns = false;
             dgvSongList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSongList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { packDataGridViewTextBoxColumn, folderNameDataGridViewTextBoxColumn, titleDataGridViewTextBoxColumn, artistsDataGridViewTextBoxColumn, genresDataGridViewTextBoxColumn, extensionsDataGridViewTextBoxColumn, lowDifficultyDataGridViewTextBoxColumn, highDifficultyDataGridViewTextBoxColumn, difficultiesDataGridViewTextBoxColumn, difficultyCountDataGridViewTextBoxColumn, songLengthDataGridViewTextBoxColumn, minBpmDataGridViewTextBoxColumn, averageBpmDataGridViewTextBoxColumn, maxBpmDataGridViewTextBoxColumn, bpmVarianceDataGridViewTextBoxColumn, displayBpmDataGridViewTextBoxColumn, bpmCountDataGridViewTextBoxColumn, bpmsDataGridViewTextBoxColumn, stopsDataGridViewTextBoxColumn, minDifficultyInaccuracyDataGridViewTextBoxColumn, maxDifficultyInaccuracyDataGridViewTextBoxColumn, nonPadJumpsDataGridViewTextBoxColumn1, musicPathDataGridViewTextBoxColumn, bannerPathDataGridViewTextBoxColumn, bannerDataGridViewImageColumn, backgroundPathDataGridViewTextBoxColumn, backgroundDataGridViewImageColumn, cdTitlePathDataGridViewTextBoxColumn, cdTitleDataGridViewImageColumn, jacketPathDataGridViewTextBoxColumn, jacketDataGridViewImageColumn, diskImagePathDataGridViewTextBoxColumn, diskImageDataGridViewImageColumn, folderPathDataGridViewTextBoxColumn });
             dgvSongList.DataSource = cSongBindingSource;
             dgvSongList.Location = new System.Drawing.Point(7, 51);
             dgvSongList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -328,6 +364,226 @@
             dgvSongList.Size = new System.Drawing.Size(621, 485);
             dgvSongList.TabIndex = 0;
             dgvSongList.RowPostPaint += dgvSongList_RowPostPaint;
+            // 
+            // packDataGridViewTextBoxColumn
+            // 
+            packDataGridViewTextBoxColumn.DataPropertyName = "Pack";
+            packDataGridViewTextBoxColumn.HeaderText = "Pack";
+            packDataGridViewTextBoxColumn.Name = "packDataGridViewTextBoxColumn";
+            // 
+            // folderNameDataGridViewTextBoxColumn
+            // 
+            folderNameDataGridViewTextBoxColumn.DataPropertyName = "FolderName";
+            folderNameDataGridViewTextBoxColumn.HeaderText = "FolderName";
+            folderNameDataGridViewTextBoxColumn.Name = "folderNameDataGridViewTextBoxColumn";
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            // 
+            // artistsDataGridViewTextBoxColumn
+            // 
+            artistsDataGridViewTextBoxColumn.DataPropertyName = "Artists";
+            artistsDataGridViewTextBoxColumn.HeaderText = "Artists";
+            artistsDataGridViewTextBoxColumn.Name = "artistsDataGridViewTextBoxColumn";
+            artistsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // genresDataGridViewTextBoxColumn
+            // 
+            genresDataGridViewTextBoxColumn.DataPropertyName = "Genres";
+            genresDataGridViewTextBoxColumn.HeaderText = "Genres";
+            genresDataGridViewTextBoxColumn.Name = "genresDataGridViewTextBoxColumn";
+            genresDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // extensionsDataGridViewTextBoxColumn
+            // 
+            extensionsDataGridViewTextBoxColumn.DataPropertyName = "Extensions";
+            extensionsDataGridViewTextBoxColumn.HeaderText = "Extensions";
+            extensionsDataGridViewTextBoxColumn.Name = "extensionsDataGridViewTextBoxColumn";
+            extensionsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lowDifficultyDataGridViewTextBoxColumn
+            // 
+            lowDifficultyDataGridViewTextBoxColumn.DataPropertyName = "LowDifficulty";
+            lowDifficultyDataGridViewTextBoxColumn.HeaderText = "LowDifficulty";
+            lowDifficultyDataGridViewTextBoxColumn.Name = "lowDifficultyDataGridViewTextBoxColumn";
+            lowDifficultyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // highDifficultyDataGridViewTextBoxColumn
+            // 
+            highDifficultyDataGridViewTextBoxColumn.DataPropertyName = "HighDifficulty";
+            highDifficultyDataGridViewTextBoxColumn.HeaderText = "HighDifficulty";
+            highDifficultyDataGridViewTextBoxColumn.Name = "highDifficultyDataGridViewTextBoxColumn";
+            highDifficultyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // difficultiesDataGridViewTextBoxColumn
+            // 
+            difficultiesDataGridViewTextBoxColumn.DataPropertyName = "Difficulties";
+            difficultiesDataGridViewTextBoxColumn.HeaderText = "Difficulties";
+            difficultiesDataGridViewTextBoxColumn.Name = "difficultiesDataGridViewTextBoxColumn";
+            difficultiesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // difficultyCountDataGridViewTextBoxColumn
+            // 
+            difficultyCountDataGridViewTextBoxColumn.DataPropertyName = "DifficultyCount";
+            difficultyCountDataGridViewTextBoxColumn.HeaderText = "DifficultyCount";
+            difficultyCountDataGridViewTextBoxColumn.Name = "difficultyCountDataGridViewTextBoxColumn";
+            difficultyCountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // songLengthDataGridViewTextBoxColumn
+            // 
+            songLengthDataGridViewTextBoxColumn.DataPropertyName = "SongLength";
+            songLengthDataGridViewTextBoxColumn.HeaderText = "SongLength";
+            songLengthDataGridViewTextBoxColumn.Name = "songLengthDataGridViewTextBoxColumn";
+            // 
+            // minBpmDataGridViewTextBoxColumn
+            // 
+            minBpmDataGridViewTextBoxColumn.DataPropertyName = "MinBpm";
+            minBpmDataGridViewTextBoxColumn.HeaderText = "MinBpm";
+            minBpmDataGridViewTextBoxColumn.Name = "minBpmDataGridViewTextBoxColumn";
+            minBpmDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // averageBpmDataGridViewTextBoxColumn
+            // 
+            averageBpmDataGridViewTextBoxColumn.DataPropertyName = "AverageBpm";
+            averageBpmDataGridViewTextBoxColumn.HeaderText = "AverageBpm";
+            averageBpmDataGridViewTextBoxColumn.Name = "averageBpmDataGridViewTextBoxColumn";
+            // 
+            // maxBpmDataGridViewTextBoxColumn
+            // 
+            maxBpmDataGridViewTextBoxColumn.DataPropertyName = "MaxBpm";
+            maxBpmDataGridViewTextBoxColumn.HeaderText = "MaxBpm";
+            maxBpmDataGridViewTextBoxColumn.Name = "maxBpmDataGridViewTextBoxColumn";
+            maxBpmDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bpmVarianceDataGridViewTextBoxColumn
+            // 
+            bpmVarianceDataGridViewTextBoxColumn.DataPropertyName = "BpmVariance";
+            bpmVarianceDataGridViewTextBoxColumn.HeaderText = "BpmVariance";
+            bpmVarianceDataGridViewTextBoxColumn.Name = "bpmVarianceDataGridViewTextBoxColumn";
+            bpmVarianceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // displayBpmDataGridViewTextBoxColumn
+            // 
+            displayBpmDataGridViewTextBoxColumn.DataPropertyName = "DisplayBpm";
+            displayBpmDataGridViewTextBoxColumn.HeaderText = "DisplayBpm";
+            displayBpmDataGridViewTextBoxColumn.Name = "displayBpmDataGridViewTextBoxColumn";
+            // 
+            // bpmCountDataGridViewTextBoxColumn
+            // 
+            bpmCountDataGridViewTextBoxColumn.DataPropertyName = "BpmCount";
+            bpmCountDataGridViewTextBoxColumn.HeaderText = "BpmCount";
+            bpmCountDataGridViewTextBoxColumn.Name = "bpmCountDataGridViewTextBoxColumn";
+            bpmCountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bpmsDataGridViewTextBoxColumn
+            // 
+            bpmsDataGridViewTextBoxColumn.DataPropertyName = "Bpms";
+            bpmsDataGridViewTextBoxColumn.HeaderText = "Bpms";
+            bpmsDataGridViewTextBoxColumn.Name = "bpmsDataGridViewTextBoxColumn";
+            bpmsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stopsDataGridViewTextBoxColumn
+            // 
+            stopsDataGridViewTextBoxColumn.DataPropertyName = "Stops";
+            stopsDataGridViewTextBoxColumn.HeaderText = "Stops";
+            stopsDataGridViewTextBoxColumn.Name = "stopsDataGridViewTextBoxColumn";
+            stopsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // minDifficultyInaccuracyDataGridViewTextBoxColumn
+            // 
+            minDifficultyInaccuracyDataGridViewTextBoxColumn.DataPropertyName = "MinDifficultyInaccuracy";
+            minDifficultyInaccuracyDataGridViewTextBoxColumn.HeaderText = "MinDifficultyInaccuracy";
+            minDifficultyInaccuracyDataGridViewTextBoxColumn.Name = "minDifficultyInaccuracyDataGridViewTextBoxColumn";
+            minDifficultyInaccuracyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // maxDifficultyInaccuracyDataGridViewTextBoxColumn
+            // 
+            maxDifficultyInaccuracyDataGridViewTextBoxColumn.DataPropertyName = "MaxDifficultyInaccuracy";
+            maxDifficultyInaccuracyDataGridViewTextBoxColumn.HeaderText = "MaxDifficultyInaccuracy";
+            maxDifficultyInaccuracyDataGridViewTextBoxColumn.Name = "maxDifficultyInaccuracyDataGridViewTextBoxColumn";
+            maxDifficultyInaccuracyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nonPadJumpsDataGridViewTextBoxColumn1
+            // 
+            nonPadJumpsDataGridViewTextBoxColumn1.DataPropertyName = "NonPadJumps";
+            nonPadJumpsDataGridViewTextBoxColumn1.HeaderText = "NonPadJumps";
+            nonPadJumpsDataGridViewTextBoxColumn1.Name = "nonPadJumpsDataGridViewTextBoxColumn1";
+            nonPadJumpsDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // musicPathDataGridViewTextBoxColumn
+            // 
+            musicPathDataGridViewTextBoxColumn.DataPropertyName = "MusicPath";
+            musicPathDataGridViewTextBoxColumn.HeaderText = "MusicPath";
+            musicPathDataGridViewTextBoxColumn.Name = "musicPathDataGridViewTextBoxColumn";
+            // 
+            // bannerPathDataGridViewTextBoxColumn
+            // 
+            bannerPathDataGridViewTextBoxColumn.DataPropertyName = "BannerPath";
+            bannerPathDataGridViewTextBoxColumn.HeaderText = "BannerPath";
+            bannerPathDataGridViewTextBoxColumn.Name = "bannerPathDataGridViewTextBoxColumn";
+            // 
+            // bannerDataGridViewImageColumn
+            // 
+            bannerDataGridViewImageColumn.DataPropertyName = "Banner";
+            bannerDataGridViewImageColumn.HeaderText = "Banner";
+            bannerDataGridViewImageColumn.Name = "bannerDataGridViewImageColumn";
+            // 
+            // backgroundPathDataGridViewTextBoxColumn
+            // 
+            backgroundPathDataGridViewTextBoxColumn.DataPropertyName = "BackgroundPath";
+            backgroundPathDataGridViewTextBoxColumn.HeaderText = "BackgroundPath";
+            backgroundPathDataGridViewTextBoxColumn.Name = "backgroundPathDataGridViewTextBoxColumn";
+            // 
+            // backgroundDataGridViewImageColumn
+            // 
+            backgroundDataGridViewImageColumn.DataPropertyName = "Background";
+            backgroundDataGridViewImageColumn.HeaderText = "Background";
+            backgroundDataGridViewImageColumn.Name = "backgroundDataGridViewImageColumn";
+            // 
+            // cdTitlePathDataGridViewTextBoxColumn
+            // 
+            cdTitlePathDataGridViewTextBoxColumn.DataPropertyName = "CdTitlePath";
+            cdTitlePathDataGridViewTextBoxColumn.HeaderText = "CdTitlePath";
+            cdTitlePathDataGridViewTextBoxColumn.Name = "cdTitlePathDataGridViewTextBoxColumn";
+            // 
+            // cdTitleDataGridViewImageColumn
+            // 
+            cdTitleDataGridViewImageColumn.DataPropertyName = "CdTitle";
+            cdTitleDataGridViewImageColumn.HeaderText = "CdTitle";
+            cdTitleDataGridViewImageColumn.Name = "cdTitleDataGridViewImageColumn";
+            // 
+            // jacketPathDataGridViewTextBoxColumn
+            // 
+            jacketPathDataGridViewTextBoxColumn.DataPropertyName = "JacketPath";
+            jacketPathDataGridViewTextBoxColumn.HeaderText = "JacketPath";
+            jacketPathDataGridViewTextBoxColumn.Name = "jacketPathDataGridViewTextBoxColumn";
+            // 
+            // jacketDataGridViewImageColumn
+            // 
+            jacketDataGridViewImageColumn.DataPropertyName = "Jacket";
+            jacketDataGridViewImageColumn.HeaderText = "Jacket";
+            jacketDataGridViewImageColumn.Name = "jacketDataGridViewImageColumn";
+            // 
+            // diskImagePathDataGridViewTextBoxColumn
+            // 
+            diskImagePathDataGridViewTextBoxColumn.DataPropertyName = "DiskImagePath";
+            diskImagePathDataGridViewTextBoxColumn.HeaderText = "DiskImagePath";
+            diskImagePathDataGridViewTextBoxColumn.Name = "diskImagePathDataGridViewTextBoxColumn";
+            // 
+            // diskImageDataGridViewImageColumn
+            // 
+            diskImageDataGridViewImageColumn.DataPropertyName = "DiskImage";
+            diskImageDataGridViewImageColumn.HeaderText = "DiskImage";
+            diskImageDataGridViewImageColumn.Name = "diskImageDataGridViewImageColumn";
+            // 
+            // folderPathDataGridViewTextBoxColumn
+            // 
+            folderPathDataGridViewTextBoxColumn.DataPropertyName = "FolderPath";
+            folderPathDataGridViewTextBoxColumn.HeaderText = "FolderPath";
+            folderPathDataGridViewTextBoxColumn.Name = "folderPathDataGridViewTextBoxColumn";
             // 
             // cSongBindingSource
             // 
@@ -717,6 +973,7 @@
             // btnPlayPause
             // 
             btnPlayPause.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            btnPlayPause.Enabled = false;
             btnPlayPause.Location = new System.Drawing.Point(10, 82);
             btnPlayPause.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnPlayPause.Name = "btnPlayPause";
@@ -861,16 +1118,17 @@
             label5.Location = new System.Drawing.Point(3, 7);
             label5.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(165, 15);
+            label5.Padding = new System.Windows.Forms.Padding(0, 0, 50, 0);
+            label5.Size = new System.Drawing.Size(135, 15);
             label5.TabIndex = 6;
-            label5.Text = "Game Monitor Global Hotkey:";
+            label5.Text = "Global Hotkey:";
             // 
             // chkHotkeyAlt
             // 
             chkHotkeyAlt.AutoSize = true;
             chkHotkeyAlt.Checked = true;
             chkHotkeyAlt.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkHotkeyAlt.Location = new System.Drawing.Point(281, 7);
+            chkHotkeyAlt.Location = new System.Drawing.Point(251, 7);
             chkHotkeyAlt.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
             chkHotkeyAlt.Name = "chkHotkeyAlt";
             chkHotkeyAlt.Size = new System.Drawing.Size(41, 19);
@@ -884,7 +1142,7 @@
             chkHotkeyShift.AutoSize = true;
             chkHotkeyShift.Checked = true;
             chkHotkeyShift.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkHotkeyShift.Location = new System.Drawing.Point(174, 7);
+            chkHotkeyShift.Location = new System.Drawing.Point(144, 7);
             chkHotkeyShift.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
             chkHotkeyShift.Name = "chkHotkeyShift";
             chkHotkeyShift.Size = new System.Drawing.Size(50, 19);
@@ -895,6 +1153,7 @@
             // 
             // cbxHotkey
             // 
+            cbxHotkey.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             cbxHotkey.FormattingEnabled = true;
             cbxHotkey.Location = new System.Drawing.Point(328, 3);
             cbxHotkey.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
@@ -908,7 +1167,7 @@
             chkHotkeyCtrl.AutoSize = true;
             chkHotkeyCtrl.Checked = true;
             chkHotkeyCtrl.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkHotkeyCtrl.Location = new System.Drawing.Point(230, 7);
+            chkHotkeyCtrl.Location = new System.Drawing.Point(200, 7);
             chkHotkeyCtrl.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
             chkHotkeyCtrl.Name = "chkHotkeyCtrl";
             chkHotkeyCtrl.Size = new System.Drawing.Size(45, 19);
@@ -1172,7 +1431,7 @@
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             MinimumSize = new System.Drawing.Size(1192, 880);
             Name = "Options";
-            Text = "StepMania Helper V1.04.00";
+            Text = "StepMania Helper V1.05.00";
             FormClosing += Options_FormClosing;
             FormClosed += Options_FormClosed;
             Load += Options_Load;
@@ -1318,5 +1577,39 @@
         private System.Windows.Forms.CheckBox chkHotkeyShift;
         private System.Windows.Forms.ComboBox cbxHotkey;
         private System.Windows.Forms.CheckBox chkHotkeyCtrl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn packDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn folderNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn artistsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genresDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn extensionsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lowDifficultyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn highDifficultyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn difficultiesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn difficultyCountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn songLengthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn minBpmDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn averageBpmDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maxBpmDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bpmVarianceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn displayBpmDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bpmCountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bpmsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stopsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn minDifficultyInaccuracyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maxDifficultyInaccuracyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nonPadJumpsDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn musicPathDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bannerPathDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn bannerDataGridViewImageColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn backgroundPathDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn backgroundDataGridViewImageColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cdTitlePathDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn cdTitleDataGridViewImageColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jacketPathDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn jacketDataGridViewImageColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn diskImagePathDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn diskImageDataGridViewImageColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn folderPathDataGridViewTextBoxColumn;
     }
 }

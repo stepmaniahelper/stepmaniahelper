@@ -93,31 +93,26 @@ namespace StepManiaHelper.Logic
                         // Determined the new checked state
                         bool newValue = ((cell.Value == null) || ((bool)cell.Value == false)) ? true : false;
 
-                        // Duplicating or restoring a filtered song can always be done,
-                        // and modifications to the non-selected-song can also always be done
-                        /*if ((folder.Type == EFolderTypes.CustomSongPack)
-                        ||  (newValue == false)
-                        ||  (song != Owner.SelectedSong))*/
+                        // Run the proper folder logic, attempting to filter/copy the selected song, 
+                        // this will fail if we are attempting to filter a song folder that the game
+                        // currently has open
+                        if (folder.Toggle(rowSong, newValue) == true)
                         {
-                            // Run the proper folder logic
-                            if (folder.Toggle(song, newValue) == true)
-                            {
-                                // If the logic was successful, update the GUI to match the new state
-                                cell.Value = newValue;
-                            }
+                            // If the logic was successful, update the GUI to match the new state
+                            cell.Value = newValue;
                             // Delete any pending edits for this song
-                            if (PendingEdits.ContainsKey(song))
+                            if (PendingEdits.ContainsKey(rowSong))
                             {
-                                PendingEdits.Remove(song);
+                                PendingEdits.Remove(rowSong);
                             }
                         }
-                        // Filtering a song cannot be done while the song is selected,
-                        // so create a pending edit for it. This will be applied when
-                        // the song selection changes.
-                        /*else
+                        else
                         {
-                            PendingEdits[song] = folder;
-                        }*/
+                            // Filtering a song cannot be done while the song is selected,
+                            // so create a pending edit for it. This will be applied when
+                            // the song selection changes.
+                            PendingEdits[rowSong] = folder;
+                        }
                     }
                 }
             }
@@ -229,7 +224,7 @@ namespace StepManiaHelper.Logic
                 if (song != null)
                 {
                     CSong OldSelectedSong = SelectedSong;
-                    Owner.SelectedSong = song;
+                    Owner.BeginInvoke(new Action(() => { Owner.SelectSong(song); }));
                     SelectedSong = song;
                     // If the selected song changed, apply any pending edits
                     if ((OldSelectedSong != null)

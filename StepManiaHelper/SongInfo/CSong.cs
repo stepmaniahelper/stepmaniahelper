@@ -1087,8 +1087,8 @@ namespace StepManiaHelper
             catch (IOException exp)
             {
                 success = false;
-                MessageBox.Show($"{exp.Message}", "Error Filtering Song(s)",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                /*MessageBox.Show($"{exp.Message}", "Error Filtering Song(s)",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);*/
             }
             return success;
         }

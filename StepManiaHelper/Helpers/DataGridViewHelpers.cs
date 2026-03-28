@@ -386,10 +386,7 @@ namespace StepManiaHelper.Helpers
                 // We only need to replace the song if it's not the same one
                 if (Form.SelectedSong.FolderPath != Form.StepManiaParser?.Songs?.ElementAt(e.RowIndex)?.FolderPath)
                 {
-                    Form.SelectedSong.ReplaceWith(Form.StepManiaParser?.Songs?.ElementAt(e.RowIndex));
-                    Form.txtPack.DataBindings.OfType<Binding>().FirstOrDefault().ReadValue();
-                    Form.txtFolderName.DataBindings.OfType<Binding>().FirstOrDefault().ReadValue();
-                    Form.Difficulties.ResetBindings();
+                    Form.SelectSong(Form.StepManiaParser?.Songs?.ElementAt(e.RowIndex));
                 }
             }
         }

@@ -6,7 +6,7 @@ The original idea of the tool was that I had a song library of over 10k songs, a
 
 Thanks to some user-suggested changes, the tool has evolved a bit towards becoming a more general song library management tool, although it's still a far-cry from fully featured, and it is still very much held back by its ad-hoc design and development.
 
-![Screenshot](https://i.imgur.com/OCwXTJi.png)
+![Screenshot](https://i.imgur.com/367FbHr.png)
 
 ## Dependencies
 If you are running Windows 10+, you shouldn't need do download anything other than the application itself, but if you're running on an older OS you may have to download the .Net Framework 4.5 from Microsoft: https://www.microsoft.com/en-us/download/details.aspx?id=30653
@@ -32,7 +32,7 @@ There's a lot of functionality available, so I'll try to break down the typical 
 
   - "Save data after parse"
 
-    - Will save a "StepManiaHelper.bin" in the directory you point the program to. This file contains information gathered from the song files and is used to speed things up on subsequent runs of the application.
+    - Will save a "StepManiaHelper.json" in the directory you point the program to. This file contains information gathered from the song files and is used to speed things up on subsequent runs of the application.
 
 - Press the "Search/Parse/Run-Special-Filter" button to have it identify and parse your song library. It will first find all the songs, and then parse them. The "Songs List" will fill with songs as they are found, and progress will be shown in the "Parse/Filter Output" section.
 
@@ -62,14 +62,12 @@ To run a defined search, click the "Apply search" button which replace the songs
 
 If you desire to create multiple searches, you can click the "Search Name" combo-box and replace the "Add New" text with the name of the search you want to create. This will add the entered text as an option in the combo-box, and save all the operands with that name. To define a new search, select the "Add New" option from the combo-box, and modify the operands for the new search. Selecting a search from the dropdown will change the operands in the area below the dropdown to match what was previously saved.
 
-NOTE: There is a known bug with the operands area where sometimes operands get hidden or the "Add Search Operand" button appears in the wrong place. Saving and loading the search using the dropdown can be used to resolve the issue if it should occur.
-
 ## Filter Folders / Custom Song Pack Folders
 There are two types of folders that the program supports:
 
 - Filters
 
-  - These will move songs outside the StepMania "Songs" directory so that the games doesn't see them anymore
+  - These will move songs outside the StepMania "Songs" directory so that the games doesn't see them anymore.
 
 - Custom Song Pack
 
@@ -81,8 +79,32 @@ Once a folder has been defined, it will appear as an option in the song list hea
 
 The "Apply to all visible" and "Clear from all visible" buttons will effectively check or uncheck the box of every song visible in the song list for the folder that is currently selected. On it's own that's not very helpful (I don't think most people want to hide all of their songs, or put all their songs into a single custom song pack), but combined with the song search area beneath the folder area, this can be used to quickly hide songs from StepMania that meet a specific criteria.
 
+If a global hotkey is defined, this hotkey can be pressed to toggle the filter/custom-song-pack for the currently selected song in the song list. Note that this hotkey is global, meaning that even if the application is minimized or not focused, it will still take effect (see the Game Monitor section for why this is useful.)
+
+## Special Filters
+
+The application comes with 2 special filters which are similar to the customizable ones, but utilize a fixed filter folder name. If selected, these filters are applied during the "Search/Parse/Run-Special-Filter" operation.
+
+- Duplicates
+	
+  - The duplicate filter will only match songs if they have identical step-charts. If two (or more) songs with identical step charts are found during the scan, only one of these will be left in the "Songs" directory, and all others will be moved to the "_DUPLICATE" filter folder.
+
+- Alternates
+
+  - The alternates filter allows for identification of songs that are similar but not identical. A similarity threshold is specified, and songs that meet or exceed this threshold will be matched. Song titles, artists, music files, BPM, and beat count are all considered in this evaluation. Identified alternate versions of songs will be moved to the "_ALT" filter folder.
+
+## Game Monitor
+
+Song management from a dedicated app can be useful sometimes, but sometimes you don't know that you like (or hate) a particular song unless you just finished playing it; if you then want to filter or save this song using the app, you have to first find that same song in the app, which can be tedious. Enter the game monitor. 
+
+The game monitor will ask the operating system to tell it about any files that the game executable interacts with, and it can compare these files against the list of songs it found during previously run scans, allowing it to determine which sing is currently selected in the game. In practive, this means that when the game selects a song, if the game monitor is active, it will select this same song in the app. This functionality can be combined with the global hotkeys defined as part of a filter/custom-song-pack to manage your song library all from within the game.
+
+Please note that a filter which removes the song from the games "Songs" directory cannot be applied while the game has its associated files open. If the application detects this happening, it will queue the filter, and it will be applied when the game's song selection next changes.
+
+Please note that the game monitor functionality will only work if the application is run with administrator priveleges.
+
 ## Saving
-All changes made by the user (visibility and order of columns, checkbox states, folders and song searches, etc.) are saved in a "SavedOptions.bin" beside the executable when the application closes. So you should only have to configure the program to your liking once, and it will save that info for the next run.
+All changes made by the user (visibility and order of columns, checkbox states, folders and song searches, etc.) are saved in a "SavedOptions.json" beside the executable when the application closes. So you should only have to configure the program to your liking once, and it will save that info for the next run.
 
 ## Conclusion
 This is an alpha build, so I expect there to be bugs and usability issues still. If you want to give the program a try, please let me know if you run into issues with a feature. Also, if you would like additional functionality to be added, please let me know and I'll see what I can do :p
