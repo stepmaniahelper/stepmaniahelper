@@ -1431,7 +1431,7 @@
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             MinimumSize = new System.Drawing.Size(1192, 880);
             Name = "Options";
-            Text = "StepMania Helper V1.05.00";
+            Text = "StepMania Helper V1.06.00";
             FormClosing += Options_FormClosing;
             FormClosed += Options_FormClosed;
             Load += Options_Load;

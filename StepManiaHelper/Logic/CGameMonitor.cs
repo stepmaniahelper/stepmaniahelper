@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -25,16 +26,22 @@ namespace StepManiaHelper.Logic
         private KeyboardHook Hook = new KeyboardHook();
         private FileInfo Executable;
         private TraceEventSession Session;
-        private Thread BackgroundThread;
+        private Thread MonitorThread;
+        private Thread ProcessingThread;
         private bool RunThread = false;
         private bool IsRunning = false;
         private CSong SelectedSong = null;
         private Dictionary<Tuple<ModifierKeys, Keys>, CSavedFolder> Hotkeys = new Dictionary<Tuple<ModifierKeys, Keys>, CSavedFolder>();
         private Dictionary<CSong, CSavedFolder> PendingEdits = new Dictionary<CSong, CSavedFolder>();
+        private BlockingCollection<string> CallbackObjects = new BlockingCollection<string>(100);
         public CGameMonitor(Options options) 
         {
             Owner = options;
             Hook.KeyPressed += Hook_KeyPressed;
+
+            ProcessingThread = new Thread(Process);
+            ProcessingThread.IsBackground = true;
+            ProcessingThread.Start();
         }
 
         public void RegisterHotKey(ModifierKeys modifier, Keys key, CSavedFolder cSavedFolder)
@@ -145,9 +152,9 @@ namespace StepManiaHelper.Logic
             {
                 Owner.btnMonitor.Text = "Stop Monitoring";
                 IsRunning = true;
-                BackgroundThread = new Thread(Monitor);
-                BackgroundThread.IsBackground = true;
-                BackgroundThread.Start();
+                MonitorThread = new Thread(Monitor);
+                MonitorThread.IsBackground = true;
+                MonitorThread.Start();
             }
             else
             {
@@ -167,14 +174,57 @@ namespace StepManiaHelper.Logic
             Session?.Source?.Dispose();
             Session?.Dispose();
             Session = null;
-            if (System.Threading.Thread.CurrentThread != BackgroundThread)
+            if (System.Threading.Thread.CurrentThread != MonitorThread)
             {
-                BackgroundThread.Join();
+                MonitorThread.Join();
             }
             IsRunning = false;
             Owner.btnMonitor.BeginInvoke(new Action(() => { Owner.btnMonitor.Text = "Start Monitoring"; }));
             Owner.txtMonitorSong.BeginInvoke(new Action(() => { Owner.txtMonitorSong.Text = "N/A"; }));
             SelectedSong = null;
+        }
+
+        private void Process()
+        {
+            string fileName;
+            while (true)
+            {
+                try
+                {
+                    CallbackObjects.TryTake(out fileName, -1);
+                    FileInfo file = new FileInfo(fileName);
+                    DirectoryInfo songFolder = file?.Directory;
+                    DirectoryInfo packFolder = songFolder?.Parent;
+
+                    CSong song = Owner?.StepManiaParser?.lstAllSongs?.FirstOrDefault(x =>
+                        (x?.FolderName == songFolder?.Name) &&
+                        (new DirectoryInfo(x?.FolderPath)?.Parent?.Name == packFolder?.Name));
+
+                    if (song != null)
+                    {
+                        CSong OldSelectedSong = SelectedSong;
+                        Owner.BeginInvoke(new Action(() => { Owner.SelectSong(song); }));
+                        SelectedSong = song;
+                        // If the selected song changed, apply any pending edits
+                        if ((OldSelectedSong != null)
+                        && (SelectedSong != null)
+                        && (SelectedSong != OldSelectedSong)
+                        && (PendingEdits.ContainsKey(OldSelectedSong)))
+                        {
+                            ApplyFolderToSong(OldSelectedSong, PendingEdits[OldSelectedSong]);
+                        }
+
+                        if (Owner?.txtMonitorSong?.Text != SelectedSong?.FolderName)
+                        {
+                            Owner.txtMonitorSong.BeginInvoke(new Action(() => { Owner.txtMonitorSong.Text = SelectedSong?.FolderName; }));
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
         }
 
         private void Monitor()
@@ -213,33 +263,7 @@ namespace StepManiaHelper.Logic
             if (((obj?.FileName?.Length ?? 0) > 0)
             && (obj?.ProcessName?.Contains(Executable?.Name?.Replace(Executable?.Extension, ""), StringComparison.OrdinalIgnoreCase) == true))
             {
-                FileInfo file = new FileInfo(obj?.FileName);
-                DirectoryInfo songFolder = file?.Directory;
-                DirectoryInfo packFolder = songFolder?.Parent;
-
-                CSong song = Owner?.StepManiaParser?.lstAllSongs?.FirstOrDefault(x => 
-                    (x?.FolderName == songFolder?.Name) &&
-                    (new DirectoryInfo(x?.FolderPath)?.Parent?.Name == packFolder?.Name));
-
-                if (song != null)
-                {
-                    CSong OldSelectedSong = SelectedSong;
-                    Owner.BeginInvoke(new Action(() => { Owner.SelectSong(song); }));
-                    SelectedSong = song;
-                    // If the selected song changed, apply any pending edits
-                    if ((OldSelectedSong != null)
-                    &&  (SelectedSong != null)
-                    &&  (SelectedSong != OldSelectedSong)
-                    &&  (PendingEdits.ContainsKey(OldSelectedSong)))
-                    {
-                        ApplyFolderToSong(OldSelectedSong, PendingEdits[OldSelectedSong]);
-                    }
-                    
-                    if (Owner?.txtMonitorSong?.Text != SelectedSong?.FolderName)
-                    {
-                        Owner.txtMonitorSong.BeginInvoke(new Action(() => { Owner.txtMonitorSong.Text = SelectedSong?.FolderName; }));
-                    }
-                }
+                CallbackObjects.TryAdd(obj.FileName);
             }
         }
     }

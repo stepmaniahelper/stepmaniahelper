@@ -61,9 +61,10 @@ namespace StepManiaHelper.Helpers
 
             // If song column styles weren't loaded, set some defaults
             // NOTE: Be sure to load custom folders before doing this
-            if (Form.SavedOptions.SongColumns == null)
+            if ((Form.SavedOptions.SongColumns == null)
+            ||  (Form.SavedOptions.SongColumns.Count == 0))
             {
-                Form.SavedOptions.SongColumns = new List<string>();
+                Form.SavedOptions.SongColumns = Form.SavedOptions.SongColumns ?? new List<string>();
                 Form.SavedOptions.SongColumns.Add(nameof(CSong.Pack));
                 Form.SavedOptions.SongColumns.Add(nameof(CSong.FolderName));
                 Form.SavedOptions.SongColumns.Add(nameof(CSong.Difficulties));
@@ -114,9 +115,10 @@ namespace StepManiaHelper.Helpers
             }
 
             // If difficulty column styles weren't loaded, set some defaults
-            if (Form.SavedOptions.DiffColumns == null)
+            if ((Form.SavedOptions.DiffColumns == null)
+            ||  (Form.SavedOptions.DiffColumns.Count == 0))
             {
-                Form.SavedOptions.DiffColumns = new List<string>();
+                Form.SavedOptions.DiffColumns = Form.SavedOptions.DiffColumns ?? new List<string>();
                 Form.SavedOptions.DiffColumns.Add(nameof(CDifficulty.Difficulty));
                 Form.SavedOptions.DiffColumns.Add(nameof(CDifficulty.Notes));
             }
